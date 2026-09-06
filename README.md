@@ -46,9 +46,8 @@ entrenamiento, recuperación, piel y descanso.
 
 ## Imágenes
 
-- `public/productos/*.png` — 9 fotos de producto (fondo removido, recortadas y
-  centradas). **Falta `descanso-total.png`** → mientras tanto la ficha muestra un
-  placeholder ("Foto próximamente").
+- `public/productos/*.png` — 10 fotos de producto (fondo removido, recortadas y
+  centradas en lienzo cuadrado).
 - `public/img/hero.jpg`, `problema.jpg`, `prod-dolor.jpg`,
   `prod-poder-absoluto.jpg`, `prod-tradicional.jpg` — fotos de ambiente de
   **Unsplash** (uso libre, sin atribución obligatoria). Autores: MARK ADRIANE,
@@ -57,7 +56,6 @@ entrenamiento, recuperación, piel y descanso.
 
 ## Pendientes de contenido
 
-- Foto real de **Descanso Total** (y del resto si hay set definitivo).
 - Testimonios en `components/testimonials.tsx` son **placeholders**.
 - Datos de contacto (correo, WhatsApp, redes) en `components/footer.tsx`.
 - Enlaces a tienda / checkout en los CTA "Comprar" y "Pedir".
