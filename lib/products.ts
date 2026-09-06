@@ -71,6 +71,7 @@ export const PRODUCTS: Product[] = [
     claim: "El músculo se repara mientras duermes. Aquí empieza.",
     desc: "Estimula la producción de serotonina y melatonina para un sueño profundo y reparador. El descanso que necesita el cuerpo para volver al 100% entre sesiones dobles, con menos inflamación y menos dolor muscular.",
     uses: ["Sueño profundo", "Doble sesión", "Recuperación", "Menos dolor"],
+    image: "/productos/descanso-total.png",
     accent: "text-bronze",
   },
   {
