@@ -1,0 +1,116 @@
+# Panel de contenido de Herbalvarez (Sveltia CMS)
+# Un solo usuario. Se entra en /admin con un token personal de GitHub
+# ("Sign In with Token"): no hace falta montar un OAuth aparte.
+
+backend:
+  name: github
+  repo: elgomezh3/herbalvarez
+  branch: main
+  commit_messages:
+    create: 'Atleta: agrega {{slug}}'
+    update: 'Atleta: actualiza {{slug}}'
+    delete: 'Atleta: quita {{slug}}'
+    uploadMedia: 'Media: sube {{path}}'
+    deleteMedia: 'Media: quita {{path}}'
+
+# Las fotos que subas van a public/atletas/ y en el sitio se leen desde /atletas/
+media_folder: public/atletas
+public_folder: /atletas
+
+# Interfaz en español
+locale: es
+
+collections:
+  - name: atletas
+    label: Atletas
+    label_singular: Atleta
+    description: >-
+      Boxeadores y peleadores que aparecen en la sección "Atletas" del sitio.
+      Son personas reales con cuentas públicas: no inventes testimonios.
+    folder: content/atletas
+    create: true
+    delete: true
+    format: yaml-frontmatter
+    extension: md
+    slug: '{{fields.instagram}}'
+    identifier_field: nombre
+    summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
+    sortable_fields: ['orden', 'nombre', 'instagram']
+    view_filters:
+      - { label: 'Publicados', field: publicado, pattern: true }
+      - { label: 'Sin publicar', field: publicado, pattern: false }
+    fields:
+      - name: nombre
+        label: Nombre completo
+        widget: string
+        required: false
+        hint: >-
+          Déjalo vacío si aún no lo confirmas. Mientras tanto la tarjeta usa
+          el usuario de Instagram como título.
+
+      - name: disciplina
+        label: Disciplina
+        widget: string
+        required: false
+        hint: 'Ej.: Boxeo, MMA, Muay Thai, Kickboxing.'
+
+      - name: club
+        label: Categoría o club
+        widget: string
+        required: false
+        hint: 'Ej.: Peso wélter · Amateur élite · Club Álvarez Box.'
+
+      - name: instagram
+        label: Usuario de Instagram
+        widget: string
+        required: true
+        pattern: ['^[A-Za-z0-9._]+$', 'Solo el usuario, sin @ ni enlace. Ej.: boxeoalvarez']
+        hint: 'Solo el usuario, sin la @. Es lo que enlaza la tarjeta a Instagram.'
+
+      - name: foto
+        label: Foto
+        widget: image
+        required: false
+        allow_multiple: false
+        hint: >-
+          Foto vertical de la persona. Si la dejas vacía, la tarjeta muestra
+          un recuadro neutro con su inicial.
+
+      - name: testimonio
+        label: Testimonio (texto corto)
+        widget: text
+        required: false
+        hint: >-
+          Frase real de la persona, en sus palabras y con su permiso. Si está
+          vacío, la tarjeta no muestra ninguna frase. Nunca inventes una.
+
+      - name: relacion
+        label: Relación con la marca
+        widget: select
+        default: ninguna
+        required: true
+        options:
+          - { label: 'Sin relación comercial', value: ninguna }
+          - { label: 'Recibe producto de Herbalvarez', value: producto }
+          - { label: 'Patrocinado por Herbalvarez', value: patrocinio }
+          - { label: 'Atleta del equipo Herbalvarez', value: equipo }
+        hint: >-
+          Para transparencia con quien lee: declara si la persona recibe
+          producto gratis o algún tipo de patrocinio.
+
+      - name: orden
+        label: Orden
+        widget: number
+        default: 99
+        value_type: int
+        min: 1
+        step: 1
+        required: true
+        hint: 'Número menor = aparece primero en el sitio.'
+
+      - name: publicado
+        label: Publicado
+        widget: boolean
+        default: false
+        required: false
+        hint: 'Actívalo para que la tarjeta aparezca en el sitio. Apágalo para ocultarla sin borrarla.'

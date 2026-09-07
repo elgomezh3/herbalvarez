@@ -13,7 +13,7 @@ const NAV = [
   { label: "El problema", href: "#problema" },
   { label: "Productos", href: "#productos" },
   { label: "Diferencia", href: "#diferencia" },
-  { label: "Testimonios", href: "#testimonios" },
+  { label: "Atletas", href: "#atletas" },
   { label: "Contacto", href: "#contacto" },
 ];
 

@@ -3,7 +3,7 @@ import { Problem } from "@/components/problem";
 import { Marquee } from "@/components/marquee";
 import { Products } from "@/components/products";
 import { Difference } from "@/components/difference";
-import { Testimonials } from "@/components/testimonials";
+import { Athletes } from "@/components/athletes";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Marquee />
       <Products />
       <Difference />
-      <Testimonials />
+      <Athletes />
     </>
   );
 }

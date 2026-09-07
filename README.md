@@ -14,6 +14,7 @@ fichas de recuperación). Definida en `tailwind.config.ts`.
 - **Tailwind CSS 3**
 - **Framer Motion** — animaciones de entrada, reveal al hacer scroll, parallax
 - **Lenis** (`lenis/react`) — smooth scroll global
+- **Sveltia CMS** en `/admin` — administra la sección Atletas (ver `ADMIN-GUIA.md`)
 
 ## Desarrollo
 
@@ -33,11 +34,15 @@ npm run build && npm start
 | `components/marquee.tsx` | Banda roja con texto en loop entre "El problema" y "Productos" |
 | `components/products.tsx` | 5 productos; la botella "gira" (fake 3D) con el scroll; 1 fila con foto de fondo |
 | `components/difference.tsx` | Por qué es diferente — panel rojo + 4 pilares |
-| `components/testimonials.tsx` | Testimonios: scroll horizontal fijado en escritorio, apilados en móvil |
+| `components/athletes.tsx` | Sección "Atletas": grid de tarjetas numeradas leídas de `content/atletas/` en build time |
 | `components/footer.tsx` | Contacto, redes y aviso legal |
 | `components/primitives.tsx` | `Reveal`, `RevealGroup`, `MaskedHeading` reutilizables |
 | `lib/products.ts` | Datos de los 5 productos (categoría, formato, copy, imagen, foto de fondo) |
+| `lib/atletas.ts` | Lee `content/atletas/*.md` (gray-matter), filtra publicados y ordena por `orden` |
 | `lib/motion.ts` | Variants y curvas de easing compartidas |
+| `app/robots.ts` | `robots.txt` generado — bloquea `/admin` |
+| `public/admin/` | Sveltia CMS (`index.html` + `config.yml`) |
+| `content/atletas/` | Un `.md` por atleta (frontmatter YAML). Editable desde `/admin` |
 
 ## Productos (orden actual)
 
@@ -68,9 +73,22 @@ enfermedades: todo se reencuadra a entrenamiento, recuperación, piel y descanso
 
 Recomendable pedir versiones **SVG** para nitidez perfecta a cualquier tamaño.
 
+## Atletas (CMS)
+
+La sección "Atletas" se alimenta de `content/atletas/*.md` y se lee en build
+time. Se administra desde **`/admin`** (Sveltia CMS, backend GitHub, login con
+token personal). Guía para no-programadores: **`ADMIN-GUIA.md`**.
+
+- Solo se muestran los que tienen `publicado: true`, ordenados por `orden`.
+- Sin foto → recuadro neutro con la inicial. Sin testimonio → la tarjeta no
+  muestra frase (nunca se inventan testimonios: son personas reales).
+- Las fotos suben a `public/atletas/` (`media_folder` en `config.yml`).
+- Carga inicial: 9 atletas con solo el usuario de Instagram; el resto de campos
+  se completan desde `/admin`.
+
 ## Pendientes de contenido
 
-- Testimonios en `components/testimonials.tsx` son **placeholders**.
+- Nombre / disciplina / foto / testimonio de los 9 atletas (desde `/admin`).
 - Datos de contacto (correo, WhatsApp, redes) en `components/footer.tsx`.
 - Enlaces a tienda / checkout en los CTA "Comprar" y "Pedir".
 - Revisar claims y categorías en `lib/products.ts`.
