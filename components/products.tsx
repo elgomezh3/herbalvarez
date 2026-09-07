@@ -213,14 +213,14 @@ export function Products() {
           </p>
         </Reveal>
         <MaskedHeading
-          lines={["Diez fórmulas.", "Un mismo origen."]}
+          lines={["Cinco fórmulas.", "Un mismo origen."]}
           className="max-w-[16ch] text-[11vw] text-ink sm:text-6xl lg:text-7xl"
         />
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
-            Los mismos aceites de hierbas medicinales de Hialuroniz, ordenados
-            por lo que tu cuerpo tiene que resolver: recuperar, rendir, entrar al
-            ring y sostener el día a día.
+            Los mismos aceites de hierbas medicinales de Hialuroniz, elegidos
+            por lo que tu cuerpo tiene que resolver: recuperar, rendir y aguantar
+            el ring.
           </p>
         </Reveal>
 

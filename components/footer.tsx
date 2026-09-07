@@ -124,9 +124,8 @@ export function Footer() {
           >
             Unsplash
           </a>{" "}
-          (MARK ADRIANE, Boris Izmaylov, Anastase Maragos, Bogdan Yukhymchuk,
-          Mike Cox). Fotos de producto e imagen del hero: pendientes de material
-          definitivo.
+          (MARK ADRIANE, Boris Izmaylov, Bogdan Yukhymchuk). Fotos de producto e
+          imagen del hero: pendientes de material definitivo.
         </p>
       </div>
     </footer>
