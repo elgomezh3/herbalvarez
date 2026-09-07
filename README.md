@@ -60,18 +60,15 @@ entrenamiento, recuperación, piel y descanso.
 
 ## Logo
 
-`public/logo.png` es una **extracción** del logo dorado-sobre-negro (se pasó el
-fondo negro a transparente por luminancia). Funciona bien sobre fondo oscuro pero
-no es un asset limpio. Para calidad final hace falta:
+- `public/logo.png` — emblema completo (corona + marco + texto), PNG transparente.
+  Se usa en el footer.
+- `public/logo-wordmark.png` — solo el wordmark, PNG transparente. Se usa en el header.
+- `app/icon.png` — favicon (emblema sobre cuadro verde), generado de `logo.png`.
 
-- **Emblema completo** (corona + marco + texto) en **PNG con transparencia** o
-  **SVG**, para el footer y usos grandes.
-- **Solo el wordmark** "HERBALVAREZ / ACEITE DE HIERBAS" (sin el círculo) en PNG/SVG,
-  para el header (ahí hoy se usa texto tipografiado, no imagen).
+Recomendable pedir versiones **SVG** para nitidez perfecta a cualquier tamaño.
 
 ## Pendientes de contenido
 
-- Assets de logo definitivos (ver arriba).
 - Testimonios en `components/testimonials.tsx` son **placeholders**.
 - Datos de contacto (correo, WhatsApp, redes) en `components/footer.tsx`.
 - Enlaces a tienda / checkout en los CTA "Comprar" y "Pedir".

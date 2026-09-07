@@ -86,9 +86,9 @@ export function Footer() {
             <Image
               src="/logo.png"
               alt="Herbalvarez — Aceite de Hierbas"
-              width={260}
-              height={239}
-              className="h-auto w-[220px] opacity-95 md:w-[260px]"
+              width={900}
+              height={828}
+              className="h-auto w-[240px] md:w-[300px]"
             />
           </div>
         </Reveal>
