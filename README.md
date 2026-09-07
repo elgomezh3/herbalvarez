@@ -60,9 +60,12 @@ entrenamiento, recuperación, piel y descanso.
 
 ## Logo
 
+- El header usa el wordmark **en texto** (`HERBALVAREZ`, tipografía display) —
+  sin imagen, para no depender de un asset en el build.
 - `public/logo.png` — emblema completo (corona + marco + texto), PNG transparente.
   Se usa en el footer.
-- `public/logo-wordmark.png` — solo el wordmark, PNG transparente. Se usa en el header.
+- `public/logo-wordmark.png` — wordmark en PNG transparente (disponible, sin uso
+  actual en el sitio).
 - `app/icon.png` — favicon (emblema sobre cuadro verde), generado de `logo.png`.
 
 Recomendable pedir versiones **SVG** para nitidez perfecta a cualquier tamaño.
