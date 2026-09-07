@@ -1,6 +1,6 @@
 ---
 nombre: ''
-disciplina: ''
+disciplina: 'Boxeo'
 club: ''
 instagram: 'karla_y_zara'
 foto: ''

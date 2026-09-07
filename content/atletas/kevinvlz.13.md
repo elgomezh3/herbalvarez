@@ -1,6 +1,6 @@
 ---
 nombre: ''
-disciplina: ''
+disciplina: 'Boxeo'
 club: ''
 instagram: 'kevinvlz.13'
 foto: ''

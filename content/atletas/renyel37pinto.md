@@ -1,6 +1,6 @@
 ---
 nombre: ''
-disciplina: ''
+disciplina: 'Béisbol'
 club: ''
 instagram: 'renyel37pinto'
 foto: ''

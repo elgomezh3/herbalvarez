@@ -1,6 +1,6 @@
 ---
 nombre: ''
-disciplina: ''
+disciplina: 'Boxeo'
 club: ''
 instagram: 'abel_serrano0804'
 foto: ''

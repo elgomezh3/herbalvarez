@@ -1,6 +1,6 @@
 ---
 nombre: ''
-disciplina: ''
+disciplina: 'Boxeo'
 club: ''
 instagram: 'juan_vl03'
 foto: ''
