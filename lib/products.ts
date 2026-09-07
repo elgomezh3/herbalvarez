@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
     uses: ["Golpes", "Dolor articular", "Dolor de espalda", "Circulación"],
     image: "/productos/dolor.png",
     bg: "/img/prod-dolor.jpg",
-    accent: "text-blood",
+    accent: "text-ruby",
   },
   {
     id: "inhibe-dolor",
@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
     desc: "Formulado para el rendimiento físico y la recuperación post-entrenamiento: reduce el dolor y la inflamación después del esfuerzo y devuelve flexibilidad y movilidad a músculos y articulaciones.",
     uses: ["Inflamación", "Post-entreno", "Movilidad", "Flexibilidad"],
     image: "/productos/inhibe-dolor.png",
-    accent: "text-blood",
+    accent: "text-ruby",
   },
   {
     id: "pomada",
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     desc: "Ungüento de absorción media-lenta a base de lípidos naturales y extractos herbales. Anestésico local y antiinflamatorio potente; la miel y la cera de abeja dejan una barrera que protege y regenera la piel trabajada.",
     uses: ["Masaje", "Contracturas", "Zonas cargadas", "Piel protegida"],
     image: "/productos/pomada.png",
-    accent: "text-blood",
+    accent: "text-ruby",
   },
   {
     id: "poder-absoluto",
@@ -61,7 +61,7 @@ export const PRODUCTS: Product[] = [
     uses: ["Energía", "Resistencia", "Fuerza", "Recuperación"],
     image: "/productos/poder-absoluto.png",
     bg: "/img/prod-poder-absoluto.jpg",
-    accent: "text-bronze",
+    accent: "text-gold",
   },
   {
     id: "descanso-total",
@@ -72,7 +72,7 @@ export const PRODUCTS: Product[] = [
     desc: "Estimula la producción de serotonina y melatonina para un sueño profundo y reparador. El descanso que necesita el cuerpo para volver al 100% entre sesiones dobles, con menos inflamación y menos dolor muscular.",
     uses: ["Sueño profundo", "Doble sesión", "Recuperación", "Menos dolor"],
     image: "/productos/descanso-total.png",
-    accent: "text-bronze",
+    accent: "text-gold",
   },
   {
     id: "vaselina",
@@ -83,7 +83,7 @@ export const PRODUCTS: Product[] = [
     desc: "Base oleosa de alta oclusión con polímeros naturales de cera de abeja y ácidos grasos vegetales. Reduce ardor, dolor y descamación, calma la inflamación y ayuda a regenerar la piel expuesta al roce del guante y la lona.",
     uses: ["Córner", "Cara y cejas", "Fricción", "Regeneración"],
     image: "/productos/vaselina.png",
-    accent: "text-bronze",
+    accent: "text-gold",
   },
   {
     id: "vi-gen",
@@ -94,7 +94,7 @@ export const PRODUCTS: Product[] = [
     desc: "Combina propiedades antibacterianas, antivirales y antifúngicas para cuidar la piel en las zonas de más contacto y humedad del entrenamiento y apoyar las defensas durante las semanas de carga alta.",
     uses: ["Higiene", "Zonas de roce", "Apoyo inmune", "Campamento"],
     image: "/productos/vi-gen.png",
-    accent: "text-bronze",
+    accent: "text-gold",
   },
   {
     id: "tradicional",

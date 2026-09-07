@@ -60,21 +60,22 @@ export function Problem() {
         <div className="absolute inset-0 bg-surface/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-surface/10" />
         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-surface to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_40%,rgba(200,17,17,0.22),transparent_55%)] mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_75%,rgba(22,51,34,0.6),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_40%,rgba(158,42,43,0.2),transparent_55%)] mix-blend-screen" />
       </motion.div>
 
       <motion.span
         aria-hidden
         style={{ x: wordX }}
-        className="display-heading pointer-events-none absolute -bottom-8 left-0 select-none whitespace-nowrap text-[22vw] leading-none text-blood/[0.07]"
+        className="display-heading pointer-events-none absolute -bottom-8 left-0 select-none whitespace-nowrap text-[22vw] leading-none text-ruby/[0.09]"
       >
         DUELE — DUELE — DUELE
       </motion.span>
 
       <div className="relative z-10 mx-auto max-w-shell px-5 md:px-8">
         <Reveal>
-          <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-blood">
-            <span className="h-px w-10 bg-blood" />
+          <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-ruby-bright">
+            <span className="h-px w-10 bg-ruby-bright" />
             El problema
           </p>
         </Reveal>
@@ -107,29 +108,29 @@ export function Problem() {
                 variants={fadeUp}
                 className={`group p-8 transition-colors md:p-10 ${
                   hot
-                    ? "bg-blood text-bg"
-                    : "bg-surface hover:bg-bg"
+                    ? "bg-ruby text-ink"
+                    : "bg-surface hover:bg-green-deep"
                 }`}
               >
                 <span
                   className={`display-heading text-2xl transition-colors ${
                     hot
-                      ? "text-bg/80"
-                      : "text-blood/70 group-hover:text-blood"
+                      ? "text-ink/70"
+                      : "text-ruby/70 group-hover:text-ruby-bright"
                   }`}
                 >
                   {p.n}
                 </span>
                 <h3
                   className={`mt-4 text-xl font-semibold ${
-                    hot ? "text-bg" : "text-ink"
+                    hot ? "text-ink" : "text-ink"
                   }`}
                 >
                   {p.title}
                 </h3>
                 <p
                   className={`mt-3 text-sm leading-relaxed ${
-                    hot ? "text-bg/80" : "text-muted"
+                    hot ? "text-ink/80" : "text-muted"
                   }`}
                 >
                   {p.body}

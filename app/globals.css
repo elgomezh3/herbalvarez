@@ -24,8 +24,8 @@ body {
 }
 
 ::selection {
-  background: theme("colors.blood.DEFAULT");
-  color: theme("colors.ink");
+  background: theme("colors.gold.DEFAULT");
+  color: theme("colors.bg");
 }
 
 /* ---- Lenis smooth scroll ---- */

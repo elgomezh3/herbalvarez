@@ -49,14 +49,16 @@ export function Hero() {
         <div className="absolute inset-0 bg-bg/45 md:bg-bg/35" />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-bg/45 md:via-bg/70 md:to-bg/10" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_35%,rgba(200,17,17,0.32),transparent_55%)] mix-blend-screen" />
+        {/* Tinte verde bosque + luz dorada, para amarrar con el logo */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(22,51,34,0.55),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_30%,rgba(229,198,126,0.20),transparent_55%)] mix-blend-screen" />
       </motion.div>
 
       {/* Palabra gigante de fondo */}
       <motion.span
         aria-hidden
         style={{ y: wordY }}
-        className="display-heading pointer-events-none absolute -left-4 top-[14%] z-0 hidden select-none text-[22vw] leading-none text-white/[0.04] sm:block md:top-[16%] md:text-[18vw]"
+        className="display-heading pointer-events-none absolute -left-4 top-[14%] z-0 hidden select-none text-[22vw] leading-none text-gold/[0.05] sm:block md:top-[16%] md:text-[18vw]"
       >
         RING
       </motion.span>
@@ -69,9 +71,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-          className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-bronze"
+          className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold"
         >
-          <span className="h-px w-10 bg-bronze" />
+          <span className="h-px w-10 bg-gold" />
           Recuperación de nivel profesional
         </motion.p>
 
@@ -85,7 +87,7 @@ export function Hero() {
             <span key={i} className="block overflow-hidden">
               <motion.span
                 variants={lineReveal}
-                className={`block ${i === 1 ? "text-blood" : ""}`}
+                className={`block ${i === 1 ? "text-gold" : ""}`}
               >
                 {line}
               </motion.span>
@@ -112,13 +114,13 @@ export function Hero() {
         >
           <a
             href="#productos"
-            className="bg-blood px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-blood-bright"
+            className="bg-gold px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-bg transition-colors hover:bg-gold-light"
           >
             Ver productos
           </a>
           <a
             href="#diferencia"
-            className="border border-line px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:border-bronze hover:text-bronze"
+            className="border border-gold/40 px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:border-gold hover:text-gold"
           >
             Conocer la historia
           </a>
@@ -132,7 +134,7 @@ export function Hero() {
         >
           {STATS.map((s) => (
             <div key={s.label}>
-              <dt className="display-heading text-3xl text-bronze md:text-4xl">
+              <dt className="display-heading text-3xl text-gold md:text-4xl">
                 {s.value}
               </dt>
               <dd className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted">
@@ -145,7 +147,7 @@ export function Hero() {
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <div className="flex h-9 w-5 items-start justify-center rounded-full border border-muted/40 p-1">
-          <span className="h-2 w-1 animate-scroll-hint rounded-full bg-bronze" />
+          <span className="h-2 w-1 animate-scroll-hint rounded-full bg-gold" />
         </div>
       </div>
     </section>

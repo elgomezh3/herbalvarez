@@ -8,19 +8,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#0a0908",
-        surface: "#121110",
-        line: "#26221d",
-        ink: "#f4efe4",
-        muted: "#9a9187",
-        blood: {
-          DEFAULT: "#c81111",
-          bright: "#e11d1d",
-          deep: "#7d0a0a",
+        // Paleta de marca Herbalvarez: verde bosque + oro + negro-oliva
+        bg: "#0c0c05",
+        surface: "#14180f",
+        line: "#333a22",
+        ink: "#f7f1da",
+        muted: "#a99f80",
+        green: {
+          DEFAULT: "#163322",
+          deep: "#0e2116",
+          olive: "#454c2d",
         },
-        bronze: {
-          DEFAULT: "#c8a24b",
-          light: "#e3c785",
+        gold: {
+          DEFAULT: "#e5c67e",
+          light: "#f0dc9f",
+          deep: "#8a6e4a",
+          cream: "#f9f2cc",
+        },
+        ruby: {
+          DEFAULT: "#9e2a2b",
+          bright: "#bd3b3c",
+          deep: "#5e1516",
         },
       },
       fontFamily: {

@@ -10,7 +10,7 @@ const ITEMS = [
 export function Marquee() {
   const row = [...ITEMS, ...ITEMS];
   return (
-    <div className="relative overflow-hidden border-y border-blood-deep bg-blood py-4 text-bg">
+    <div className="relative overflow-hidden border-y border-gold-deep bg-gold py-4 text-green-deep">
       <div className="flex w-max animate-marquee gap-6 whitespace-nowrap will-change-transform">
         {row.map((item, i) => (
           <span
@@ -18,7 +18,7 @@ export function Marquee() {
             className="display-heading flex items-center gap-6 text-xl md:text-2xl"
           >
             {item}
-            <span className="text-bg/50">✦</span>
+            <span className="text-green-deep/45">✦</span>
           </span>
         ))}
       </div>

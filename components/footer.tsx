@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { MaskedHeading, Reveal } from "@/components/primitives";
 
 const SOCIAL = [
@@ -16,8 +17,8 @@ export function Footer() {
     >
       <div className="mx-auto max-w-shell px-5 py-24 md:px-8 md:py-32">
         <Reveal>
-          <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-bronze">
-            <span className="h-px w-10 bg-bronze" />
+          <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+            <span className="h-px w-10 bg-gold" />
             Contacto
           </p>
         </Reveal>
@@ -42,7 +43,7 @@ export function Footer() {
               </p>
               <a
                 href="mailto:hola@herbalvarez.mx"
-                className="mt-2 block text-lg text-ink transition-colors hover:text-bronze"
+                className="mt-2 block text-lg text-ink transition-colors hover:text-gold"
               >
                 hola@herbalvarez.mx
               </a>
@@ -53,7 +54,7 @@ export function Footer() {
               </p>
               <a
                 href="https://wa.me/520000000000"
-                className="mt-2 block text-lg text-ink transition-colors hover:text-bronze"
+                className="mt-2 block text-lg text-ink transition-colors hover:text-gold"
               >
                 +52 000 000 0000
               </a>
@@ -69,7 +70,7 @@ export function Footer() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-lg text-ink transition-colors hover:text-bronze"
+                      className="text-lg text-ink transition-colors hover:text-gold"
                     >
                       {s.label}
                     </a>
@@ -80,9 +81,21 @@ export function Footer() {
           </div>
         </Reveal>
 
-        <div className="mt-20 flex flex-col gap-4 border-t border-line pt-8 text-xs uppercase tracking-[0.14em] text-muted sm:flex-row sm:items-center sm:justify-between">
+        <Reveal delay={0.1}>
+          <div className="mt-20 flex justify-center border-t border-line pt-14">
+            <Image
+              src="/logo.png"
+              alt="Herbalvarez — Aceite de Hierbas"
+              width={260}
+              height={239}
+              className="h-auto w-[220px] opacity-95 md:w-[260px]"
+            />
+          </div>
+        </Reveal>
+
+        <div className="mt-14 flex flex-col gap-4 border-t border-line pt-8 text-xs uppercase tracking-[0.14em] text-muted sm:flex-row sm:items-center sm:justify-between">
           <span className="display-heading text-lg tracking-normal text-ink">
-            HERBAL<span className="text-blood">VAREZ</span>
+            HERBAL<span className="text-gold">VAREZ</span>
           </span>
           <span>
             Marca hermana de{" "}
@@ -90,7 +103,7 @@ export function Footer() {
               href="https://hialuroniz.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink transition-colors hover:text-bronze"
+              className="text-ink transition-colors hover:text-gold"
             >
               Hialuroniz
             </a>
@@ -107,7 +120,7 @@ export function Footer() {
             href="https://unsplash.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline hover:text-bronze"
+            className="underline hover:text-gold"
           >
             Unsplash
           </a>{" "}

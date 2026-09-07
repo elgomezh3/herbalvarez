@@ -40,17 +40,17 @@ export function Difference() {
     >
       <div className="mx-auto max-w-shell px-5 md:px-8">
         <div className="grid gap-8 md:grid-cols-12">
-          {/* Panel rojo */}
+          {/* Panel verde bosque */}
           <motion.div
             style={{ y: panelY }}
-            className="grain relative overflow-hidden bg-blood p-8 text-bg md:col-span-5 md:p-12"
+            className="grain relative overflow-hidden bg-green p-8 text-ink ring-1 ring-inset ring-gold/20 md:col-span-5 md:p-12"
           >
-            <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-bg/70">
-              <span className="h-px w-10 bg-bg/70" />
+            <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+              <span className="h-px w-10 bg-gold" />
               Por qué es diferente
             </p>
             <motion.h2
-              className="display-heading text-5xl leading-[0.92] lg:text-6xl"
+              className="display-heading text-5xl leading-[0.92] text-gold-cream lg:text-6xl"
               variants={stagger(0.1)}
               initial="hidden"
               whileInView="show"
@@ -65,7 +65,7 @@ export function Difference() {
               ))}
             </motion.h2>
             <Reveal delay={0.1}>
-              <p className="mt-8 max-w-sm text-base leading-relaxed text-bg/80">
+              <p className="mt-8 max-w-sm text-base leading-relaxed text-ink/75">
                 Herbalvarez nace de Hialuroniz para llevar la misma herbolaria a
                 un cuerpo que compite. Lo que cambia es el enfoque, no la pureza
                 de la fórmula.
@@ -73,7 +73,7 @@ export function Difference() {
             </Reveal>
             <span
               aria-hidden
-              className="display-heading pointer-events-none absolute -bottom-10 -right-4 select-none text-[12rem] leading-none text-bg/10"
+              className="display-heading pointer-events-none absolute -bottom-10 -right-4 select-none text-[12rem] leading-none text-gold/10"
             >
               HV
             </span>
@@ -93,7 +93,7 @@ export function Difference() {
                 variants={fadeUp}
                 className="flex flex-col justify-center bg-surface p-8 md:p-10"
               >
-                <h3 className="display-heading text-2xl text-ink">{p.title}</h3>
+                <h3 className="display-heading text-2xl text-gold">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{p.body}</p>
               </motion.div>
             ))}

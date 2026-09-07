@@ -8,9 +8,9 @@ import { EASE, viewportOnce } from "@/lib/motion";
 import { PRODUCTS, type Product } from "@/lib/products";
 
 function haloClass(accent: string) {
-  if (accent === "text-blood") return "bg-blood/25";
-  if (accent === "text-bronze") return "bg-bronze/20";
-  return "bg-white/10";
+  if (accent === "text-ruby") return "bg-ruby/25";
+  if (accent === "text-gold") return "bg-gold/20";
+  return "bg-green/40";
 }
 
 function ProductRow({ product, index }: { product: Product; index: number }) {
@@ -62,14 +62,15 @@ function ProductRow({ product, index }: { product: Product; index: number }) {
                 : "bg-gradient-to-l from-bg via-bg/80 to-bg/10"
             }`}
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(200,17,17,0.16),transparent_60%)] mix-blend-screen" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_60%,rgba(22,51,34,0.5),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(229,198,126,0.12),transparent_55%)] mix-blend-screen" />
         </motion.div>
       )}
 
       <motion.span
         aria-hidden
         style={{ y: numY }}
-        className={`display-heading pointer-events-none absolute top-0 z-0 select-none text-[34vw] leading-none text-white/[0.04] md:text-[15vw] ${
+        className={`display-heading pointer-events-none absolute top-0 z-0 select-none text-[34vw] leading-none text-gold/[0.06] md:text-[15vw] ${
           flip ? "left-0" : "right-0"
         }`}
       >
@@ -92,9 +93,9 @@ function ProductRow({ product, index }: { product: Product; index: number }) {
           <motion.div
             aria-hidden
             style={reduce ? undefined : { rotate: ringRotate }}
-            className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-bronze/25 md:h-[380px] md:w-[380px]"
+            className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/25 md:h-[380px] md:w-[380px]"
           >
-            <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-bronze" />
+            <span className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-gold" />
           </motion.div>
 
           {product.image ? (
@@ -206,8 +207,8 @@ export function Products() {
     <section id="productos" className="relative bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-shell px-5 md:px-8">
         <Reveal>
-          <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-bronze">
-            <span className="h-px w-10 bg-bronze" />
+          <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+            <span className="h-px w-10 bg-gold" />
             Los productos
           </p>
         </Reveal>

@@ -4,6 +4,10 @@ Sitio de una sola página para **Herbalvarez** — marca hermana de Hialuroniz, 
 de hierbas medicinales 100% naturales enfocados en boxeadores profesionales y
 deportistas de combate.
 
+**Paleta de marca:** verde bosque `#163322` + oro `#e5c67e` + negro-oliva `#0c0c05`
++ crema `#f7f1da`, con rubí `#9e2a2b` como chispa (solo en "El problema" y en las
+fichas de recuperación). Definida en `tailwind.config.ts`.
+
 ## Stack
 
 - **Next.js 16** (App Router) + **React 19**
@@ -54,8 +58,20 @@ entrenamiento, recuperación, piel y descanso.
   Boris Izmaylov, Anastase Maragos, Bogdan Yukhymchuk, Mike Cox. Todas llevan
   overlay oscuro + tinte rojo para legibilidad. Sustituibles por material propio.
 
+## Logo
+
+`public/logo.png` es una **extracción** del logo dorado-sobre-negro (se pasó el
+fondo negro a transparente por luminancia). Funciona bien sobre fondo oscuro pero
+no es un asset limpio. Para calidad final hace falta:
+
+- **Emblema completo** (corona + marco + texto) en **PNG con transparencia** o
+  **SVG**, para el footer y usos grandes.
+- **Solo el wordmark** "HERBALVAREZ / ACEITE DE HIERBAS" (sin el círculo) en PNG/SVG,
+  para el header (ahí hoy se usa texto tipografiado, no imagen).
+
 ## Pendientes de contenido
 
+- Assets de logo definitivos (ver arriba).
 - Testimonios en `components/testimonials.tsx` son **placeholders**.
 - Datos de contacto (correo, WhatsApp, redes) en `components/footer.tsx`.
 - Enlaces a tienda / checkout en los CTA "Comprar" y "Pedir".

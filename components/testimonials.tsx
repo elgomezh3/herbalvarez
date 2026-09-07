@@ -36,7 +36,7 @@ const TESTIMONIALS = [
 function Card({ t }: { t: (typeof TESTIMONIALS)[number] }) {
   return (
     <figure className="flex h-full shrink-0 flex-col border border-line bg-surface p-8 md:w-[420px] md:p-10">
-      <span className="display-heading block text-4xl leading-[0.6] text-blood">&ldquo;</span>
+      <span className="display-heading block text-4xl leading-[0.6] text-gold">&ldquo;</span>
       <blockquote className="mt-6 flex-1 text-lg leading-relaxed text-ink md:text-xl">
         {t.quote}
       </blockquote>
@@ -53,8 +53,8 @@ function Card({ t }: { t: (typeof TESTIMONIALS)[number] }) {
 function Intro() {
   return (
     <Reveal>
-      <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-blood">
-        <span className="h-px w-10 bg-blood" />
+      <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+        <span className="h-px w-10 bg-gold" />
         Testimonios
       </p>
       <h2 className="display-heading max-w-[14ch] text-5xl text-ink md:text-6xl lg:text-7xl">

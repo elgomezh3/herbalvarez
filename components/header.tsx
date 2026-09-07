@@ -43,7 +43,7 @@ export function Header() {
             href="#top"
             className="display-heading text-xl tracking-tightest text-ink md:text-2xl"
           >
-            HERBAL<span className="text-blood">VAREZ</span>
+            HERBAL<span className="text-gold">VAREZ</span>
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -54,7 +54,7 @@ export function Header() {
                 className="group relative text-xs font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-ink"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-blood transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -62,7 +62,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <a
               href="#productos"
-              className="hidden bg-blood px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-blood-bright sm:inline-block"
+              className="hidden bg-gold px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-bg transition-colors hover:bg-gold-light sm:inline-block"
             >
               Comprar
             </a>
@@ -119,7 +119,7 @@ export function Header() {
               <a
                 href="#productos"
                 onClick={() => setOpen(false)}
-                className="mt-8 bg-blood px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-ink"
+                className="mt-8 bg-gold px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-bg"
               >
                 Comprar
               </a>
