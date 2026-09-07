@@ -71,7 +71,7 @@ collections:
         label: Foto
         widget: image
         required: false
-        allow_multiple: false
+    
         hint: >-
           Foto vertical de la persona. Si la dejas vacía, la tarjeta muestra
           un recuadro neutro con su inicial.
