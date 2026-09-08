@@ -26,25 +26,34 @@ npm run build && npm start
 
 ## Estructura
 
+Todo el contenido vive en `content/` y se lee en **build time**. Cada sección
+animada es un **componente servidor** (`*.tsx`, lee el archivo) que pasa props a
+un **componente cliente** (`*-view.tsx` / `*-row.tsx`, hace las animaciones).
+
 | Archivo | Sección |
 | --- | --- |
-| `components/header.tsx` | Header fijo con logo, menú y menú móvil |
-| `components/hero.tsx` | Hero de alto impacto: entrada por líneas + imagen de fondo con parallax |
-| `components/problem.tsx` | "El problema" — nombra el dolor del peleador |
-| `components/marquee.tsx` | Banda roja con texto en loop entre "El problema" y "Productos" |
-| `components/products.tsx` | 5 productos; la botella "gira" (fake 3D) con el scroll; 1 fila con foto de fondo |
-| `components/difference.tsx` | Por qué es diferente — panel rojo + 4 pilares |
-| `components/athletes.tsx` | Sección "Atletas" (server): lee `content/atletas/` en build time y arma las filas |
-| `components/athlete-row.tsx` | Fila de atleta (client): mismo layout que Productos — foto con fake-3D + texto alternando |
-| `components/footer.tsx` | Contacto, redes y aviso legal |
+| `components/header.tsx` | Header fijo con logo, menú y menú móvil (contenido hardcodeado) |
+| `components/hero.tsx` + `hero-view.tsx` | Hero: entrada por líneas + imagen de fondo con parallax |
+| `components/problem.tsx` + `problem-view.tsx` | "El problema" — nombra el dolor del peleador |
+| `components/marquee.tsx` | Banda dorada con texto en loop |
+| `components/products.tsx` + `products-row.tsx` | Productos; la botella "gira" (fake 3D) con el scroll |
+| `components/difference.tsx` + `difference-view.tsx` | Por qué es diferente — panel verde + 4 pilares |
+| `components/athletes.tsx` + `athlete-row.tsx` | "Atletas" — mismo layout que Productos, foto con fake-3D |
+| `components/footer.tsx` | Contacto, redes y aviso legal (server) |
 | `components/primitives.tsx` | `Reveal`, `RevealGroup`, `MaskedHeading` reutilizables |
-| `lib/products.ts` | Datos de los 5 productos (categoría, formato, copy, imagen, foto de fondo) |
-| `lib/atletas.ts` | Lee `content/atletas/*.md` (gray-matter), filtra publicados y ordena por `orden` (solo servidor) |
-| `lib/atletas-shared.ts` | Tipos y helpers de atletas sin Node — seguro para componentes cliente |
+| `lib/secciones.ts` | Lee `content/secciones/<nombre>.md` + helpers `txt` / `lineas` / `lista` con fallback |
+| `lib/productos.ts` / `productos-shared.ts` | Lee `content/productos/*.md`; tipos y helpers (shared = sin Node) |
+| `lib/atletas.ts` / `atletas-shared.ts` | Lee `content/atletas/*.md`; tipos y helpers (shared = sin Node) |
 | `lib/motion.ts` | Variants y curvas de easing compartidas |
 | `app/robots.ts` | `robots.txt` generado — bloquea `/admin` |
 | `public/admin/` | Sveltia CMS (`index.html` + `config.yml`) |
-| `content/atletas/` | Un `.md` por atleta (frontmatter YAML). Editable desde `/admin` |
+| `content/secciones/*.md` | Texto de cada sección (título, párrafo, listas). Editable desde `/admin` |
+| `content/productos/*.md` | Un `.md` por producto. Editable desde `/admin` |
+| `content/atletas/*.md` | Un `.md` por atleta. Editable desde `/admin` |
+
+Todos los `lib/*.ts` que usan `node:fs` caen a los valores por defecto (los
+textos actuales, embebidos en el componente) si el archivo falta o viene vacío,
+así el sitio nunca queda en blanco.
 
 ## Productos (orden actual)
 
@@ -75,7 +84,24 @@ enfermedades: todo se reencuadra a entrenamiento, recuperación, piel y descanso
 
 Recomendable pedir versiones **SVG** para nitidez perfecta a cualquier tamaño.
 
-## Atletas (CMS)
+## CMS (`/admin`)
+
+Sveltia CMS, backend GitHub, login con token personal (sin OAuth propio).
+Tres áreas:
+
+- **Secciones del sitio** — `files` collection, un archivo por sección en
+  `content/secciones/`. Edita títulos, párrafos y listas (dolores, pilares,
+  frases del marquee, redes del footer…).
+- **Productos** — `folder` collection, `content/productos/`. Uno por ficha.
+  `media_folder` propio: `/public/productos`.
+- **Atletas** — `folder` collection, `content/atletas/`. `media_folder` propio:
+  `/public/atletas`.
+
+`media_folder` global (imágenes sueltas): `public/uploads` → `/uploads`.
+
+Guía para no-programadores: **`ADMIN-GUIA.md`**.
+
+## Atletas
 
 La sección "Atletas" se alimenta de `content/atletas/*.md` y se lee en build
 time. Se administra desde **`/admin`** (Sveltia CMS, backend GitHub, login con
@@ -97,4 +123,4 @@ token personal). Guía para no-programadores: **`ADMIN-GUIA.md`**.
 - Nombre / disciplina / foto / testimonio de los 9 atletas (desde `/admin`).
 - Datos de contacto (correo, WhatsApp, redes) en `components/footer.tsx`.
 - Enlaces a tienda / checkout en los CTA "Comprar" y "Pedir".
-- Revisar claims y categorías en `lib/products.ts`.
+- Revisar claims y categorías de los productos (desde `/admin` → Productos).

@@ -7,20 +7,190 @@ backend:
   repo: elgomezh3/herbalvarez
   branch: main
   commit_messages:
-    create: 'Atleta: agrega {{slug}}'
-    update: 'Atleta: actualiza {{slug}}'
-    delete: 'Atleta: quita {{slug}}'
+    create: 'Contenido: agrega {{slug}}'
+    update: 'Contenido: actualiza {{slug}}'
+    delete: 'Contenido: quita {{slug}}'
     uploadMedia: 'Media: sube {{path}}'
     deleteMedia: 'Media: quita {{path}}'
 
-# Las fotos que subas van a public/atletas/ y en el sitio se leen desde /atletas/
-media_folder: public/atletas
-public_folder: /atletas
+# Carpeta general para imágenes nuevas. Las secciones con carpeta propia
+# (atletas, productos) la definen abajo.
+media_folder: public/uploads
+public_folder: /uploads
 
 # Interfaz en español
 locale: es
 
 collections:
+  # ─────────────────────────────────────────────────────────────
+  #  TEXTOS DE CADA SECCIÓN (títulos, párrafos, listas)
+  # ─────────────────────────────────────────────────────────────
+  - name: secciones
+    label: Secciones del sitio
+    description: >-
+      El texto de cada sección de la página: eyebrow, título, párrafo y las
+      listas (dolores, pilares, frases, redes…). No borra ni agrega secciones,
+      solo edita las que ya existen.
+    files:
+      - name: hero
+        label: Portada (Hero)
+        file: content/secciones/hero.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: 'Eyebrow (línea chica de arriba)', widget: string, required: false }
+          - { name: titulo, label: 'Título grande', widget: text, hint: 'Una línea por renglón. La 2ª línea sale en dorado.' }
+          - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - { name: cta_primario_texto, label: 'Botón principal — texto', widget: string, required: false }
+          - { name: cta_primario_enlace, label: 'Botón principal — enlace', widget: string, required: false, hint: 'Ej.: #productos' }
+          - { name: cta_secundario_texto, label: 'Botón secundario — texto', widget: string, required: false }
+          - { name: cta_secundario_enlace, label: 'Botón secundario — enlace', widget: string, required: false, hint: 'Ej.: #diferencia' }
+          - { name: palabra_fondo, label: 'Palabra gigante de fondo', widget: string, required: false }
+          - name: stats
+            label: 'Datos (los 3 números)'
+            widget: list
+            required: false
+            summary: '{{fields.valor}} — {{fields.etiqueta}}'
+            fields:
+              - { name: valor, label: Número, widget: string }
+              - { name: etiqueta, label: Etiqueta, widget: string }
+
+      - name: problema
+        label: El problema
+        file: content/secciones/problema.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - { name: palabra_fondo, label: 'Palabra gigante de fondo', widget: string, required: false }
+          - name: dolores
+            label: 'Lista de dolores (tarjetas)'
+            widget: list
+            required: false
+            summary: '{{fields.numero}} · {{fields.titulo}}'
+            fields:
+              - { name: numero, label: Número, widget: string, hint: 'Ej.: 01' }
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Texto, widget: text }
+
+      - name: marquee
+        label: 'Banda dorada en movimiento'
+        file: content/secciones/marquee.md
+        format: yaml-frontmatter
+        fields:
+          - name: frases
+            label: 'Frases que corren'
+            widget: list
+            hint: 'Una frase por renglón.'
+
+      - name: productos_seccion
+        label: 'Productos — encabezado'
+        file: content/secciones/productos.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - { name: aviso_legal, label: 'Aviso legal (al final de la sección)', widget: text, required: false }
+
+      - name: diferencia
+        label: 'Por qué es diferente'
+        file: content/secciones/diferencia.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: titulo, label: 'Título del panel verde', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo, label: 'Párrafo del panel', widget: text, required: false }
+          - name: pilares
+            label: 'Pilares (las 4 tarjetas)'
+            widget: list
+            required: false
+            summary: '{{fields.titulo}}'
+            fields:
+              - { name: titulo, label: Título, widget: string }
+              - { name: texto, label: Texto, widget: text }
+
+      - name: atletas_seccion
+        label: 'Atletas — encabezado'
+        file: content/secciones/atletas.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+
+      - name: contacto
+        label: 'Contacto (pie de página)'
+        file: content/secciones/contacto.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - { name: correo, label: 'Correo', widget: string, required: false }
+          - { name: whatsapp_numero, label: 'WhatsApp — número (solo dígitos, con lada país)', widget: string, required: false, hint: 'Ej.: 5215512345678' }
+          - { name: whatsapp_texto, label: 'WhatsApp — cómo se ve', widget: string, required: false, hint: 'Ej.: +52 55 1234 5678' }
+          - name: redes
+            label: 'Redes sociales'
+            widget: list
+            required: false
+            summary: '{{fields.plataforma}}'
+            fields:
+              - { name: plataforma, label: Plataforma, widget: select, options: ['Instagram', 'Facebook', 'TikTok', 'YouTube', 'X'] }
+              - { name: url, label: 'Enlace completo', widget: string, pattern: ['^https?://', 'Empieza con https://'] }
+          - { name: marca_hermana_texto, label: 'Marca hermana — nombre', widget: string, required: false }
+          - { name: marca_hermana_url, label: 'Marca hermana — enlace', widget: string, required: false }
+          - { name: creditos, label: 'Línea legal / créditos (letra chica final)', widget: text, required: false }
+
+  # ─────────────────────────────────────────────────────────────
+  #  PRODUCTOS (uno por archivo, como los atletas)
+  # ─────────────────────────────────────────────────────────────
+  - name: productos
+    label: Productos
+    label_singular: Producto
+    description: 'Los productos que salen en la sección "Los productos".'
+    folder: content/productos
+    create: true
+    delete: true
+    format: yaml-frontmatter
+    extension: md
+    identifier_field: nombre
+    slug: '{{fields.nombre}}'
+    summary: '#{{fields.orden}} · {{fields.nombre}}'
+    sortable_fields: ['orden', 'nombre', 'categoria']
+    media_folder: '/public/productos'
+    public_folder: '/productos'
+    fields:
+      - { name: nombre, label: Nombre, widget: string }
+      - name: categoria
+        label: Categoría
+        widget: select
+        default: 'Recuperación'
+        options: ['Recuperación', 'Rendimiento', 'Ring', 'Bienestar']
+      - { name: formato, label: 'Formato', widget: string, required: false, hint: 'Ej.: Aceite · 60 ml · uso tópico' }
+      - { name: claim, label: 'Frase destacada (claim)', widget: string, required: false }
+      - { name: descripcion, label: Descripción, widget: text, required: false }
+      - name: usos
+        label: 'Usos / etiquetas'
+        widget: list
+        required: false
+        hint: 'Una por renglón. Ej.: Golpes, Dolor articular…'
+      - { name: imagen, label: 'Imagen del producto', widget: image, required: false }
+      - { name: foto_fondo, label: 'Foto de fondo de la fila (opcional)', widget: image, required: false, hint: 'Solo para filas destacadas. Déjalo vacío si no aplica.' }
+      - name: acento
+        label: 'Color de acento'
+        widget: select
+        default: neutro
+        options:
+          - { label: 'Rubí (recuperación)', value: rubi }
+          - { label: 'Oro', value: oro }
+          - { label: 'Neutro', value: neutro }
+      - { name: orden, label: Orden, widget: number, default: 99, value_type: int, min: 1, step: 1 }
+      - { name: publicado, label: Publicado, widget: boolean, default: true, required: false }
+
+  # ─────────────────────────────────────────────────────────────
+  #  ATLETAS
+  # ─────────────────────────────────────────────────────────────
   - name: atletas
     label: Atletas
     label_singular: Atleta
@@ -36,6 +206,8 @@ collections:
     identifier_field: nombre
     summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'instagram']
+    media_folder: '/public/atletas'
+    public_folder: '/atletas'
     fields:
       - name: nombre
         label: Nombre completo

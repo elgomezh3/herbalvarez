@@ -1,15 +1,43 @@
-"use client";
-
 import Image from "next/image";
 import { MaskedHeading, Reveal } from "@/components/primitives";
+import { getSeccion, txt, lineas, lista } from "@/lib/secciones";
 
-const SOCIAL = [
-  { label: "Instagram", href: "https://instagram.com/herbalvarez" },
-  { label: "Facebook", href: "https://facebook.com/herbalvarez" },
-  { label: "TikTok", href: "https://tiktok.com/@herbalvarez" },
+type Red = { plataforma: string; url: string };
+
+const REDES_DEFAULT: Red[] = [
+  { plataforma: "Instagram", url: "https://instagram.com/herbalvarez" },
+  { plataforma: "Facebook", url: "https://facebook.com/herbalvarez" },
+  { plataforma: "TikTok", url: "https://tiktok.com/@herbalvarez" },
 ];
 
+function normRedes(value: unknown): Red[] {
+  const arr = lista<Record<string, unknown>>(value, []);
+  const out = arr
+    .map((r) => ({ plataforma: txt(r.plataforma, ""), url: txt(r.url, "") }))
+    .filter((r) => /^https?:\/\//i.test(r.url));
+  return out.length > 0 ? out : REDES_DEFAULT;
+}
+
 export function Footer() {
+  const c = getSeccion("contacto");
+
+  const eyebrow = txt(c.eyebrow, "Contacto");
+  const titulo = lineas(c.titulo, ["Prepara tu", "próximo campamento."]);
+  const parrafo = txt(
+    c.parrafo,
+    "Escríbenos para pedidos, mayoreo o patrocinio de peleadores. Enviamos a todo México.",
+  );
+  const correo = txt(c.correo, "hola@herbalvarez.mx");
+  const waNumero = txt(c.whatsapp_numero, "520000000000").replace(/[^\d]/g, "");
+  const waTexto = txt(c.whatsapp_texto, "+52 000 000 0000");
+  const redes = normRedes(c.redes);
+  const marcaTexto = txt(c.marca_hermana_texto, "Hialuroniz");
+  const marcaUrl = txt(c.marca_hermana_url, "https://hialuroniz.com");
+  const creditos = txt(
+    c.creditos,
+    "Productos de herbolaria; no son medicamentos, consulta a tu médico.",
+  );
+
   return (
     <footer
       id="contacto"
@@ -19,19 +47,18 @@ export function Footer() {
         <Reveal>
           <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
             <span className="h-px w-10 bg-gold" />
-            Contacto
+            {eyebrow}
           </p>
         </Reveal>
 
         <MaskedHeading
-          lines={["Prepara tu", "próximo campamento."]}
+          lines={titulo}
           className="max-w-[14ch] text-[12vw] text-ink sm:text-6xl lg:text-8xl"
         />
 
         <Reveal delay={0.1}>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
-            Escríbenos para pedidos, mayoreo o patrocinio de peleadores. Enviamos
-            a todo México.
+            {parrafo}
           </p>
         </Reveal>
 
@@ -42,10 +69,10 @@ export function Footer() {
                 Correo
               </p>
               <a
-                href="mailto:hola@herbalvarez.mx"
+                href={`mailto:${correo}`}
                 className="mt-2 block text-lg text-ink transition-colors hover:text-gold"
               >
-                hola@herbalvarez.mx
+                {correo}
               </a>
             </div>
             <div>
@@ -53,10 +80,10 @@ export function Footer() {
                 WhatsApp
               </p>
               <a
-                href="https://wa.me/520000000000"
+                href={`https://wa.me/${waNumero}`}
                 className="mt-2 block text-lg text-ink transition-colors hover:text-gold"
               >
-                +52 000 000 0000
+                {waTexto}
               </a>
             </div>
             <div>
@@ -64,15 +91,15 @@ export function Footer() {
                 Redes
               </p>
               <ul className="mt-2 space-y-1">
-                {SOCIAL.map((s) => (
-                  <li key={s.label}>
+                {redes.map((s) => (
+                  <li key={s.url}>
                     <a
-                      href={s.href}
+                      href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-lg text-ink transition-colors hover:text-gold"
                     >
-                      {s.label}
+                      {s.plataforma}
                     </a>
                   </li>
                 ))}
@@ -100,12 +127,12 @@ export function Footer() {
           <span>
             Marca hermana de{" "}
             <a
-              href="https://hialuroniz.com"
+              href={marcaUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-ink transition-colors hover:text-gold"
             >
-              Hialuroniz
+              {marcaTexto}
             </a>
           </span>
           <span>
@@ -113,20 +140,11 @@ export function Footer() {
           </span>
         </div>
 
-        <p className="mt-6 text-[10px] leading-relaxed text-muted/60">
-          Productos de herbolaria; no son medicamentos, consulta a tu médico.
-          Fotografías de ambiente:{" "}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-gold"
-          >
-            Unsplash
-          </a>{" "}
-          (MARK ADRIANE, Boris Izmaylov, Bogdan Yukhymchuk). Fotos de producto e
-          imagen del hero: pendientes de material definitivo.
-        </p>
+        {creditos && (
+          <p className="mt-6 text-[10px] leading-relaxed text-muted/60">
+            {creditos}
+          </p>
+        )}
       </div>
     </footer>
   );

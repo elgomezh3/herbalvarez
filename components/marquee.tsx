@@ -1,4 +1,6 @@
-const ITEMS = [
+import { getSeccion, listaTexto } from "@/lib/secciones";
+
+const FRASES = [
   "Recupera más rápido",
   "Pelea más seguido",
   "Sin química",
@@ -8,7 +10,10 @@ const ITEMS = [
 ];
 
 export function Marquee() {
-  const row = [...ITEMS, ...ITEMS];
+  const c = getSeccion("marquee");
+  const items = listaTexto(c.frases, FRASES);
+  const row = [...items, ...items];
+
   return (
     <div className="relative overflow-hidden border-y border-gold-deep bg-gold py-4 text-green-deep">
       <div className="flex w-max animate-marquee gap-6 whitespace-nowrap will-change-transform">

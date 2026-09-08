@@ -1,14 +1,23 @@
 # Guía del panel de contenido (/admin)
 
-El sitio de Herbalvarez tiene un panel para administrar la sección **Atletas**
+El sitio de Herbalvarez tiene un panel para administrar **todo el contenido**
 sin tocar código. Está hecho con [Sveltia CMS](https://sveltiacms.app/) y guarda
 todo directamente en el repositorio de GitHub `elgomezh3/herbalvarez`.
+
+En el panel hay tres áreas:
+
+- **Secciones del sitio** — el texto de cada sección: título, párrafo y listas
+  (Portada, El problema, Banda dorada, Productos–encabezado, Por qué es diferente,
+  Atletas–encabezado, Contacto). Ver el punto 6.
+- **Productos** — un producto por ficha (nombre, claim, descripción, imagen…).
+  Ver el punto 7.
+- **Atletas** — un atleta por ficha. Ver los puntos 2 a 5.
 
 Cada cambio que guardas en el panel:
 
 1. Hace un commit en la rama `main` de GitHub.
 2. Vercel detecta el commit y vuelve a publicar el sitio (1–2 minutos).
-3. La tarjeta aparece / cambia / desaparece en `herbalvarez.com`.
+3. El cambio aparece en `herbalvarez.com`.
 
 ---
 
@@ -30,7 +39,8 @@ después el navegador lo recuerda.
 4. **Copia el token** (empieza con `github_pat_...`). GitHub solo lo muestra una vez.
 5. Vuelve al panel, pega el token en el cuadro y confirma.
 
-Ya estás dentro. Verás la colección **Atletas** con la lista de tarjetas.
+Ya estás dentro. En la barra de la izquierda verás **Secciones del sitio**,
+**Productos** y **Atletas**.
 
 > Si algún día el token expira, el panel te pedirá uno nuevo: repite los pasos
 > de arriba. No afecta el contenido ya guardado.
@@ -108,10 +118,61 @@ Si dos tienen el mismo número, se ordenan por el usuario de Instagram.
 
 ---
 
+## 6. Editar el texto de las otras secciones
+
+En la barra de la izquierda, entra a **Secciones del sitio**. Cada renglón es una
+sección de la página:
+
+| Renglón | Qué controla |
+| --- | --- |
+| **Portada (Hero)** | El título grande de arriba, el párrafo, los dos botones, los 3 números. |
+| **El problema** | Título, párrafo y las 4 tarjetas de dolores. |
+| **Banda dorada en movimiento** | Las frases que corren en la franja dorada. |
+| **Productos — encabezado** | El título "Cinco fórmulas…", el párrafo y el aviso legal del final. Los productos en sí se editan en **Productos** (punto 7). |
+| **Por qué es diferente** | El título del panel verde, el párrafo y los 4 pilares. |
+| **Atletas — encabezado** | El título "La comunidad en el ring", el eyebrow y el párrafo. Los atletas se editan en **Atletas**. |
+| **Contacto** | Título, párrafo, correo, WhatsApp, redes y la letra chica del final. |
+
+**Cómo funciona un título de sección:** el campo **Título** acepta varios
+renglones. Cada renglón que escribas sale en una línea distinta en el sitio.
+No lo dejes vacío.
+
+**Listas (dolores, pilares, frases, redes):** usa **"Add"** para agregar un
+elemento y la **X** para quitarlo. Puedes arrastrarlos para reordenar.
+
+Cuando termines, **"Save"**. En 1–2 minutos el cambio está en línea.
+
+---
+
+## 7. Editar productos
+
+En **Productos** cada ficha es un producto. Campos:
+
+| Campo | Qué poner |
+| --- | --- |
+| **Nombre** | Ej.: Descanso Total. |
+| **Categoría** | Recuperación / Rendimiento / Ring / Bienestar. |
+| **Formato** | Ej.: `Aceite · 60 ml · uso tópico`. |
+| **Frase destacada (claim)** | La línea en negrita bajo el nombre. |
+| **Descripción** | El párrafo. |
+| **Usos / etiquetas** | Frases cortas, una por renglón. |
+| **Imagen del producto** | Foto del envase, fondo transparente (PNG) de preferencia. |
+| **Foto de fondo de la fila** | Solo para filas destacadas. Normalmente vacío. |
+| **Color de acento** | Rubí (recuperación) / Oro / Neutro. |
+| **Orden** | Menor = aparece primero. |
+| **Publicado** | Apágalo para ocultar el producto sin borrarlo. |
+
+Para **agregar** un producto usa **"New Producto"**; para quitarlo, **"Delete
+entry"**.
+
+---
+
 ## Preguntas frecuentes
 
-**¿Puedo editar los productos, precios o el carrito desde aquí?**
-No. El panel solo administra la sección Atletas. Todo lo demás se cambia en el código.
+**¿Puedo editar precios o el carrito desde aquí?**
+No. El panel administra el contenido (textos, productos, atletas). No hay tienda
+ni carrito todavía; los botones "Comprar" y "Pedir" llevan a la sección de
+contacto.
 
 **Guardé un cambio y no se ve en el sitio.**
 Espera 1–2 minutos y recarga. Si sigue igual, revisa en Vercel que el último
