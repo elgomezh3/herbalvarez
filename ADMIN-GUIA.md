@@ -42,17 +42,26 @@ Ya estás dentro. Verás la colección **Atletas** con la lista de tarjetas.
 1. En **Atletas**, haz clic en **"New Atleta"** (arriba a la derecha).
 2. Llena los campos:
 
-   | Campo | Qué poner |
-   | --- | --- |
-   | **Nombre completo** | El nombre real. Puedes dejarlo vacío por ahora: mientras tanto la tarjeta usa el usuario de Instagram como título. |
-   | **Disciplina** | Boxeo, MMA, Muay Thai, Kickboxing… |
-   | **Categoría o club** | Peso wélter, Amateur élite, Club Álvarez Box… |
-   | **Usuario de Instagram** | Solo el usuario, **sin la @** y sin el enlace. Ej.: `boxeoalvarez`. Es obligatorio: la tarjeta enlaza a `instagram.com/ese-usuario`. |
-   | **Foto** | Ver el punto 3. Opcional. |
-   | **Testimonio (texto corto)** | Una frase **real** de la persona, con su permiso. Si no tienes una, **déjalo vacío**: la tarjeta simplemente no muestra frase. Nunca inventes un testimonio. |
-   | **Relación con la marca** | Elige la opción honesta: sin relación comercial / recibe producto / patrocinado / atleta del equipo. Si no es "sin relación", la tarjeta muestra esa declaración. |
-   | **Orden** | Número. Menor = aparece primero. Ej.: 1, 2, 3… |
-   | **Publicado** | Actívalo para que se vea en el sitio. |
+   Cada ficha se ve como las de la sección **Productos**: foto de un lado, texto
+   del otro, alternando. Así se llena cada parte:
+
+   | Campo | Dónde sale en la ficha | Qué poner |
+   | --- | --- | --- |
+   | **Nombre completo** | Título grande | El nombre real. Si lo dejas vacío, el título usa el `@usuario` de Instagram. |
+   | **Disciplina** | Línea de arriba (junto al `@usuario`) | Boxeo, MMA, Muay Thai, Béisbol… |
+   | **Categoría o club** | Misma línea, después de la disciplina | Peso wélter, Amateur élite, Club Álvarez Box… Opcional. |
+   | **Usuario de Instagram** | Línea de arriba + primer enlace de redes | Solo el usuario, **sin la @** y sin el enlace. Ej.: `boxeoalvarez`. Obligatorio. |
+   | **Récord como atleta** | Frase destacada bajo el nombre | Su marca: `12-1, 8 KO`, `Guante de Oro 2024`, `.312 de bateo`… Opcional. |
+   | **Foto** | El lado de la imagen | Ver el punto 3. Opcional. |
+   | **Testimonio (texto corto)** | Párrafo de descripción | Una frase **real** de la persona, con su permiso. Si no tienes una, **déjala vacía**. Nunca inventes un testimonio. |
+   | **En qué le han ayudado los productos** | Etiquetas | Frases muy cortas, una por renglón: "Menos dolor de manos", "Duerme mejor"… Opcional. |
+   | **Redes sociales** | Enlaces de abajo | Agrega TikTok, Facebook, YouTube, etc. con el **enlace completo** (`https://…`). Instagram ya se toma del campo de arriba, no lo repitas. |
+   | **Relación con la marca** | Nota chica al final | Elige la opción honesta: sin relación comercial / recibe producto / patrocinado / atleta del equipo. |
+   | **Orden** | — | Número. Menor = aparece primero. Ej.: 1, 2, 3… |
+   | **Publicado** | — | Actívalo para que se vea en el sitio. |
+
+   > Para agregar una red social o una etiqueta: en ese campo haz clic en
+   > **"Add"** y llena el renglón nuevo. Para quitar, usa la **X** del renglón.
 
 3. Haz clic en **"Save"**.
 

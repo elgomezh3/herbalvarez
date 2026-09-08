@@ -36,9 +36,6 @@ collections:
     identifier_field: nombre
     summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'instagram']
-    view_filters:
-      - { label: 'Publicados', field: publicado, pattern: true }
-      - { label: 'Sin publicar', field: publicado, pattern: false }
     fields:
       - name: nombre
         label: Nombre completo
@@ -60,6 +57,15 @@ collections:
         required: false
         hint: 'Ej.: Peso wélter · Amateur élite · Club Álvarez Box.'
 
+      - name: record
+        label: Récord como atleta
+        widget: string
+        required: false
+        hint: >-
+          Su marca deportiva, texto libre. Ej.: "12-1, 8 KO" · "Guante de Oro
+          2024" · "Liga Invernal, .312 de bateo". Aparece como frase destacada
+          bajo el nombre.
+
       - name: instagram
         label: Usuario de Instagram
         widget: string
@@ -71,7 +77,6 @@ collections:
         label: Foto
         widget: image
         required: false
-    
         hint: >-
           Foto vertical de la persona. Si la dejas vacía, la tarjeta muestra
           un recuadro neutro con su inicial.
@@ -83,6 +88,36 @@ collections:
         hint: >-
           Frase real de la persona, en sus palabras y con su permiso. Si está
           vacío, la tarjeta no muestra ninguna frase. Nunca inventes una.
+
+      - name: beneficios
+        label: En qué le han ayudado los productos
+        widget: list
+        required: false
+        allow_add: true
+        hint: >-
+          Frases muy cortas, tipo etiqueta, una por renglón. Ej.: "Menos dolor
+          de manos", "Recupera más rápido", "Duerme mejor". Aparecen como
+          etiquetas en la ficha.
+
+      - name: redes
+        label: Redes sociales
+        widget: list
+        required: false
+        label_singular: Red
+        allow_add: true
+        summary: '{{fields.plataforma}}'
+        fields:
+          - name: plataforma
+            label: Plataforma
+            widget: select
+            options: ['Instagram', 'TikTok', 'Facebook', 'YouTube', 'X', 'Otra']
+          - name: url
+            label: Enlace completo
+            widget: string
+            pattern: ['^https?://', 'Pega el enlace completo, empezando con https://']
+        hint: >-
+          No repitas Instagram (ya se toma del campo de arriba). Agrega TikTok,
+          Facebook, YouTube, etc. con el enlace completo al perfil.
 
       - name: relacion
         label: Relación con la marca

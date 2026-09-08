@@ -34,11 +34,13 @@ npm run build && npm start
 | `components/marquee.tsx` | Banda roja con texto en loop entre "El problema" y "Productos" |
 | `components/products.tsx` | 5 productos; la botella "gira" (fake 3D) con el scroll; 1 fila con foto de fondo |
 | `components/difference.tsx` | Por qué es diferente — panel rojo + 4 pilares |
-| `components/athletes.tsx` | Sección "Atletas": grid de tarjetas numeradas leídas de `content/atletas/` en build time |
+| `components/athletes.tsx` | Sección "Atletas" (server): lee `content/atletas/` en build time y arma las filas |
+| `components/athlete-row.tsx` | Fila de atleta (client): mismo layout que Productos — foto con fake-3D + texto alternando |
 | `components/footer.tsx` | Contacto, redes y aviso legal |
 | `components/primitives.tsx` | `Reveal`, `RevealGroup`, `MaskedHeading` reutilizables |
 | `lib/products.ts` | Datos de los 5 productos (categoría, formato, copy, imagen, foto de fondo) |
-| `lib/atletas.ts` | Lee `content/atletas/*.md` (gray-matter), filtra publicados y ordena por `orden` |
+| `lib/atletas.ts` | Lee `content/atletas/*.md` (gray-matter), filtra publicados y ordena por `orden` (solo servidor) |
+| `lib/atletas-shared.ts` | Tipos y helpers de atletas sin Node — seguro para componentes cliente |
 | `lib/motion.ts` | Variants y curvas de easing compartidas |
 | `app/robots.ts` | `robots.txt` generado — bloquea `/admin` |
 | `public/admin/` | Sveltia CMS (`index.html` + `config.yml`) |
@@ -79,12 +81,16 @@ La sección "Atletas" se alimenta de `content/atletas/*.md` y se lee en build
 time. Se administra desde **`/admin`** (Sveltia CMS, backend GitHub, login con
 token personal). Guía para no-programadores: **`ADMIN-GUIA.md`**.
 
+- Cada ficha usa el mismo layout que Productos (foto con fake-3D + texto,
+  alternando lado). Mapeo: eyebrow = `@instagram · disciplina`, título =
+  `nombre`, frase destacada = `record`, descripción = `testimonio`, etiquetas =
+  `beneficios`, enlaces = `redes` (+ Instagram del handle).
 - Solo se muestran los que tienen `publicado: true`, ordenados por `orden`.
-- Sin foto → recuadro neutro con la inicial. Sin testimonio → la tarjeta no
+- Sin foto → recuadro neutro con la inicial. Sin testimonio → la ficha no
   muestra frase (nunca se inventan testimonios: son personas reales).
 - Las fotos suben a `public/atletas/` (`media_folder` en `config.yml`).
-- Carga inicial: 9 atletas con solo el usuario de Instagram; el resto de campos
-  se completan desde `/admin`.
+- Carga inicial: 9 atletas con usuario de Instagram y disciplina; el resto de
+  campos se completan desde `/admin`.
 
 ## Pendientes de contenido
 
