@@ -5,22 +5,22 @@ const PILARES: Pilar[] = [
   {
     titulo: "100% natural",
     texto:
-      "Hierbas medicinales y nada más. Lo que te pones en la piel viene del campo, no del laboratorio.",
+      "Hierbas medicinales y nada más. Lo que te pones en la piel y en el cuerpo viene del campo, no del laboratorio.",
   },
   {
-    titulo: "Sin químicos",
+    titulo: "Sabes qué te pones",
     texto:
-      "Sin parabenos, sin fragancias sintéticas, sin analgésicos ocultos. Nada que un peleador tenga que pensar dos veces.",
+      "Sin parabenos, sin fragancias sintéticas, sin analgésicos ni estimulantes ocultos. Una cosa menos de qué preocuparte rumbo al pesaje.",
   },
   {
-    titulo: "Tradición mexicana",
+    titulo: "Cuida tus articulaciones",
     texto:
-      "Una receta de herbolaria mexicana transmitida y afinada, ahora al servicio del deporte de combate.",
+      "Pensado para cuerpos que reciben impacto repetido: soporte para tendones, ligamentos y músculos, antes y después del esfuerzo.",
   },
   {
-    titulo: "10 años de experiencia",
+    titulo: "10 años probados",
     texto:
-      "La misma casa detrás de Hialuroniz. Una década formulando aceites de hierbas que la gente vuelve a comprar.",
+      "La misma casa detrás de Hialuroniz. Una década formulando herbolaria que la gente vuelve a comprar.",
   },
 ];
 
@@ -37,11 +37,11 @@ export function Difference() {
 
   return (
     <DifferenceView
-      eyebrow={txt(c.eyebrow, "Por qué es diferente")}
+      eyebrow={txt(c.eyebrow, "Rendimiento sin química")}
       titulo={lineas(c.titulo, ["Sin química.", "Sin atajos.", "Solo hierba."])}
       parrafo={txt(
         c.parrafo,
-        "Herbalvarez nace de Hialuroniz para llevar la misma herbolaria a un cuerpo que compite. Lo que cambia es el enfoque, no la pureza de la fórmula.",
+        "Casi todo el mercado deportivo va de negro, rojo y química. Herbalvarez toma la herbolaria de Hialuroniz y la pone a trabajar para un cuerpo que compite, respetando su fisiología. Cambia el enfoque, no la pureza de la fórmula.",
       )}
       pilares={normPilares(c.pilares)}
     />

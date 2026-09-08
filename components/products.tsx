@@ -8,15 +8,15 @@ export function Products() {
   if (productos.length === 0) return null;
 
   const c = getSeccion("productos");
-  const eyebrow = txt(c.eyebrow, "Los productos");
-  const titulo = lineas(c.titulo, ["Cinco fórmulas.", "Un mismo origen."]);
+  const eyebrow = txt(c.eyebrow, "El arsenal");
+  const titulo = lineas(c.titulo, ["Cinco fórmulas.", "Cero química."]);
   const parrafo = txt(
     c.parrafo,
-    "Los mismos aceites de hierbas medicinales de Hialuroniz, elegidos por lo que tu cuerpo tiene que resolver: recuperar, rendir y aguantar el ring.",
+    "Las mismas fórmulas de herbolaria de Hialuroniz, escogidas por lo que un peleador tiene que resolver: recuperar, rendir y aguantar el ring. Respetan la fisiología del cuerpo; nada de laboratorio.",
   );
   const avisoLegal = txt(
     c.aviso_legal,
-    "Productos de herbolaria. No son medicamentos y no sustituyen la atención médica ni la valoración de un profesional del deporte. Consulta a tu médico.",
+    "Productos de herbolaria. No son medicamentos ni sustituyen la atención médica ni la valoración de un profesional del deporte. Consulta a tu médico.",
   );
 
   return (

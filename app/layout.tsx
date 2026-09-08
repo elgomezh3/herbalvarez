@@ -19,25 +19,26 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://herbalvarez.mx"),
+  metadataBase: new URL("https://herbalvarez.com"),
   title: {
-    default: "Herbalvarez — Recuperación de nivel profesional para peleadores",
+    default: "Herbalvarez — Nutrición y recuperación natural para peleadores",
     template: "%s · Herbalvarez",
   },
   description:
-    "Aceites de hierbas medicinales 100% naturales para boxeadores y deportistas de combate. Diez años de tradición mexicana, formulados para el ring.",
+    "Herbolaria mexicana 100% natural para boxeadores y deportistas de combate: energía limpia, recuperación más rápida y soporte articular. Diez años probados en Hialuroniz.",
   keywords: [
-    "aceites de hierbas",
+    "nutrición deportiva natural",
     "recuperación muscular",
     "boxeo",
     "deportes de combate",
-    "alivio del dolor natural",
+    "soporte articular",
+    "herbolaria",
     "Herbalvarez",
   ],
   openGraph: {
-    title: "Herbalvarez — Recuperación de nivel profesional",
+    title: "Herbalvarez — Nutrición y recuperación natural para peleadores",
     description:
-      "Aceites de hierbas medicinales 100% naturales para boxeadores y peleadores.",
+      "Herbolaria mexicana 100% natural para boxeadores y peleadores: energía limpia, recuperación y soporte articular.",
     locale: "es_MX",
     type: "website",
   },

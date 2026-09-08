@@ -2,16 +2,16 @@
 nombre: 'Poder Absoluto'
 categoria: 'Rendimiento'
 formato: 'Suplemento · 100 cápsulas'
-claim: 'Más tanque para la semana más dura del campamento.'
+claim: 'Energía para los últimos rounds, sin el pico y la caída.'
 descripcion: >-
-  Suplemento en cápsulas para subir energía y resistencia en la sesión, bajar el
-  estrés antes de entrenar y acelerar la recuperación muscular después. Apoya la
-  fuerza, la concentración y el control del estrés oxidativo.
+  Extractos adaptógenos para sostener energía, resistencia y claridad mental
+  durante la sesión, sin los nervios ni el bajón de los estimulantes. Apoya la
+  fuerza y el manejo del estrés antes de entrenar.
 usos:
-  - 'Energía'
+  - 'Energía sostenida'
   - 'Resistencia'
-  - 'Fuerza'
-  - 'Recuperación'
+  - 'Enfoque'
+  - 'Sin bajón'
 imagen: '/productos/poder-absoluto.png'
 foto_fondo: '/img/prod-poder-absoluto.jpg'
 acento: 'oro'

@@ -22,10 +22,10 @@ export function Footer() {
   const c = getSeccion("contacto");
 
   const eyebrow = txt(c.eyebrow, "Contacto");
-  const titulo = lineas(c.titulo, ["Prepara tu", "próximo campamento."]);
+  const titulo = lineas(c.titulo, ["Arma tu", "próximo campamento."]);
   const parrafo = txt(
     c.parrafo,
-    "Escríbenos para pedidos, mayoreo o patrocinio de peleadores. Enviamos a todo México.",
+    "Pedidos, mayoreo y patrocinio de atletas. Enviamos a todo México.",
   );
   const correo = txt(c.correo, "hola@herbalvarez.mx");
   const waNumero = txt(c.whatsapp_numero, "520000000000").replace(/[^\d]/g, "");

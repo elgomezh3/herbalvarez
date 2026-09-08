@@ -1,9 +1,9 @@
 ---
 frases:
   - 'Recupera más rápido'
-  - 'Pelea más seguido'
+  - 'Entrena más seguido'
   - 'Sin química'
-  - '100% natural'
-  - 'Tradición mexicana'
+  - 'Sin sorpresas en la etiqueta'
+  - 'Soporte articular'
   - 'Hecho para el ring'
 ---

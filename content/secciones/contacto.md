@@ -1,11 +1,10 @@
 ---
 eyebrow: 'Contacto'
 titulo: |-
-  Prepara tu
+  Arma tu
   próximo campamento.
 parrafo: >-
-  Escríbenos para pedidos, mayoreo o patrocinio de peleadores. Enviamos a todo
-  México.
+  Pedidos, mayoreo y patrocinio de atletas. Enviamos a todo México.
 correo: 'hola@herbalvarez.mx'
 whatsapp_numero: '520000000000'
 whatsapp_texto: '+52 000 000 0000'

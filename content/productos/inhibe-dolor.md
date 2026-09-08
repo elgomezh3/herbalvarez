@@ -4,14 +4,14 @@ categoria: 'Recuperación'
 formato: 'Aceite · 60 ml · uso tópico'
 claim: 'Baja la inflamación antes de que te frene.'
 descripcion: >-
-  Formulado para el rendimiento físico y la recuperación post-entrenamiento:
-  reduce el dolor y la inflamación después del esfuerzo y devuelve flexibilidad y
-  movilidad a músculos y articulaciones.
+  Aceite tópico para la recuperación post-entrenamiento: ayuda a calmar el dolor
+  y la inflamación tras el esfuerzo y a devolver movilidad y flexibilidad a
+  músculos y articulaciones. Directo sobre la zona cargada.
 usos:
   - 'Inflamación'
   - 'Post-entreno'
   - 'Movilidad'
-  - 'Flexibilidad'
+  - 'Articulaciones'
 imagen: '/productos/inhibe-dolor.png'
 foto_fondo: ''
 acento: 'rubi'

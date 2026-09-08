@@ -2,15 +2,16 @@
 nombre: 'Pomada'
 categoria: 'Recuperación'
 formato: 'Pomada · 90 g · uso tópico'
-claim: 'El masaje que tu esquina te da entre asaltos.'
+claim: 'El masaje que tu esquina te da entre asaltos, en casa.'
 descripcion: >-
-  Ungüento de absorción media-lenta a base de lípidos naturales y extractos
-  herbales. Anestésico local y antiinflamatorio potente; la miel y la cera de
-  abeja dejan una barrera que protege y regenera la piel trabajada.
+  Ungüento de absorción media-lenta con lípidos naturales y extractos herbales.
+  Prepara nudillos, muñecas y tendones antes de la sesión y ayuda a aliviar
+  contracturas después; la miel y la cera de abeja dejan una capa que protege la
+  piel trabajada.
 usos:
+  - 'Pre-sesión'
   - 'Masaje'
-  - 'Contracturas'
-  - 'Zonas cargadas'
+  - 'Tendones y muñecas'
   - 'Piel protegida'
 imagen: '/productos/pomada.png'
 foto_fondo: ''

@@ -9,10 +9,10 @@ export function Athletes() {
 
   const c = getSeccion("atletas");
   const eyebrow = txt(c.eyebrow, "Atletas");
-  const titulo = lineas(c.titulo, ["La comunidad", "en el ring."]);
+  const titulo = lineas(c.titulo, ["En su esquina."]);
   const parrafo = txt(
     c.parrafo,
-    "Boxeadores y peleadores de la comunidad Herbalvarez. Cada ficha declara si la persona recibe producto o patrocinio.",
+    "Boxeadores y peleadores que usan Herbalvarez en su preparación. Cada ficha declara con transparencia si la persona recibe producto o patrocinio.",
   );
 
   return (

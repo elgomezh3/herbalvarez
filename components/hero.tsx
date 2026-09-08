@@ -4,7 +4,7 @@ import { getSeccion, txt, lineas, lista } from "@/lib/secciones";
 const TITULO = ["Tu cuerpo", "es el arma.", "Nosotros lo", "mantenemos listo."];
 
 const STATS: Stat[] = [
-  { valor: "10", etiqueta: "años de tradición" },
+  { valor: "10", etiqueta: "años probados" },
   { valor: "100%", etiqueta: "natural" },
   { valor: "0", etiqueta: "químicos" },
 ];
@@ -22,18 +22,18 @@ export function Hero() {
 
   return (
     <HeroView
-      eyebrow={txt(c.eyebrow, "Recuperación de nivel profesional")}
+      eyebrow={txt(c.eyebrow, "Nutrición y recuperación, 100% natural")}
       titulo={lineas(c.titulo, TITULO)}
       parrafo={txt(
         c.parrafo,
-        "Aceites de hierbas medicinales 100% naturales para boxeadores y deportistas de combate. Diez años de tradición mexicana, formulados para lo que exige el ring.",
+        "Herbolaria mexicana para boxeadores y peleadores: energía limpia, recuperación más rápida y soporte para articulaciones castigadas. Sin química de laboratorio y sin la montaña rusa de los estimulantes. Sabes exactamente qué te pones.",
       )}
       ctaPrimario={{
-        texto: txt(c.cta_primario_texto, "Ver productos"),
+        texto: txt(c.cta_primario_texto, "Ver el arsenal"),
         enlace: txt(c.cta_primario_enlace, "#productos"),
       }}
       ctaSecundario={{
-        texto: txt(c.cta_secundario_texto, "Conocer la historia"),
+        texto: txt(c.cta_secundario_texto, "Cómo lo hacemos"),
         enlace: txt(c.cta_secundario_enlace, "#diferencia"),
       }}
       palabraFondo={txt(c.palabra_fondo, "RING")}

@@ -1,9 +1,7 @@
 ---
 eyebrow: 'Atletas'
-titulo: |-
-  La comunidad
-  en el ring.
+titulo: 'En su esquina.'
 parrafo: >-
-  Boxeadores y peleadores de la comunidad Herbalvarez. Cada ficha declara si la
-  persona recibe producto o patrocinio.
+  Boxeadores y peleadores que usan Herbalvarez en su preparación. Cada ficha
+  declara con transparencia si la persona recibe producto o patrocinio.
 ---
