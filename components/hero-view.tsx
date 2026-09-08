@@ -33,9 +33,11 @@ export function HeroView({
 
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const imgScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "16%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
   const wordY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  // El contenido se mantiene visible casi toda la primera pantalla y solo se
+  // desvanece (sin llegar a 0) cuando la sección ya está saliendo.
+  const fade = useTransform(scrollYProgress, [0, 0.75, 1], [1, 1, 0.25]);
 
   return (
     <section
