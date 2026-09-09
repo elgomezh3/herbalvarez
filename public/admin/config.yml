@@ -119,6 +119,20 @@ collections:
           - { name: eyebrow, label: Eyebrow, widget: string, required: false }
           - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - name: fondo_transparente
+            label: 'Fondo transparente'
+            widget: boolean
+            default: true
+            required: false
+            hint: 'Activado: la sección no pone color de fondo (se ve el fondo de la página). Apágalo para elegir un color abajo.'
+          - name: fondo_color
+            label: 'Color de fondo'
+            widget: color
+            required: false
+            default: '#0c0c05'
+            allow_input: true
+            enable_alpha: false
+            hint: 'Solo se usa si "Fondo transparente" está apagado.'
 
       - name: contacto
         label: 'Contacto (pie de página)'

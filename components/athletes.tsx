@@ -15,10 +15,15 @@ export function Athletes() {
     "Boxeadores y peleadores que usan Herbalvarez en su preparación. Cada ficha declara con transparencia si la persona recibe producto o patrocinio.",
   );
 
+  // Fondo de la sección: transparente por defecto; si se apaga, usa el color elegido.
+  const fondoTransparente = c.fondo_transparente !== false;
+  const fondoColor = txt(c.fondo_color, "#0c0c05");
+
   return (
     <section
       id="atletas"
-      className="relative border-t border-line bg-bg py-24 md:py-32"
+      className="relative border-t border-line py-24 md:py-32"
+      style={fondoTransparente ? undefined : { backgroundColor: fondoColor }}
     >
       <div className="mx-auto max-w-shell px-5 md:px-8">
         <Reveal>
