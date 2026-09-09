@@ -4,7 +4,7 @@ disciplina: Boxeo
 club: Club Alvarez Box
 record: Boxeador Invicto
 instagram: abel_serrano0804
-foto: ''
+foto: /uploads/abel.png
 testimonio: ''
 beneficios:
   - Mas energia
