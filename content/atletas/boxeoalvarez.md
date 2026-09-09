@@ -1,11 +1,14 @@
 ---
 nombre: ''
-disciplina: 'Boxeo'
-club: ''
-instagram: 'boxeoalvarez'
+disciplina: Boxeo
+club: Gym Box Coliseo Alvarez
+record: 27 - 4 (20 ko's)
+instagram: boxeoalvarez
 foto: ''
 testimonio: ''
-relacion: 'ninguna'
+beneficios: []
+redes: []
+relacion: ninguna
 orden: 1
 publicado: true
 ---
