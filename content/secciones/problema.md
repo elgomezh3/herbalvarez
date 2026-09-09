@@ -1,25 +1,26 @@
 ---
-eyebrow: 'Problema y solución'
+eyebrow: 'Solución'
 titulo: |-
-  El desgaste viene con el oficio.
-  Recuperar rápido, también.
+  Menos días parado.
+  Más días de campamento.
 parrafo: >-
-  El cuerpo de un peleador vive golpeado, cargado y cansado. Si la recuperación
-  no lleva el ritmo de los entrenamientos, pierdes filo y pierdes campamento.
-  Ahí es donde entra Herbalvarez: menos dolor, mejor descanso y articulaciones
-  que aguantan la carga, con pura herbolaria.
-palabra_fondo: 'DUELE — SE RESUELVE — DUELE — SE RESUELVE'
+  Entre entrenamientos y peleas, el cuerpo no siempre alcanza a recuperarse.
+  Herbalvarez lo apoya con herbolaria mexicana: baja la inflamación, cuida las
+  articulaciones que reciben el impacto y mejora el descanso, para que vuelvas al
+  100% con menos días parado. Todo natural, sin química que revisar antes del
+  pesaje.
+palabra_fondo: 'SE RESUELVE — SE RESUELVE — SE RESUELVE'
 dolores:
   - numero: '01'
-    titulo: 'Golpes que no cierran'
-    texto: 'Hematomas y zonas cargadas que siguen ahí cuando ya deberías estar de vuelta en el costal.'
+    titulo: 'Vuelves antes al costal'
+    texto: 'Menos días perdidos entre sesiones y entre peleas: la recuperación deja de ser el cuello de botella de tu campamento.'
   - numero: '02'
-    titulo: 'Articulaciones que cobran factura'
-    texto: 'Nudillos, muñecas, hombros y rodillas absorben cada impacto. Ronda tras ronda, la cuenta se acumula.'
+    titulo: 'Articulaciones que aguantan'
+    texto: 'Soporte para nudillos, muñecas, hombros y tendones, antes de cargarlos y después del impacto.'
   - numero: '03'
-    titulo: 'Recuperación que no alcanza'
-    texto: 'El músculo no termina de soltar entre sesiones. Cada semana de más para volver al 100% es campamento perdido.'
+    titulo: 'Duermes, reparas'
+    texto: 'Mejor descanso para que el músculo se recomponga de una sesión a la otra, sin fármacos para dormir.'
   - numero: '04'
-    titulo: 'La solución: al ritmo de tu campamento'
-    texto: 'Herbolaria que apoya el descanso, baja la inflamación y cuida tendones y músculos, antes y después del esfuerzo. 100% natural, sin química que revisar antes del pesaje.'
+    titulo: 'Todo con pura herbolaria'
+    texto: 'Fórmulas 100% naturales de la casa de Hialuroniz. Nada de química que tengas que revisar antes de un pesaje.'
 ---
