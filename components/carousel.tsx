@@ -1,10 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Children, useCallback, useEffect, useRef, useState } from "react";
 
 /**
- * Carrusel horizontal con scroll-snap. En móvil se desliza; en escritorio hay
- * flechas. Los hijos deben llevar `shrink-0 snap-start` y un ancho fijo.
+ * Carrusel horizontal con scroll-snap. En móvil se desliza; hay flechas y
+ * puntitos debajo para indicar que se puede navegar. Los hijos deben llevar
+ * `shrink-0 snap-start` y un ancho fijo.
  */
 export function Carousel({
   children,
@@ -14,14 +15,33 @@ export function Carousel({
   label: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const count = Children.count(children);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const [overflow, setOverflow] = useState(true);
+  const [active, setActive] = useState(0);
 
   const update = useCallback(() => {
     const el = ref.current;
     if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
     setCanPrev(el.scrollLeft > 8);
-    setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 8);
+    setCanNext(el.scrollLeft < max - 8);
+    setOverflow(max > 8);
+
+    const slides = Array.from(el.children) as HTMLElement[];
+    if (!slides.length) return;
+    const base = slides[0].offsetLeft;
+    let best = 0;
+    let bestDist = Infinity;
+    slides.forEach((s, i) => {
+      const d = Math.abs(s.offsetLeft - base - el.scrollLeft);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    });
+    setActive(best);
   }, []);
 
   useEffect(() => {
@@ -36,12 +56,28 @@ export function Carousel({
     };
   }, [update]);
 
+  const goTo = (i: number) => {
+    const el = ref.current;
+    if (!el) return;
+    const slides = Array.from(el.children) as HTMLElement[];
+    const target = slides[i];
+    if (target) {
+      el.scrollTo({
+        left: target.offsetLeft - slides[0].offsetLeft,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const move = (dir: 1 | -1) => {
     ref.current?.scrollBy({
       left: dir * ref.current.clientWidth * 0.8,
       behavior: "smooth",
     });
   };
+
+  const arrow =
+    "flex h-10 w-10 items-center justify-center border border-line text-lg text-ink transition-colors hover:border-gold hover:text-gold disabled:cursor-default disabled:opacity-25 disabled:hover:border-line disabled:hover:text-ink sm:h-11 sm:w-11";
 
   return (
     <div className="relative">
@@ -55,31 +91,51 @@ export function Carousel({
         {children}
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-4">
-        <p className="text-[10px] uppercase tracking-[0.24em] text-muted/60 md:hidden">
-          Desliza &rarr;
-        </p>
-        <div className="ml-auto hidden items-center gap-3 md:flex">
-          <button
-            type="button"
-            aria-label="Anterior"
-            onClick={() => move(-1)}
-            disabled={!canPrev}
-            className="flex h-11 w-11 items-center justify-center border border-line text-lg text-ink transition-colors hover:border-gold hover:text-gold disabled:cursor-default disabled:opacity-25 disabled:hover:border-line disabled:hover:text-ink"
-          >
-            &larr;
-          </button>
-          <button
-            type="button"
-            aria-label="Siguiente"
-            onClick={() => move(1)}
-            disabled={!canNext}
-            className="flex h-11 w-11 items-center justify-center border border-line text-lg text-ink transition-colors hover:border-gold hover:text-gold disabled:cursor-default disabled:opacity-25 disabled:hover:border-line disabled:hover:text-ink"
-          >
-            &rarr;
-          </button>
+      {overflow && count > 1 && (
+        <div className="mt-6 flex items-center justify-between gap-4">
+          <div className="flex items-center">
+            {Array.from({ length: count }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Ir a ${i + 1} de ${count}`}
+                aria-current={i === active}
+                onClick={() => goTo(i)}
+                className="group p-2"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all ${
+                    i === active
+                      ? "w-6 bg-gold"
+                      : "w-1.5 bg-line group-hover:bg-muted"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              type="button"
+              aria-label="Anterior"
+              onClick={() => move(-1)}
+              disabled={!canPrev}
+              className={arrow}
+            >
+              &larr;
+            </button>
+            <button
+              type="button"
+              aria-label="Siguiente"
+              onClick={() => move(1)}
+              disabled={!canNext}
+              className={arrow}
+            >
+              &rarr;
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
