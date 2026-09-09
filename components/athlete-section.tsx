@@ -1,5 +1,6 @@
 import { MaskedHeading, Reveal } from "@/components/primitives";
-import { AthleteRow } from "@/components/athlete-row";
+import { Carousel } from "@/components/carousel";
+import { AthleteCard } from "@/components/athlete-card";
 import { getAtletas, type SeccionAtleta } from "@/lib/atletas";
 import { getSeccion, txt, lineas } from "@/lib/secciones";
 
@@ -55,10 +56,12 @@ export function AthleteSection({
           </p>
         </Reveal>
 
-        <div className="mt-10">
-          {atletas.map((a, i) => (
-            <AthleteRow key={a.slug} atleta={a} index={i} />
-          ))}
+        <div className="mt-12">
+          <Carousel label={defaults.eyebrow}>
+            {atletas.map((a, i) => (
+              <AthleteCard key={a.slug} atleta={a} index={i} />
+            ))}
+          </Carousel>
         </div>
       </div>
     </section>

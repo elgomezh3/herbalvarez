@@ -1,5 +1,6 @@
 import { MaskedHeading, Reveal } from "@/components/primitives";
-import { ProductRow } from "@/components/products-row";
+import { Carousel } from "@/components/carousel";
+import { ProductCard } from "@/components/product-card";
 import { getProductos } from "@/lib/productos";
 import { getSeccion, txt, lineas } from "@/lib/secciones";
 
@@ -38,14 +39,16 @@ export function Products() {
           </p>
         </Reveal>
 
-        <div className="mt-8">
-          {productos.map((p, i) => (
-            <ProductRow key={p.slug} producto={p} index={i} />
-          ))}
+        <div className="mt-12">
+          <Carousel label="Productos">
+            {productos.map((p, i) => (
+              <ProductCard key={p.slug} producto={p} index={i} />
+            ))}
+          </Carousel>
         </div>
 
         <Reveal>
-          <p className="mt-16 max-w-2xl border-t border-line pt-6 text-xs leading-relaxed text-muted/70">
+          <p className="mt-14 max-w-2xl border-t border-line pt-6 text-xs leading-relaxed text-muted/70">
             {avisoLegal}
           </p>
         </Reveal>
