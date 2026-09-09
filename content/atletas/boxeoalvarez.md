@@ -1,5 +1,6 @@
 ---
 nombre: Rigoberto Alvarez
+seccion: equipo
 disciplina: Boxeo
 club: Gym Box Coliseo Alvarez
 record: 27 - 4 (20 ko's)

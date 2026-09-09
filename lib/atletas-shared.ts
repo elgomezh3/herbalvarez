@@ -16,8 +16,13 @@ export type RedSocial = {
   url: string;
 };
 
+/** En qué sección aparece la ficha. */
+export type SeccionAtleta = "atletas" | "equipo";
+
 export type Atleta = {
   slug: string;
+  /** "atletas" (comunidad) o "equipo" (parte de la marca). */
+  seccion: SeccionAtleta;
   nombre: string;
   disciplina: string;
   club: string;

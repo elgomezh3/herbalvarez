@@ -1,14 +1,24 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import type { Atleta, RelacionKey } from "@/lib/atletas-shared";
+import type {
+  Atleta,
+  RelacionKey,
+  SeccionAtleta,
+} from "@/lib/atletas-shared";
 
-export type { Atleta, RedSocial, RelacionKey } from "@/lib/atletas-shared";
+export type {
+  Atleta,
+  RedSocial,
+  RelacionKey,
+  SeccionAtleta,
+} from "@/lib/atletas-shared";
 export { RELACION_LABEL, redesDeAtleta } from "@/lib/atletas-shared";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "atletas");
 
 const RELACIONES: RelacionKey[] = ["ninguna", "producto", "patrocinio", "equipo"];
+const SECCIONES: SeccionAtleta[] = ["atletas", "equipo"];
 
 function str(value: unknown): string {
   return typeof value === "string" ? value.trim() : value == null ? "" : String(value).trim();
@@ -60,7 +70,7 @@ function parseRedes(value: unknown): Atleta["redes"] {
  * Lee content/atletas/*.md en tiempo de build. Devuelve solo los publicados,
  * ordenados por el campo "orden" (menor primero) y luego por slug.
  */
-export function getAtletas(): Atleta[] {
+export function getAtletas(seccion: SeccionAtleta = "atletas"): Atleta[] {
   let files: string[];
   try {
     files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith(".md"));
@@ -74,8 +84,11 @@ export function getAtletas(): Atleta[] {
     const rawOrden = Number(data.orden);
     const rawRelacion = str(data.relacion) as RelacionKey;
 
+    const rawSeccion = str(data.seccion) as SeccionAtleta;
+
     return {
       slug: file.replace(/\.md$/, ""),
+      seccion: SECCIONES.includes(rawSeccion) ? rawSeccion : "atletas",
       nombre: str(data.nombre),
       disciplina: str(data.disciplina),
       club: str(data.club),
@@ -92,6 +105,6 @@ export function getAtletas(): Atleta[] {
   });
 
   return atletas
-    .filter((a) => a.publicado)
+    .filter((a) => a.publicado && a.seccion === seccion)
     .sort((a, b) => a.orden - b.orden || a.slug.localeCompare(b.slug));
 }

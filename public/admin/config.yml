@@ -134,6 +134,29 @@ collections:
             enable_alpha: false
             hint: 'Solo se usa si "Fondo transparente" está apagado.'
 
+      - name: equipo_seccion
+        label: 'Equipo — encabezado'
+        file: content/secciones/equipo.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - name: fondo_transparente
+            label: 'Fondo transparente'
+            widget: boolean
+            default: true
+            required: false
+            hint: 'Activado: la sección no pone color de fondo. Apágalo para elegir un color abajo.'
+          - name: fondo_color
+            label: 'Color de fondo'
+            widget: color
+            required: false
+            default: '#0c0c05'
+            allow_input: true
+            enable_alpha: false
+            hint: 'Solo se usa si "Fondo transparente" está apagado.'
+
       - name: contacto
         label: 'Contacto (pie de página)'
         file: content/secciones/contacto.md
@@ -220,6 +243,16 @@ collections:
     summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'instagram']
     fields:
+      - name: seccion
+        label: '¿Dónde aparece?'
+        widget: select
+        default: atletas
+        required: true
+        options:
+          - { label: 'Atletas (comunidad que la usa)', value: atletas }
+          - { label: 'Equipo Herbalvarez (parte de la marca)', value: equipo }
+        hint: 'Equipo = gente detrás de la marca. Atletas = comunidad de peleadores.'
+
       - name: nombre
         label: Nombre completo
         widget: string

@@ -1,5 +1,6 @@
 ---
 nombre: Alfonso Gomez
+seccion: equipo
 disciplina: Boxeo
 club: Peso Welter
 record: 25 - 6 -2 (14 ko's)
