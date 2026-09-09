@@ -1,10 +1,10 @@
 ---
-nombre: ''
+nombre: Abel Serrano
 disciplina: Boxeo
 club: Club Alvarez Box
 record: Boxeador Invicto
 instagram: abel_serrano0804
-foto: /uploads/Gemini_Generated_Image_stxjxpstxjxpstxj (1).png
+foto: ''
 testimonio: ''
 beneficios:
   - Mas energia
