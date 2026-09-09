@@ -1,4 +1,5 @@
 ---
+seccion: atletas
 nombre: Paolo Gonzalez
 disciplina: Boxeo
 club: Orizaba, Veracruz

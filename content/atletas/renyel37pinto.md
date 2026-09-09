@@ -1,4 +1,5 @@
 ---
+seccion: atletas
 nombre: ''
 disciplina: 'Béisbol'
 club: ''

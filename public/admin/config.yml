@@ -231,9 +231,10 @@ collections:
     label: Atletas
     label_singular: Atleta
     description: >-
-      Boxeadores y peleadores que aparecen en la sección "Atletas" del sitio.
-      Son personas reales con cuentas públicas: no inventes testimonios.
+      Comunidad de peleadores que usa Herbalvarez. Personas reales con cuentas
+      públicas: no inventes testimonios.
     folder: content/atletas
+    filter: { field: seccion, value: atletas }
     create: true
     delete: true
     format: yaml-frontmatter
@@ -242,7 +243,7 @@ collections:
     identifier_field: nombre
     summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'instagram']
-    fields:
+    fields: &fichas_fields
       - name: seccion
         label: '¿Dónde aparece?'
         widget: select
@@ -251,7 +252,7 @@ collections:
         options:
           - { label: 'Atletas (comunidad que la usa)', value: atletas }
           - { label: 'Equipo Herbalvarez (parte de la marca)', value: equipo }
-        hint: 'Equipo = gente detrás de la marca. Atletas = comunidad de peleadores.'
+        hint: 'Cámbialo para mover a la persona entre las secciones Atletas y Equipo.'
 
       - name: nombre
         label: Nombre completo
@@ -365,3 +366,24 @@ collections:
         default: false
         required: false
         hint: 'Actívalo para que la tarjeta aparezca en el sitio. Apágalo para ocultarla sin borrarla.'
+
+  # ─────────────────────────────────────────────────────────────
+  #  EQUIPO (misma carpeta que Atletas, filtrada por "seccion")
+  # ─────────────────────────────────────────────────────────────
+  - name: equipo
+    label: Equipo Herbalvarez
+    label_singular: Integrante
+    description: >-
+      Gente que es parte de la marca (fundadores, peleadores del equipo).
+      Aparecen en la sección "Equipo". Mismos campos que Atletas.
+    folder: content/atletas
+    filter: { field: seccion, value: equipo }
+    create: true
+    delete: true
+    format: yaml-frontmatter
+    extension: md
+    slug: '{{fields.instagram}}'
+    identifier_field: nombre
+    summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
+    sortable_fields: ['orden', 'nombre', 'instagram']
+    fields: *fichas_fields

@@ -1,4 +1,5 @@
 ---
+seccion: atletas
 nombre: Aris Arroy
 disciplina: Boxeo
 club: Club Alvarez Box

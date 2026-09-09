@@ -1,4 +1,5 @@
 ---
+seccion: atletas
 nombre: Abel Serrano
 disciplina: Boxeo
 club: Club Alvarez Box
