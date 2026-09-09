@@ -16,15 +16,15 @@ const DOLORES: Dolor[] = [
   },
   {
     numero: "03",
-    titulo: "Fatiga que se acumula",
+    titulo: "Recuperación que no alcanza",
     texto:
-      "El músculo no termina de soltar entre sesiones y el rendimiento cae sin que lo notes.",
+      "El músculo no termina de soltar entre sesiones. Cada semana de más para volver al 100% es campamento perdido.",
   },
   {
     numero: "04",
-    titulo: "Recuperación lenta entre peleas",
+    titulo: "La solución: al ritmo de tu campamento",
     texto:
-      "Cada semana de más para volver al 100% es una semana menos de campamento. Eso se paga arriba del ring.",
+      "Herbolaria que apoya el descanso, baja la inflamación y cuida tendones y músculos, antes y después del esfuerzo. 100% natural, sin química que revisar antes del pesaje.",
   },
 ];
 
@@ -45,13 +45,19 @@ export function Problem() {
 
   return (
     <ProblemView
-      eyebrow={txt(c.eyebrow, "El problema")}
-      titulo={lineas(c.titulo, ["Entre pelea y pelea,", "el dolor no negocia."])}
+      eyebrow={txt(c.eyebrow, "Problema y solución")}
+      titulo={lineas(c.titulo, [
+        "El desgaste viene con el oficio.",
+        "Recuperar rápido, también.",
+      ])}
       parrafo={txt(
         c.parrafo,
-        "El cuerpo de un peleador vive golpeado, cargado y cansado. Si la recuperación no lleva el ritmo de los entrenamientos, pierdes filo, pierdes campamento y, tarde o temprano, pierdes peleas.",
+        "El cuerpo de un peleador vive golpeado, cargado y cansado. Si la recuperación no lleva el ritmo de los entrenamientos, pierdes filo y pierdes campamento. Ahí es donde entra Herbalvarez: menos dolor, mejor descanso y articulaciones que aguantan la carga, con pura herbolaria.",
       )}
-      palabraFondo={txt(c.palabra_fondo, "DUELE — DUELE — DUELE")}
+      palabraFondo={txt(
+        c.palabra_fondo,
+        "DUELE — SE RESUELVE — DUELE — SE RESUELVE",
+      )}
       dolores={normDolores(c.dolores)}
     />
   );

@@ -51,14 +51,14 @@ export function ProblemView({
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-surface/10" />
         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-surface to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_75%,rgba(22,51,34,0.6),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_40%,rgba(158,42,43,0.2),transparent_55%)] mix-blend-screen" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_40%,rgba(147,177,126,0.16),transparent_55%)] mix-blend-screen" />
       </motion.div>
 
       {palabraFondo && (
         <motion.span
           aria-hidden
           style={{ x: wordX }}
-          className="display-heading pointer-events-none absolute -bottom-8 left-0 select-none whitespace-nowrap text-[22vw] leading-none text-ruby/[0.09]"
+          className="display-heading pointer-events-none absolute -bottom-8 left-0 select-none whitespace-nowrap text-[22vw] leading-none text-green-light/[0.1]"
         >
           {palabraFondo}
         </motion.span>
@@ -66,8 +66,8 @@ export function ProblemView({
 
       <div className="relative z-10 mx-auto max-w-shell px-5 md:px-8">
         <Reveal>
-          <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-ruby-bright">
-            <span className="h-px w-10 bg-ruby-bright" />
+          <p className="mb-5 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-green-light">
+            <span className="h-px w-10 bg-green-light" />
             {eyebrow}
           </p>
         </Reveal>
@@ -97,14 +97,14 @@ export function ProblemView({
                 key={`${p.numero}-${i}`}
                 variants={fadeUp}
                 className={`group p-8 transition-colors md:p-10 ${
-                  hot ? "bg-ruby text-ink" : "bg-surface hover:bg-green-deep"
+                  hot ? "bg-green text-ink" : "bg-surface hover:bg-green-deep"
                 }`}
               >
                 <span
                   className={`display-heading text-2xl transition-colors ${
                     hot
-                      ? "text-ink/70"
-                      : "text-ruby/70 group-hover:text-ruby-bright"
+                      ? "text-gold/80"
+                      : "text-green-light/70 group-hover:text-green-light"
                   }`}
                 >
                   {p.numero || String(i + 1).padStart(2, "0")}
