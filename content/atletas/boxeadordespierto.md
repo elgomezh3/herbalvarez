@@ -10,7 +10,13 @@ beneficios:
   - Sanar heridas
   - Dormir mas profundo
   - Recuperacion mas rapida
-redes: []
+redes:
+  - plataforma: TikTok
+    url: http://tiktok.com/@boxeadordespierto
+  - plataforma: Facebook
+    url: https://www.facebook.com/BoxeadorDespiertoVIP/
+  - plataforma: YouTube
+    url: https://www.youtube.com/@boxeadordespierto
 relacion: ninguna
 orden: 2
 publicado: true
