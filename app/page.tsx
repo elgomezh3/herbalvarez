@@ -3,8 +3,8 @@ import { Problem } from "@/components/problem";
 import { Marquee } from "@/components/marquee";
 import { Products } from "@/components/products";
 import { Difference } from "@/components/difference";
-import { Team } from "@/components/team";
 import { Athletes } from "@/components/athletes";
+import { Team } from "@/components/team";
 
 export default function Home() {
   return (
@@ -14,8 +14,8 @@ export default function Home() {
       <Marquee />
       <Products />
       <Difference />
-      <Team />
       <Athletes />
+      <Team />
     </>
   );
 }
