@@ -33,6 +33,8 @@ export function AthleteRow({ atleta, index }: { atleta: Atleta; index: number })
   const numY = useTransform(scrollYProgress, [0, 1], ["45%", "-45%"]);
   const shadowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.75, 1, 0.75]);
 
+  // Los PNG suelen venir con el fondo recortado: se muestran sin marco, flotando.
+  const recorte = /\.png$/i.test(atleta.foto);
   const hasName = Boolean(atleta.nombre);
   const displayName = hasName ? atleta.nombre : `@${atleta.instagram}`;
   const meta = [atleta.disciplina, atleta.club].filter(Boolean).join(" · ");
@@ -86,7 +88,11 @@ export function AthleteRow({ atleta, index }: { atleta: Atleta; index: number })
             <motion.div
               animate={reduce ? undefined : { y: [0, -12, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative aspect-[4/5] w-full overflow-hidden border border-line bg-green-deep shadow-[0_35px_45px_rgba(0,0,0,0.5)]"
+              className={`relative aspect-[4/5] w-full ${
+                recorte
+                  ? ""
+                  : "overflow-hidden border border-line bg-green-deep shadow-[0_35px_45px_rgba(0,0,0,0.5)]"
+              }`}
             >
               {atleta.foto ? (
                 <Image
@@ -94,11 +100,15 @@ export function AthleteRow({ atleta, index }: { atleta: Atleta; index: number })
                   alt={displayName}
                   fill
                   sizes="(max-width: 768px) 80vw, 340px"
-                  className="object-cover object-top"
+                  className={
+                    recorte
+                      ? "object-contain object-bottom drop-shadow-[0_30px_45px_rgba(0,0,0,0.55)]"
+                      : "object-cover object-top"
+                  }
                   priority={index < 2}
                 />
               ) : (
-                <div className="grain relative flex h-full w-full flex-col items-center justify-center gap-3">
+                <div className="grain relative flex h-full w-full flex-col items-center justify-center gap-3 border border-line bg-green-deep">
                   <span className="display-heading relative z-[2] text-6xl text-ink/15">
                     {initial(atleta)}
                   </span>
