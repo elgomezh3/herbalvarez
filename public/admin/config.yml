@@ -13,9 +13,10 @@ backend:
     uploadMedia: 'Media: sube {{path}}'
     deleteMedia: 'Media: quita {{path}}'
 
-# Carpeta general para imágenes nuevas. Las secciones con carpeta propia
-# (atletas, productos) la definen abajo.
-media_folder: public/uploads
+# Todas las imágenes que subas desde el panel se guardan aquí (en el repo) y en
+# el sitio se leen desde /uploads/. Las fotos de producto viejas siguen en
+# /productos/ y no se tocan.
+media_folder: /public/uploads
 public_folder: /uploads
 
 # Interfaz en español
@@ -158,8 +159,6 @@ collections:
     slug: '{{fields.nombre}}'
     summary: '#{{fields.orden}} · {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'categoria']
-    media_folder: '/public/productos'
-    public_folder: '/productos'
     fields:
       - { name: nombre, label: Nombre, widget: string }
       - name: categoria
@@ -206,8 +205,6 @@ collections:
     identifier_field: nombre
     summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'instagram']
-    media_folder: '/public/atletas'
-    public_folder: '/atletas'
     fields:
       - name: nombre
         label: Nombre completo
