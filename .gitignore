@@ -30,3 +30,4 @@ next-env.d.ts
 # local helper scripts (screenshots / image prep)
 /_*.mjs
 /.dev-tmp/
+/hv-*.png

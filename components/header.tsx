@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   AnimatePresence,
   motion,
@@ -42,10 +43,17 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-shell items-center justify-between px-5 md:h-20 md:px-8">
           <a
             href="#top"
-            aria-label="Herbalvarez — inicio"
-            className="display-heading shrink-0 text-xl leading-none tracking-normal text-ink transition-colors hover:text-gold-light md:text-2xl"
+            aria-label="Herbalvarez — Aceite de Hierbas — inicio"
+            className="shrink-0"
           >
-            HERBAL<span className="text-gold">VAREZ</span>
+            <Image
+              src="/logo-wordmark.png"
+              alt="Herbalvarez — Aceite de Hierbas"
+              width={1400}
+              height={303}
+              priority
+              className="h-9 w-auto md:h-11"
+            />
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">

@@ -74,12 +74,11 @@ enfermedades: todo se reencuadra a entrenamiento, recuperación, piel y descanso
 
 ## Logo
 
-- El header usa el wordmark **en texto** (`HERBALVAREZ`, tipografía display) —
-  sin imagen, para no depender de un asset en el build.
+- `public/logo-wordmark.png` — wordmark dorado (HERBALVAREZ + "Aceite de
+  Hierbas"), PNG transparente ~1400×303. Se usa en el header (`next/image`,
+  alto fijo `h-9`/`md:h-11`).
 - `public/logo.png` — emblema completo (corona + marco + texto), PNG transparente.
   Se usa en el footer.
-- `public/logo-wordmark.png` — wordmark en PNG transparente (disponible, sin uso
-  actual en el sitio).
 - `app/icon.png` — favicon (emblema sobre cuadro verde), generado de `logo.png`.
 
 Recomendable pedir versiones **SVG** para nitidez perfecta a cualquier tamaño.
