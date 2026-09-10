@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MaskedHeading, Reveal } from "@/components/primitives";
+import { SectionBg } from "@/components/section-bg";
 import { getSeccion, txt, lineas, lista } from "@/lib/secciones";
 
 type Red = { plataforma: string; url: string };
@@ -43,7 +44,12 @@ export function Footer() {
       id="contacto"
       className="grain relative overflow-hidden border-t border-line bg-surface"
     >
-      <div className="mx-auto max-w-shell px-5 py-24 md:px-8 md:py-32">
+      <SectionBg
+        src={txt(c.fondo, "")}
+        posicion={txt(c.fondo_posicion, "50% 50%")}
+      />
+
+      <div className="relative z-10 mx-auto max-w-shell px-5 py-24 md:px-8 md:py-32">
         <Reveal>
           <p className="mb-6 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
             <span className="h-px w-10 bg-gold" />

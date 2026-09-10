@@ -59,6 +59,8 @@ export function Problem() {
         "SE RESUELVE — SE RESUELVE — SE RESUELVE",
       )}
       dolores={normDolores(c.dolores)}
+      fondo={txt(c.fondo, "/img/problema.jpg")}
+      fondoPosicion={txt(c.fondo_posicion, "68% 50%")}
     />
   );
 }

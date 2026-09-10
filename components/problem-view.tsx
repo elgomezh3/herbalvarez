@@ -14,12 +14,16 @@ export function ProblemView({
   parrafo,
   palabraFondo,
   dolores,
+  fondo,
+  fondoPosicion,
 }: {
   eyebrow: string;
   titulo: string[];
   parrafo: string;
   palabraFondo: string;
   dolores: Dolor[];
+  fondo: string;
+  fondoPosicion: string;
 }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -40,13 +44,16 @@ export function ProblemView({
         style={{ y: bgY }}
         className="pointer-events-none absolute inset-0 z-0 scale-110"
       >
-        <Image
-          src="/img/problema.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-[68%_center] opacity-70"
-        />
+        {fondo && (
+          <Image
+            src={fondo}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover opacity-70"
+            style={{ objectPosition: fondoPosicion }}
+          />
+        )}
         <div className="absolute inset-0 bg-surface/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-surface/10" />
         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-surface to-transparent" />

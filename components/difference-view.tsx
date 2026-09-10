@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Reveal } from "@/components/primitives";
+import { SectionBg } from "@/components/section-bg";
 import { fadeUp, lineReveal, stagger, viewportOnce } from "@/lib/motion";
 
 export type Pilar = { titulo: string; texto: string };
@@ -12,11 +13,15 @@ export function DifferenceView({
   titulo,
   parrafo,
   pilares,
+  fondo,
+  fondoPosicion,
 }: {
   eyebrow: string;
   titulo: string[];
   parrafo: string;
   pilares: Pilar[];
+  fondo: string;
+  fondoPosicion: string;
 }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -31,7 +36,9 @@ export function DifferenceView({
       ref={ref}
       className="relative overflow-hidden border-t border-line bg-bg py-24 md:py-32"
     >
-      <div className="mx-auto max-w-shell px-5 md:px-8">
+      <SectionBg src={fondo} posicion={fondoPosicion} />
+
+      <div className="relative z-10 mx-auto max-w-shell px-5 md:px-8">
         <div className="grid gap-8 md:grid-cols-12">
           <motion.div
             style={{ y: panelY }}

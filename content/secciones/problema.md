@@ -10,6 +10,8 @@ parrafo: >-
   100% con menos días parado. Todo natural, sin química que revisar antes del
   pesaje.
 palabra_fondo: 'SE RESUELVE — SE RESUELVE — SE RESUELVE'
+fondo: '/img/problema.jpg'
+fondo_posicion: '68% 50%'
 dolores:
   - numero: '01'
     titulo: 'Vuelves antes al costal'

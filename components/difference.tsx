@@ -44,6 +44,8 @@ export function Difference() {
         "Casi todo el mercado deportivo va de negro, rojo y química. Herbalvarez toma la herbolaria de Hialuroniz y la pone a trabajar para un cuerpo que compite, respetando su fisiología. Cambia el enfoque, no la pureza de la fórmula.",
       )}
       pilares={normPilares(c.pilares)}
+      fondo={txt(c.fondo, "")}
+      fondoPosicion={txt(c.fondo_posicion, "50% 50%")}
     />
   );
 }

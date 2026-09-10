@@ -41,17 +41,8 @@ collections:
           - { name: eyebrow, label: 'Eyebrow (línea chica de arriba)', widget: string, required: false }
           - { name: titulo, label: 'Título grande', widget: text, hint: 'Una línea por renglón. La 2ª línea sale en dorado.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
-          - name: fondo
-            label: 'Imagen de fondo'
-            widget: image
-            required: false
-            hint: 'Foto horizontal grande (mínimo 1920 px de ancho). Encima lleva un velo oscuro para que el texto se lea.'
-          - name: fondo_posicion
-            label: 'Encuadre de la imagen'
-            widget: string
-            required: false
-            default: '62% 38%'
-            hint: 'Qué parte de la foto se ve. "50% 50%" = centro. Primer número = horizontal, segundo = vertical. Solo tócalo si la foto se ve mal recortada.'
+          - &campo_fondo { name: fondo, label: 'Imagen de fondo', widget: image, required: false, hint: 'Foto horizontal grande (mín. 1920 px de ancho). Vacío = la sección usa su fondo normal. Encima va un velo oscuro para que el texto se lea.' }
+          - &campo_fondo_pos { name: fondo_posicion, label: 'Encuadre de la imagen', widget: string, required: false, default: '50% 50%', hint: 'Qué parte de la foto se ve. "50% 50%" = centro. 1er número = horizontal, 2º = vertical. Solo tócalo si la foto se ve mal recortada.' }
           - { name: cta_primario_texto, label: 'Botón principal — texto', widget: string, required: false }
           - { name: cta_primario_enlace, label: 'Botón principal — enlace', widget: string, required: false, hint: 'Ej.: #productos' }
           - { name: cta_secundario_texto, label: 'Botón secundario — texto', widget: string, required: false }
@@ -75,6 +66,8 @@ collections:
           - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
           - { name: palabra_fondo, label: 'Palabra gigante de fondo', widget: string, required: false }
+          - *campo_fondo
+          - *campo_fondo_pos
           - name: dolores
             label: 'Lista de dolores (tarjetas)'
             widget: list
@@ -103,6 +96,8 @@ collections:
           - { name: eyebrow, label: Eyebrow, widget: string, required: false }
           - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - *campo_fondo
+          - *campo_fondo_pos
           - { name: aviso_legal, label: 'Aviso legal (al final de la sección)', widget: text, required: false }
 
       - name: diferencia
@@ -113,6 +108,8 @@ collections:
           - { name: eyebrow, label: Eyebrow, widget: string, required: false }
           - { name: titulo, label: 'Título del panel verde', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo del panel', widget: text, required: false }
+          - *campo_fondo
+          - *campo_fondo_pos
           - name: pilares
             label: 'Pilares (las 4 tarjetas)'
             widget: list
@@ -130,12 +127,14 @@ collections:
           - { name: eyebrow, label: Eyebrow, widget: string, required: false }
           - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - *campo_fondo
+          - *campo_fondo_pos
           - name: fondo_transparente
             label: 'Fondo transparente'
             widget: boolean
             default: true
             required: false
-            hint: 'Activado: la sección no pone color de fondo (se ve el fondo de la página). Apágalo para elegir un color abajo.'
+            hint: 'Si NO pones imagen de fondo: activado = se ve el fondo de la página; apágalo para elegir un color abajo.'
           - name: fondo_color
             label: 'Color de fondo'
             widget: color
@@ -153,12 +152,14 @@ collections:
           - { name: eyebrow, label: Eyebrow, widget: string, required: false }
           - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - *campo_fondo
+          - *campo_fondo_pos
           - name: fondo_transparente
             label: 'Fondo transparente'
             widget: boolean
             default: true
             required: false
-            hint: 'Activado: la sección no pone color de fondo. Apágalo para elegir un color abajo.'
+            hint: 'Si NO pones imagen de fondo: activado = se ve el fondo de la página; apágalo para elegir un color abajo.'
           - name: fondo_color
             label: 'Color de fondo'
             widget: color
@@ -176,6 +177,8 @@ collections:
           - { name: eyebrow, label: Eyebrow, widget: string, required: false }
           - { name: titulo, label: 'Título de la sección', widget: text, hint: 'Una línea por renglón.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - *campo_fondo
+          - *campo_fondo_pos
           - { name: correo, label: 'Correo', widget: string, required: false }
           - { name: whatsapp_numero, label: 'WhatsApp — número (solo dígitos, con lada país)', widget: string, required: false, hint: 'Ej.: 5215512345678' }
           - { name: whatsapp_texto, label: 'WhatsApp — cómo se ve', widget: string, required: false, hint: 'Ej.: +52 55 1234 5678' }

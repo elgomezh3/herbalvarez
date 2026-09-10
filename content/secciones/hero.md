@@ -14,8 +14,8 @@ cta_primario_enlace: '#productos'
 cta_secundario_texto: 'Cómo lo hacemos'
 cta_secundario_enlace: '#diferencia'
 palabra_fondo: 'RING'
-fondo: '/img/hero.jpg'
-fondo_posicion: '62% 38%'
+fondo: '/img/hero-boxeador.jpg'
+fondo_posicion: '55% 38%'
 stats:
   - { valor: '10', etiqueta: 'años probados' }
   - { valor: '100%', etiqueta: 'natural' }
