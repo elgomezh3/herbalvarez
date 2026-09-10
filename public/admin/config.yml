@@ -41,6 +41,17 @@ collections:
           - { name: eyebrow, label: 'Eyebrow (línea chica de arriba)', widget: string, required: false }
           - { name: titulo, label: 'Título grande', widget: text, hint: 'Una línea por renglón. La 2ª línea sale en dorado.' }
           - { name: parrafo, label: 'Párrafo', widget: text, required: false }
+          - name: fondo
+            label: 'Imagen de fondo'
+            widget: image
+            required: false
+            hint: 'Foto horizontal grande (mínimo 1920 px de ancho). Encima lleva un velo oscuro para que el texto se lea.'
+          - name: fondo_posicion
+            label: 'Encuadre de la imagen'
+            widget: string
+            required: false
+            default: '62% 38%'
+            hint: 'Qué parte de la foto se ve. "50% 50%" = centro. Primer número = horizontal, segundo = vertical. Solo tócalo si la foto se ve mal recortada.'
           - { name: cta_primario_texto, label: 'Botón principal — texto', widget: string, required: false }
           - { name: cta_primario_enlace, label: 'Botón principal — enlace', widget: string, required: false, hint: 'Ej.: #productos' }
           - { name: cta_secundario_texto, label: 'Botón secundario — texto', widget: string, required: false }

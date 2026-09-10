@@ -16,6 +16,8 @@ export function HeroView({
   ctaSecundario,
   palabraFondo,
   stats,
+  fondo,
+  fondoPosicion,
 }: {
   eyebrow: string;
   titulo: string[];
@@ -24,6 +26,8 @@ export function HeroView({
   ctaSecundario: Cta;
   palabraFondo: string;
   stats: Stat[];
+  fondo: string;
+  fondoPosicion: string;
 }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -50,12 +54,13 @@ export function HeroView({
         className="pointer-events-none absolute inset-0 z-0"
       >
         <Image
-          src="/img/hero.jpg"
+          src={fondo}
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[62%_38%]"
+          className="object-cover"
+          style={{ objectPosition: fondoPosicion }}
         />
         <div className="absolute inset-0 bg-bg/45 md:bg-bg/35" />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-bg/45 md:via-bg/70 md:to-bg/10" />

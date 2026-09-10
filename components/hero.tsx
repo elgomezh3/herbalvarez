@@ -38,6 +38,8 @@ export function Hero() {
       }}
       palabraFondo={txt(c.palabra_fondo, "RING")}
       stats={normStats(c.stats)}
+      fondo={txt(c.fondo, "/img/hero.jpg")}
+      fondoPosicion={txt(c.fondo_posicion, "62% 38%")}
     />
   );
 }
