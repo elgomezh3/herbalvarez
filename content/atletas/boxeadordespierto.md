@@ -19,6 +19,6 @@ redes:
   - plataforma: YouTube
     url: https://www.youtube.com/@boxeadordespierto
 relacion: patrocinio
-orden: 2
+orden: 3
 publicado: true
 ---
