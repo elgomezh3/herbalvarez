@@ -11,5 +11,5 @@ beneficios: []
 redes: []
 relacion: ninguna
 orden: 1
-publicado: false
+publicado: true
 ---
