@@ -1,9 +1,9 @@
 ---
 seccion: equipo
 nombre: Alfonso Gomez
-disciplina: Marketing y Redes Sociales
+disciplina: ''
 club: ''
-record: ''
+record: Marketing y Redes Sociales
 instagram: boxeadordespierto
 foto: /uploads/80197.png
 testimonio: Como campeon de boxeo y atleta inclinado a la espiritualidad y los tratamientos holisticos, Boxeo Alvarez es mi sanador en la esquina.  Cualquier incomodiad fisica y mental, con los productos de Herbalavarez encuentro alivio y sanacion.
