@@ -5,7 +5,7 @@ disciplina: Medico Cirujano
 club: Egresada de UDG
 record: ''
 instagram: Herbalvarez.mx
-foto: /uploads/80167.png
+foto: /uploads/80176.png
 testimonio: ''
 beneficios: []
 redes: []
