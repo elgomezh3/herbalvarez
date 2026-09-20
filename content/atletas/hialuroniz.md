@@ -5,7 +5,7 @@ disciplina: Medico naturopara, investigador, científico, inventor
 club: CEO Herbalvarez y Hialuroniz
 record: ''
 instagram: Hialuroniz
-foto: /uploads/79025.png
+foto: /uploads/80095.png
 testimonio: Soy creador de productos naturales comprometidos a sanar de verdad.
 beneficios: []
 redes: []
