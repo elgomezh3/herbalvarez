@@ -1,12 +1,12 @@
 ---
 seccion: equipo
 nombre: Medico Roberto Rostro
-disciplina: Medico naturopara, investigador, científico, inventor
+disciplina: ''
 club: CEO Herbalvarez y Hialuroniz
-record: ''
+record: Medico Naturopata
 instagram: Hialuroniz
 foto: /uploads/80129.png
-testimonio: Soy creador de productos naturales comprometidos a sanar de verdad.
+testimonio: Investigador, científico, inventor y creador de productos naturales comprometidos a sanar de verdad.
 beneficios: []
 redes: []
 relacion: ninguna
