@@ -18,7 +18,7 @@ redes:
     url: https://www.facebook.com/BoxeadorDespiertoVIP/
   - plataforma: YouTube
     url: https://www.youtube.com/@boxeadordespierto
-relacion: patrocinio
+relacion: ninguna
 orden: 5
 publicado: true
 ---
