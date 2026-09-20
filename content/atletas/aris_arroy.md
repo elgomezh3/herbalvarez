@@ -5,7 +5,7 @@ disciplina: Boxeo
 club: Club Alvarez Box
 record: Boxeador Amateur
 instagram: aris_arroy
-foto: /uploads/Gemini_Generated_Image_lww0kzlww0kzlww0 (1).png
+foto: /uploads/80178.png
 testimonio: ''
 beneficios: []
 redes: []
