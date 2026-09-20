@@ -5,7 +5,7 @@ disciplina: Medico Neuropata
 club: Egresado de la Universidad de Camaguey
 record: ''
 instagram: Herbalvarez.mx
-foto: /uploads/80094.png
+foto: /uploads/80170.png
 testimonio: ''
 beneficios: []
 redes: []
