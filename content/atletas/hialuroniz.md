@@ -1,7 +1,7 @@
 ---
 seccion: equipo
-nombre: Dr. Roberto Rostro
-disciplina: ''
+nombre: Medico Roberto Rostro
+disciplina: Medico naturopara, investigador, científico, inventor
 club: ''
 record: ''
 instagram: Hialuroniz
