@@ -1,24 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import type {
-  Atleta,
-  RelacionKey,
-  SeccionAtleta,
-} from "@/lib/atletas-shared";
+import type { Atleta, RelacionKey } from "@/lib/atletas-shared";
 
-export type {
-  Atleta,
-  RedSocial,
-  RelacionKey,
-  SeccionAtleta,
-} from "@/lib/atletas-shared";
+export type { Atleta, RedSocial, RelacionKey } from "@/lib/atletas-shared";
 export { RELACION_LABEL, redesDeAtleta } from "@/lib/atletas-shared";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "atletas");
 
-const RELACIONES: RelacionKey[] = ["ninguna", "producto", "patrocinio", "equipo"];
-const SECCIONES: SeccionAtleta[] = ["atletas", "equipo"];
+const RELACIONES: RelacionKey[] = ["ninguna", "producto", "patrocinio"];
 
 function str(value: unknown): string {
   return typeof value === "string" ? value.trim() : value == null ? "" : String(value).trim();
@@ -66,11 +56,7 @@ function parseRedes(value: unknown): Atleta["redes"] {
     .filter((r) => /^https?:\/\//i.test(r.url));
 }
 
-/**
- * Lee content/atletas/*.md en tiempo de build. Devuelve solo los publicados,
- * ordenados por el campo "orden" (menor primero) y luego por slug.
- */
-export function getAtletas(seccion: SeccionAtleta = "atletas"): Atleta[] {
+function leerAtletas(): Atleta[] {
   let files: string[];
   try {
     files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith(".md"));
@@ -78,17 +64,14 @@ export function getAtletas(seccion: SeccionAtleta = "atletas"): Atleta[] {
     return [];
   }
 
-  const atletas: Atleta[] = files.map((file) => {
+  return files.map((file) => {
     const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
     const { data } = matter(raw);
     const rawOrden = Number(data.orden);
     const rawRelacion = str(data.relacion) as RelacionKey;
 
-    const rawSeccion = str(data.seccion) as SeccionAtleta;
-
     return {
       slug: file.replace(/\.md$/, ""),
-      seccion: SECCIONES.includes(rawSeccion) ? rawSeccion : "atletas",
       nombre: str(data.nombre),
       disciplina: str(data.disciplina),
       club: str(data.club),
@@ -100,11 +83,26 @@ export function getAtletas(seccion: SeccionAtleta = "atletas"): Atleta[] {
       redes: parseRedes(data.redes),
       orden: Number.isFinite(rawOrden) ? rawOrden : 999,
       publicado: toBool(data.publicado),
+      destacado: toBool(data.destacado),
       relacion: RELACIONES.includes(rawRelacion) ? rawRelacion : "ninguna",
     };
   });
+}
 
-  return atletas
-    .filter((a) => a.publicado && a.seccion === seccion)
+/**
+ * Lee content/atletas/*.md en tiempo de build. Devuelve solo los publicados,
+ * ordenados por el campo "orden" (menor primero) y luego por slug.
+ * `soloDestacados` + `limite` son para el resumen corto de la home.
+ */
+export function getAtletas(
+  opts: { soloDestacados?: boolean; limite?: number } = {},
+): Atleta[] {
+  let atletas = leerAtletas()
+    .filter((a) => a.publicado)
     .sort((a, b) => a.orden - b.orden || a.slug.localeCompare(b.slug));
+
+  if (opts.soloDestacados) atletas = atletas.filter((a) => a.destacado);
+  if (opts.limite) atletas = atletas.slice(0, opts.limite);
+
+  return atletas;
 }

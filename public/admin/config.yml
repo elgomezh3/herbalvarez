@@ -239,16 +239,16 @@ collections:
       - { name: publicado, label: Publicado, widget: boolean, default: true, required: false }
 
   # ─────────────────────────────────────────────────────────────
-  #  ATLETAS
+  #  ATLETAS (comunidad que usa la marca — folder propio)
   # ─────────────────────────────────────────────────────────────
   - name: atletas
     label: Atletas
     label_singular: Atleta
     description: >-
-      Comunidad de peleadores que usa Herbalvarez. Personas reales con cuentas
-      públicas: no inventes testimonios.
+      Comunidad de peleadores que usa Herbalvarez (embajadores/deportistas).
+      Personas reales con cuentas públicas: no inventes testimonios. Para la
+      gente que TRABAJA en la marca, usa la colección "Equipo Herbalvarez".
     folder: content/atletas
-    filter: { field: seccion, value: atletas }
     create: true
     delete: true
     format: yaml-frontmatter
@@ -257,17 +257,7 @@ collections:
     identifier_field: nombre
     summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
     sortable_fields: ['orden', 'nombre', 'instagram']
-    fields: &fichas_fields
-      - name: seccion
-        label: '¿Dónde aparece?'
-        widget: select
-        default: atletas
-        required: true
-        options:
-          - { label: 'Atletas (comunidad que la usa)', value: atletas }
-          - { label: 'Equipo Herbalvarez (parte de la marca)', value: equipo }
-        hint: 'Cámbialo para mover a la persona entre las secciones Atletas y Equipo.'
-
+    fields:
       - name: nombre
         label: Nombre completo
         widget: string
@@ -277,7 +267,7 @@ collections:
           el usuario de Instagram como título.
 
       - name: disciplina
-        label: Disciplina
+        label: Deporte / disciplina
         widget: string
         required: false
         hint: 'Ej.: Boxeo, MMA, Muay Thai, Kickboxing.'
@@ -289,7 +279,7 @@ collections:
         hint: 'Ej.: Peso wélter · Amateur élite · Club Álvarez Box.'
 
       - name: record
-        label: Récord como atleta
+        label: 'Récord / logros'
         widget: string
         required: false
         hint: >-
@@ -313,7 +303,7 @@ collections:
           un recuadro neutro con su inicial.
 
       - name: testimonio
-        label: Testimonio (texto corto)
+        label: 'Bio corta / testimonio'
         widget: text
         required: false
         hint: >-
@@ -321,14 +311,14 @@ collections:
           vacío, la tarjeta no muestra ninguna frase. Nunca inventes una.
 
       - name: beneficios
-        label: En qué le han ayudado los productos
+        label: 'Logros / en qué le han ayudado los productos'
         widget: list
         required: false
         allow_add: true
         hint: >-
-          Frases muy cortas, tipo etiqueta, una por renglón. Ej.: "Menos dolor
-          de manos", "Recupera más rápido", "Duerme mejor". Aparecen como
-          etiquetas en la ficha.
+          Frases muy cortas, tipo etiqueta, una por renglón. Ej.: "Campeón
+          nacional 2024", "Recupera más rápido", "Duerme mejor". Aparecen
+          como etiquetas en la ficha.
 
       - name: redes
         label: Redes sociales
@@ -359,10 +349,18 @@ collections:
           - { label: 'Sin relación comercial', value: ninguna }
           - { label: 'Recibe producto de Herbalvarez', value: producto }
           - { label: 'Patrocinado por Herbalvarez', value: patrocinio }
-          - { label: 'Atleta del equipo Herbalvarez', value: equipo }
         hint: >-
           Para transparencia con quien lee: declara si la persona recibe
           producto gratis o algún tipo de patrocinio.
+
+      - name: destacado
+        label: Destacado
+        widget: boolean
+        default: false
+        required: false
+        hint: >-
+          Actívalo para que salga en el resumen corto de la portada (home),
+          con enlace a "Ver todos los atletas". Recomendado: 2-3 fichas.
 
       - name: orden
         label: Orden
@@ -375,29 +373,126 @@ collections:
         hint: 'Número menor = aparece primero en el sitio.'
 
       - name: publicado
-        label: Publicado
+        label: 'Visible en el sitio'
         widget: boolean
         default: false
         required: false
         hint: 'Actívalo para que la tarjeta aparezca en el sitio. Apágalo para ocultarla sin borrarla.'
 
   # ─────────────────────────────────────────────────────────────
-  #  EQUIPO (misma carpeta que Atletas, filtrada por "seccion")
+  #  EQUIPO HERBALVAREZ (gente que trabaja en la marca — folder propio)
   # ─────────────────────────────────────────────────────────────
   - name: equipo
     label: Equipo Herbalvarez
     label_singular: Integrante
     description: >-
-      Gente que es parte de la marca (fundadores, peleadores del equipo).
-      Aparecen en la sección "Equipo". Mismos campos que Atletas.
-    folder: content/atletas
-    filter: { field: seccion, value: equipo }
+      Personas que TRABAJAN en Herbalvarez (dirección, marketing, producción,
+      salud…). Para embajadores/deportistas que usan la marca, ve a "Atletas".
+    folder: content/equipo
     create: true
     delete: true
     format: yaml-frontmatter
     extension: md
-    slug: '{{fields.instagram}}'
     identifier_field: nombre
-    summary: '#{{fields.orden}} · @{{fields.instagram}} {{fields.nombre}}'
-    sortable_fields: ['orden', 'nombre', 'instagram']
-    fields: *fichas_fields
+    summary: '#{{fields.orden}} · {{fields.nombre}} — {{fields.puesto}}'
+    sortable_fields: ['orden', 'nombre', 'categoria']
+    fields:
+      - { name: nombre, label: Nombre completo, widget: string, required: true }
+      - { name: puesto, label: Puesto, widget: string, required: true, hint: 'Ej.: Redes sociales, marketing y branding.' }
+
+      - name: foto
+        label: Foto
+        widget: image
+        required: false
+        hint: 'Foto vertical. Si la dejas vacía, la tarjeta muestra un recuadro neutro con su inicial.'
+      - { name: foto_alt, label: 'Foto — texto alternativo', widget: string, required: false, hint: 'Describe la foto para lectores de pantalla. Si lo dejas vacío, se usa el nombre.' }
+
+      - name: bio_corta
+        label: 'Bio corta (para la tarjeta)'
+        widget: string
+        required: false
+        pattern: ['^.{0,150}$', 'Máximo 150 caracteres.']
+        hint: 'Máximo 150 caracteres. Es lo que se ve en la tarjeta resumida.'
+      - { name: bio_larga, label: 'Bio larga (para el perfil completo)', widget: text, required: false, hint: 'Se muestra en la página de perfil de la persona (/equipo/su-slug).' }
+      - { name: cita, label: 'Frase o cita personal', widget: string, required: false }
+
+      - name: especialidades
+        label: 'Especialidades / etiquetas'
+        widget: list
+        required: false
+        allow_add: true
+        hint: 'Una por renglón. Ej.: "Marketing digital", "Formulación", "Médico Naturópata".'
+
+      - name: redes
+        label: 'Redes sociales'
+        widget: list
+        required: false
+        label_singular: Red
+        allow_add: true
+        summary: '{{fields.plataforma}}'
+        fields:
+          - { name: plataforma, label: Plataforma, widget: select, options: ['Instagram', 'TikTok', 'YouTube', 'LinkedIn', 'Facebook', 'Otra'] }
+          - { name: url, label: 'Enlace completo', widget: string, pattern: ['^https?://', 'Empieza con https://'] }
+
+      - { name: email, label: Email, widget: string, required: false, pattern: ['^$|^[^@\s]+@[^@\s]+\.[^@\s]+$', 'Escribe un correo válido o déjalo vacío.'] }
+      - { name: whatsapp, label: 'WhatsApp (solo dígitos, con lada país)', widget: string, required: false, hint: 'Ej.: 5215512345678' }
+
+      - name: categoria
+        label: 'Categoría / grupo'
+        widget: select
+        default: otra
+        required: true
+        options:
+          - { label: 'Dirección', value: direccion }
+          - { label: 'Marketing', value: marketing }
+          - { label: 'Producción', value: produccion }
+          - { label: 'Salud', value: salud }
+          - { label: 'Atención al cliente', value: atencion }
+          - { label: 'Otra', value: otra }
+
+      - name: orden
+        label: Orden
+        widget: number
+        default: 99
+        value_type: int
+        min: 1
+        step: 1
+        required: true
+        hint: 'Número menor = aparece primero en el sitio.'
+
+      - name: visible
+        label: 'Visible en el sitio'
+        widget: boolean
+        default: false
+        required: false
+        hint: 'Apágalo para ocultar la ficha sin borrarla (independiente del Estado).'
+
+      - name: estado
+        label: Estado
+        widget: select
+        default: borrador
+        required: true
+        options:
+          - { label: Borrador, value: borrador }
+          - { label: Publicado, value: publicado }
+        hint: >-
+          Solo las fichas "Publicado" Y "Visible" salen en el sitio. Usa
+          "Borrador" para armar una ficha con calma antes de que se vea.
+
+      - name: destacado
+        label: Destacado
+        widget: boolean
+        default: false
+        required: false
+        hint: >-
+          Actívalo para que salga en el resumen corto de la portada (home),
+          con enlace a "Ver todo el equipo". Recomendado: 2-3 fichas.
+
+      - name: slug
+        label: 'Slug del perfil (URL)'
+        widget: string
+        required: false
+        pattern: ['^$|^[a-z0-9]+(-[a-z0-9]+)*$', 'Solo minúsculas, números y guiones. Ej.: alfonso-gomez']
+        hint: >-
+          Define la URL de su página propia: herbalvarez.com/equipo/ESTO. Si
+          lo dejas vacío, se genera solo a partir del nombre.

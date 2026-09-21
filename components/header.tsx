@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   AnimatePresence,
   motion,
@@ -14,15 +15,26 @@ const NAV = [
   { label: "Solución", href: "#problema" },
   { label: "Productos", href: "#productos" },
   { label: "Diferencia", href: "#diferencia" },
-  { label: "Atletas", href: "#atletas" },
-  { label: "Equipo", href: "#equipo" },
+  { label: "Atletas", href: "/atletas" },
+  { label: "Equipo", href: "/equipo" },
   { label: "Contacto", href: "#contacto" },
 ];
+
+/**
+ * El sitio ya no es una sola página: /atletas y /equipo son rutas propias.
+ * Las anclas (#problema, #productos...) solo existen en la home, así que
+ * fuera de "/" hay que anteponer "/" para volver ahí y hacer scroll.
+ */
+function resolverHref(href: string, pathname: string): string {
+  if (!href.startsWith("#")) return href;
+  return pathname === "/" ? href : `/${href}`;
+}
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
 
   useMotionValueEvent(scrollY, "change", (y) => {
     setScrolled(y > 24);
@@ -42,7 +54,7 @@ export function Header() {
       >
         <div className="mx-auto flex h-16 max-w-shell items-center justify-between px-5 md:h-20 md:px-8">
           <a
-            href="#top"
+            href={resolverHref("#top", pathname)}
             aria-label="Herbalvarez — Aceite de Hierbas — inicio"
             className="shrink-0"
           >
@@ -60,7 +72,7 @@ export function Header() {
             {NAV.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={resolverHref(item.href, pathname)}
                 className="group relative text-xs font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-ink"
               >
                 {item.label}
@@ -71,7 +83,7 @@ export function Header() {
 
           <div className="flex items-center gap-3">
             <a
-              href="#productos"
+              href={resolverHref("#productos", pathname)}
               className="hidden bg-gold px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-bg transition-colors hover:bg-gold-light sm:inline-block"
             >
               Comprar
@@ -116,7 +128,7 @@ export function Header() {
               {NAV.map((item, i) => (
                 <motion.a
                   key={item.href}
-                  href={item.href}
+                  href={resolverHref(item.href, pathname)}
                   onClick={() => setOpen(false)}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -127,7 +139,7 @@ export function Header() {
                 </motion.a>
               ))}
               <a
-                href="#productos"
+                href={resolverHref("#productos", pathname)}
                 onClick={() => setOpen(false)}
                 className="mt-8 bg-gold px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-bg"
               >

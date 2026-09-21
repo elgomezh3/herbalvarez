@@ -1,14 +1,13 @@
 // Tipos y helpers de atletas SIN dependencias de Node.
 // Seguro de importar desde componentes cliente.
 
-export type RelacionKey = "ninguna" | "producto" | "patrocinio" | "equipo";
+export type RelacionKey = "ninguna" | "producto" | "patrocinio";
 
 /** Texto que se muestra en la ficha cuando la relación no es "ninguna". */
 export const RELACION_LABEL: Record<RelacionKey, string> = {
   ninguna: "",
   producto: "Recibe producto de Herbalvarez",
   patrocinio: "Patrocinado por Herbalvarez",
-  equipo: "Atleta del equipo Herbalvarez",
 };
 
 export type RedSocial = {
@@ -16,13 +15,8 @@ export type RedSocial = {
   url: string;
 };
 
-/** En qué sección aparece la ficha. */
-export type SeccionAtleta = "atletas" | "equipo";
-
 export type Atleta = {
   slug: string;
-  /** "atletas" (comunidad) o "equipo" (parte de la marca). */
-  seccion: SeccionAtleta;
   nombre: string;
   disciplina: string;
   club: string;
@@ -39,6 +33,8 @@ export type Atleta = {
   redes: RedSocial[];
   orden: number;
   publicado: boolean;
+  /** Aparece en el resumen corto de la home (con "Ver todos"). */
+  destacado: boolean;
   relacion: RelacionKey;
 };
 

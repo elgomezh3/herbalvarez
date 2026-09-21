@@ -1,5 +1,4 @@
 ---
-seccion: atletas
 nombre: Abel Serrano
 disciplina: Boxeo
 club: Club Alvarez Box
@@ -12,6 +11,7 @@ beneficios:
   - recuperacion mas rapida
 redes: []
 relacion: ninguna
+destacado: false
 orden: 6
 publicado: true
 ---

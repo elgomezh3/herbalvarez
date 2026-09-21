@@ -1,5 +1,4 @@
 ---
-seccion: atletas
 nombre: Karla y Zara Lopez
 disciplina: Boxeo
 club: Boxeo Club Alvarez
@@ -10,6 +9,7 @@ testimonio: ''
 beneficios: []
 redes: []
 relacion: ninguna
+destacado: true
 orden: 3
 publicado: true
 ---

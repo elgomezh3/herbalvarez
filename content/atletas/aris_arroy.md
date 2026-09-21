@@ -1,5 +1,4 @@
 ---
-seccion: atletas
 nombre: Aris Arroy
 disciplina: Boxeo
 club: Club Alvarez Box
@@ -10,6 +9,7 @@ testimonio: ''
 beneficios: []
 redes: []
 relacion: ninguna
+destacado: false
 orden: 5
 publicado: true
 ---

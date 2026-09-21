@@ -1,36 +1,36 @@
 import Link from "next/link";
 import { MaskedHeading, Reveal } from "@/components/primitives";
 import { Carousel } from "@/components/carousel";
-import { AthleteCard } from "@/components/athlete-card";
+import { TeamCard } from "@/components/team-card";
 import { SectionBg } from "@/components/section-bg";
-import { getAtletas } from "@/lib/atletas";
+import { getEquipo } from "@/lib/equipo";
 import { getSeccion, txt, lineas } from "@/lib/secciones";
 
 const DEFAULTS = {
-  eyebrow: "Atletas",
-  titulo: ["En su esquina."],
+  eyebrow: "El equipo",
+  titulo: ["La gente detrás", "de la marca."],
   parrafo:
-    "Boxeadores y peleadores que usan Herbalvarez en su preparación. Cada ficha declara con transparencia si la persona recibe producto o patrocinio.",
+    "Herbalvarez no nace en un laboratorio ni en una oficina. Detrás está el equipo que arma, prueba y sostiene cada fórmula y cada campaña.",
 };
 
 /**
- * Sección de Atletas. `modo="home"` muestra solo los destacados (con
- * "Ver todos" hacia /atletas); `modo="pagina"` muestra la lista completa,
- * pensado para usarse dentro de /atletas.
+ * Sección de Equipo. `modo="home"` muestra solo los destacados (con
+ * "Ver todos" hacia /equipo); `modo="pagina"` muestra la lista completa,
+ * pensado para usarse dentro de /equipo.
  */
-export function AthleteSection({
+export function TeamSection({
   modo = "pagina",
   limite,
 }: {
   modo?: "home" | "pagina";
   limite?: number;
 }) {
-  const atletas = getAtletas(
+  const equipo = getEquipo(
     modo === "home" ? { soloDestacados: true, limite: limite ?? 3 } : {},
   );
-  if (atletas.length === 0) return null;
+  if (equipo.length === 0) return null;
 
-  const c = getSeccion("atletas");
+  const c = getSeccion("equipo");
   const eyebrow = txt(c.eyebrow, DEFAULTS.eyebrow);
   const titulo = lineas(c.titulo, DEFAULTS.titulo);
   const parrafo = txt(c.parrafo, DEFAULTS.parrafo);
@@ -45,7 +45,7 @@ export function AthleteSection({
 
   return (
     <section
-      id="atletas"
+      id="equipo"
       className={`relative overflow-hidden ${espaciado}`}
       style={
         !fondoImg && !fondoTransparente
@@ -76,8 +76,8 @@ export function AthleteSection({
 
         <div className="mt-12">
           <Carousel label={eyebrow}>
-            {atletas.map((a, i) => (
-              <AthleteCard key={a.slug} atleta={a} index={i} />
+            {equipo.map((m, i) => (
+              <TeamCard key={m.slug} miembro={m} index={i} />
             ))}
           </Carousel>
         </div>
@@ -85,10 +85,10 @@ export function AthleteSection({
         {modo === "home" && (
           <Reveal delay={0.15}>
             <Link
-              href="/atletas"
+              href="/equipo"
               className="group mt-12 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-gold"
             >
-              Ver todos los atletas
+              Ver todo el equipo
               <span
                 className="transition-transform group-hover:translate-x-1"
                 aria-hidden
