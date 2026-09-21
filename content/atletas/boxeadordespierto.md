@@ -1,16 +1,15 @@
 ---
 seccion: equipo
 nombre: Alfonso Gomez
-disciplina: ''
-club: ''
+disciplina: disciplina
+club: categoria o club
 record: Marketing y Redes Sociales
 instagram: boxeadordespierto
 foto: /uploads/80197.png
-testimonio: Como campeon de boxeo y atleta inclinado a la espiritualidad y los tratamientos holisticos, Boxeo Alvarez es mi sanador en la esquina.  Cualquier incomodiad fisica y mental, con los productos de Herbalavarez encuentro alivio y sanacion.
+testimonio: 'Boxeador profesional y creador de Boxeador Despierto®. Llevo el mundo del deporte en la sangre y ahora pongo esa disciplina al servicio de Herbalvarez: redes, marketing y branding para atletas de verdad.'
 beneficios:
-  - Sanar heridas
-  - Dormir mas profundo
-  - Recuperacion mas rapida
+  - A.A. Diseño Grafico
+  - B.A. Marketing
 redes:
   - plataforma: TikTok
     url: http://tiktok.com/@boxeadordespierto
