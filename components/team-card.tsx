@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cardTilt, fadeUp } from "@/lib/motion";
+import { useCardTilt } from "@/lib/use-card-tilt";
 import { CATEGORIA_LABEL, type MiembroEquipo } from "@/lib/equipo-shared";
 
 function initial(m: MiembroEquipo): string {
@@ -18,9 +19,12 @@ export function TeamCard({
   index: number;
 }) {
   const recorte = /\.png$/i.test(miembro.foto);
+  const tilt = useCardTilt<HTMLElement>();
 
   return (
     <motion.article
+      ref={tilt.ref}
+      style={tilt.style}
       variants={fadeUp}
       {...cardTilt}
       className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 [transform-style:preserve-3d] sm:w-[340px] md:w-[360px] md:p-8"

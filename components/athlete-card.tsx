@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cardTilt, fadeUp } from "@/lib/motion";
+import { useCardTilt } from "@/lib/use-card-tilt";
 import {
   RELACION_LABEL,
   redesDeAtleta,
@@ -26,9 +27,12 @@ export function AthleteCard({
   const meta = [atleta.disciplina, atleta.club].filter(Boolean).join(" · ");
   const relacion = RELACION_LABEL[atleta.relacion];
   const redes = redesDeAtleta(atleta);
+  const tilt = useCardTilt<HTMLElement>();
 
   return (
     <motion.article
+      ref={tilt.ref}
+      style={tilt.style}
       variants={fadeUp}
       {...cardTilt}
       className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 [transform-style:preserve-3d] sm:w-[340px] md:w-[360px] md:p-8"

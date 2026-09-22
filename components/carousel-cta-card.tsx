@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cardTilt, fadeUp } from "@/lib/motion";
+import { useCardTilt } from "@/lib/use-card-tilt";
 
 /**
  * Última tarjeta de un carrusel de resumen (home): en vez de una ficha más,
@@ -10,8 +11,12 @@ import { cardTilt, fadeUp } from "@/lib/motion";
  * AthleteCard/TeamCard para no romper el ritmo del scroll-snap.
  */
 export function CarouselCtaCard({ href, label }: { href: string; label: string }) {
+  const tilt = useCardTilt<HTMLElement>();
+
   return (
     <motion.article
+      ref={tilt.ref}
+      style={tilt.style}
       variants={fadeUp}
       {...cardTilt}
       className="w-[80vw] shrink-0 snap-start [transform-style:preserve-3d] sm:w-[340px] md:w-[360px]"

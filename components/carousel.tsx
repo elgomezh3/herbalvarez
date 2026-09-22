@@ -1,8 +1,24 @@
 "use client";
 
-import { Children, useCallback, useEffect, useRef, useState } from "react";
+import {
+  Children,
+  createContext,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type RefObject,
+} from "react";
 import { motion } from "framer-motion";
 import { stagger, viewportOnce } from "@/lib/motion";
+
+/**
+ * Contenedor con scroll horizontal del carrusel más cercano, para que las
+ * tarjetas (AthleteCard, ProductCard, TeamCard...) puedan medir su propia
+ * posición dentro de él y armar el tilt 3D al deslizar. Ver useCardTilt.
+ */
+export const CarouselContainerContext =
+  createContext<RefObject<HTMLDivElement | null> | null>(null);
 
 /**
  * Carrusel horizontal con scroll-snap. En móvil se desliza; hay flechas y
@@ -92,9 +108,11 @@ export function Carousel({
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
+        className="relative flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
       >
-        {children}
+        <CarouselContainerContext.Provider value={ref}>
+          {children}
+        </CarouselContainerContext.Provider>
       </motion.div>
 
       {overflow && count > 1 && (
