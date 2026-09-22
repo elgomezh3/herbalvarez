@@ -108,7 +108,14 @@ export function Carousel({
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="relative flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
+        // `touch-action: pan-x` es lo que de verdad libera el swipe vertical:
+        // le dice al navegador que este elemento solo gestiona el gesto
+        // horizontal, así un dedo moviéndose hacia arriba/abajo sobre el
+        // carrusel pasa de inmediato al scroll normal de la página en vez de
+        // quedar "atrapado" hasta salir del cuadro. `data-lenis-prevent` por
+        // sí solo no bastaba porque el contenedor seguía pareciendo también
+        // un scroller vertical (overflow-x sin overflow-y forzaba auto ahí).
+        className="relative flex snap-x snap-mandatory touch-pan-x gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
       >
         <CarouselContainerContext.Provider value={ref}>
           {children}
