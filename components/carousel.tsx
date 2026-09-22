@@ -103,19 +103,19 @@ export function Carousel({
         ref={ref}
         role="region"
         aria-label={label}
-        data-lenis-prevent
+        // OJO: es `-horizontal`, no el genérico `data-lenis-prevent`. El
+        // genérico le dice a Lenis "ignora CUALQUIER gesto que empiece
+        // aquí" (vertical incluido), y sin Lenis de por medio un swipe
+        // vertical no tenía quién lo atendiera. Esta variante solo le pide
+        // a Lenis que se aparte de los gestos horizontales (para que el
+        // navegador deslice el carrusel de forma nativa); los verticales
+        // los sigue tratando como en cualquier otra parte de la página.
+        data-lenis-prevent-horizontal
         variants={stagger(0.1)}
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        // `touch-action: pan-x` es lo que de verdad libera el swipe vertical:
-        // le dice al navegador que este elemento solo gestiona el gesto
-        // horizontal, así un dedo moviéndose hacia arriba/abajo sobre el
-        // carrusel pasa de inmediato al scroll normal de la página en vez de
-        // quedar "atrapado" hasta salir del cuadro. `data-lenis-prevent` por
-        // sí solo no bastaba porque el contenedor seguía pareciendo también
-        // un scroller vertical (overflow-x sin overflow-y forzaba auto ahí).
-        className="relative flex snap-x snap-mandatory touch-pan-x gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
+        className="relative flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
       >
         <CarouselContainerContext.Provider value={ref}>
           {children}
