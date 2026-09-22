@@ -1,5 +1,5 @@
 ---
-nombre: Medico Roberto Rostro
+nombre: Medico Roberto Bustamante
 puesto: CEO Herbalvarez y Hialuroniz
 foto: /uploads/80129.png
 foto_alt: Medico Roberto Rostro — equipo Herbalvarez
@@ -15,5 +15,6 @@ categoria: direccion
 orden: 1
 visible: true
 estado: publicado
+destacado: true
 slug: roberto-rostro
 ---
