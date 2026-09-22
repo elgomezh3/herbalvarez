@@ -1,7 +1,7 @@
 ---
 nombre: Alfonso Gómez, "Boxeador Despierto"
 puesto: Redes sociales, marketing y branding
-foto: /uploads/80197.png
+foto: /uploads/60957.png
 foto_alt: Alfonso Gómez, "Boxeador Despierto" — equipo Herbalvarez
 bio_corta: Boxeador profesional. Estratega de redes, marketing y branding de Herbalvarez.
 bio_larga: 'Boxeador profesional y creador de Boxeador Despierto®. Llevo el mundo del deporte en la sangre y ahora pongo esa disciplina al servicio de Herbalvarez: redes, marketing y branding para atletas de verdad.'
