@@ -68,9 +68,13 @@ export function HeroView({
           className="object-cover"
           style={{ objectPosition: fondoPosicion }}
         />
-        <div className="absolute inset-0 bg-bg/45 md:bg-bg/35" />
+        <div className="absolute inset-0 bg-bg/60 md:bg-bg/35" />
         <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/85 to-bg/45 md:via-bg/70 md:to-bg/10" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
+        {/* En móvil el texto ocupa todo el ancho y puede caer sobre zonas
+            claras de la foto (ej. la etiqueta del bote); este degradado se
+            extiende más alto y refuerza el centro solo en móvil para que el
+            párrafo siga siendo legible sin importar qué haya detrás. */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-bg via-bg/50 to-transparent md:h-1/3 md:via-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(22,51,34,0.55),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_30%,rgba(229,198,126,0.20),transparent_55%)] mix-blend-screen" />
       </motion.div>
