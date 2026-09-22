@@ -6,13 +6,17 @@ const TITULO = ["Tu cuerpo", "es el arma.", "Nosotros lo", "mantenemos listo."];
 const STATS: Stat[] = [
   { valor: "10", etiqueta: "años probados" },
   { valor: "100%", etiqueta: "natural" },
-  { valor: "0", etiqueta: "químicos" },
+  { valor: "0", etiqueta: "químicos", desde: "100" },
 ];
 
 function normStats(value: unknown): Stat[] {
   const arr = lista<Record<string, unknown>>(value, []);
   const out = arr
-    .map((s) => ({ valor: txt(s.valor, ""), etiqueta: txt(s.etiqueta, "") }))
+    .map((s) => ({
+      valor: txt(s.valor, ""),
+      etiqueta: txt(s.etiqueta, ""),
+      desde: txt(s.desde, "") || undefined,
+    }))
     .filter((s) => s.valor || s.etiqueta);
   return out.length > 0 ? out : STATS;
 }

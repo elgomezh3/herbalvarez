@@ -56,6 +56,14 @@ collections:
             fields:
               - { name: valor, label: Número, widget: string }
               - { name: etiqueta, label: Etiqueta, widget: string }
+              - name: desde
+                label: 'Animar desde (opcional)'
+                widget: string
+                required: false
+                hint: >-
+                  Si lo dejas vacío, el número cuenta desde 0. Para un stat
+                  como "0 químicos" que se ve mejor bajando, pon aquí "100" y
+                  contará de 100 a 0.
 
       - name: problema
         label: El problema

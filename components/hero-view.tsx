@@ -4,8 +4,14 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { EASE, lineReveal, stagger } from "@/lib/motion";
+import { StatValue } from "@/components/stat-value";
 
-export type Stat = { valor: string; etiqueta: string };
+export type Stat = {
+  valor: string;
+  etiqueta: string;
+  /** Si se define, el contador anima desde este valor hacia `valor` (ej. "100" a "0"). */
+  desde?: string;
+};
 export type Cta = { texto: string; enlace: string };
 
 export function HeroView({
@@ -158,7 +164,7 @@ export function HeroView({
             {stats.map((s, i) => (
               <div key={`${s.etiqueta}-${i}`}>
                 <dt className="display-heading text-3xl text-gold md:text-4xl">
-                  {s.valor}
+                  <StatValue valor={s.valor} desde={s.desde} />
                 </dt>
                 <dd className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted">
                   {s.etiqueta}

@@ -19,5 +19,5 @@ fondo_posicion: '55% 38%'
 stats:
   - { valor: '10', etiqueta: 'años probados' }
   - { valor: '100%', etiqueta: 'natural' }
-  - { valor: '0', etiqueta: 'químicos' }
+  - { valor: '0', etiqueta: 'químicos', desde: '100' }
 ---
