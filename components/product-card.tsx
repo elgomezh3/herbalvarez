@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { cardTilt, fadeUp } from "@/lib/motion";
+import { cardTilt, fadeUp, maskReveal } from "@/lib/motion";
 import { useCardTilt } from "@/lib/use-card-tilt";
 import { ACENTO_TEXTO, type Producto } from "@/lib/productos-shared";
 
@@ -27,7 +27,7 @@ export function ProductCard({
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      <div className="relative mx-auto my-5 h-52 w-full md:h-60">
+      <motion.div variants={maskReveal} className="relative mx-auto my-5 h-52 w-full md:h-60">
         {producto.imagen ? (
           <Image
             src={producto.imagen}
@@ -43,7 +43,7 @@ export function ProductCard({
             </span>
           </div>
         )}
-      </div>
+      </motion.div>
 
       {(producto.categoria || producto.formato) && (
         <p className="flex flex-wrap gap-x-2 text-[10px] font-semibold uppercase tracking-[0.16em]">

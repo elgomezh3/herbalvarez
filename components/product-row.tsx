@@ -5,11 +5,13 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { EASE, viewportOnce } from "@/lib/motion";
 import { useSafeReducedMotion } from "@/lib/use-safe-reduced-motion";
+import { useMaskReveal } from "@/lib/use-mask-reveal";
 import { ACENTO_TEXTO, haloClass, type Producto } from "@/lib/productos-shared";
 
 export function ProductRow({ producto, index }: { producto: Producto; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useSafeReducedMotion();
+  const mask = useMaskReveal<HTMLDivElement>();
   const flip = index % 2 === 1;
 
   const { scrollYProgress } = useScroll({
@@ -84,39 +86,43 @@ export function ProductRow({ producto, index }: { producto: Producto; index: num
           </motion.div>
 
           <motion.div
-            style={
-              reduce ? undefined : { rotateY, rotateZ, y: imgY, transformPerspective: 1000 }
-            }
-            initial={{ opacity: 0, scale: 0.88 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.9, ease: EASE }}
+            ref={mask.ref}
+            initial={mask.initial}
+            animate={mask.animate}
+            transition={mask.transition}
             className="relative z-10 aspect-square [transform-style:preserve-3d]"
           >
             <motion.div
-              animate={reduce ? undefined : { y: [0, -14, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative h-full w-full"
+              style={
+                reduce ? undefined : { rotateY, rotateZ, y: imgY, transformPerspective: 1000 }
+              }
+              className="relative h-full w-full [transform-style:preserve-3d]"
             >
-              {producto.imagen ? (
-                <Image
-                  src={producto.imagen}
-                  alt={`Herbalvarez ${producto.nombre}`}
-                  fill
-                  sizes="(max-width: 768px) 80vw, 340px"
-                  className="object-contain drop-shadow-[0_35px_45px_rgba(0,0,0,0.55)]"
-                  priority={index < 2}
-                />
-              ) : (
-                <div className="grain relative flex h-full w-full flex-col items-center justify-center gap-3">
-                  <span className="display-heading relative z-[2] text-6xl text-ink/15">
-                    {producto.nombre.charAt(0) || "?"}
-                  </span>
-                  <span className="relative z-[2] text-[10px] uppercase tracking-[0.24em] text-muted/50">
-                    Foto próximamente
-                  </span>
-                </div>
-              )}
+              <motion.div
+                animate={reduce ? undefined : { y: [0, -14, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative h-full w-full"
+              >
+                {producto.imagen ? (
+                  <Image
+                    src={producto.imagen}
+                    alt={`Herbalvarez ${producto.nombre}`}
+                    fill
+                    sizes="(max-width: 768px) 80vw, 340px"
+                    className="object-contain drop-shadow-[0_35px_45px_rgba(0,0,0,0.55)]"
+                    priority={index < 2}
+                  />
+                ) : (
+                  <div className="grain relative flex h-full w-full flex-col items-center justify-center gap-3">
+                    <span className="display-heading relative z-[2] text-6xl text-ink/15">
+                      {producto.nombre.charAt(0) || "?"}
+                    </span>
+                    <span className="relative z-[2] text-[10px] uppercase tracking-[0.24em] text-muted/50">
+                      Foto próximamente
+                    </span>
+                  </div>
+                )}
+              </motion.div>
             </motion.div>
           </motion.div>
 

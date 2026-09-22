@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { cardTilt, fadeUp } from "@/lib/motion";
+import { cardTilt, fadeUp, maskReveal } from "@/lib/motion";
 import { useCardTilt } from "@/lib/use-card-tilt";
 import {
   RELACION_LABEL,
@@ -41,7 +41,8 @@ export function AthleteCard({
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      <div
+      <motion.div
+        variants={maskReveal}
         className={`relative my-5 aspect-[4/5] w-full ${
           recorte ? "" : "overflow-hidden border border-line bg-green-deep"
         }`}
@@ -68,7 +69,7 @@ export function AthleteCard({
             </span>
           </div>
         )}
-      </div>
+      </motion.div>
 
       <p className="flex flex-wrap gap-x-2 text-[10px] font-semibold uppercase tracking-[0.16em]">
         {atleta.instagram && <span className="text-gold">@{atleta.instagram}</span>}

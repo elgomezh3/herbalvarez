@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { EASE, viewportOnce } from "@/lib/motion";
 import { useSafeReducedMotion } from "@/lib/use-safe-reduced-motion";
+import { useMaskReveal } from "@/lib/use-mask-reveal";
 import { CATEGORIA_LABEL, type MiembroEquipo } from "@/lib/equipo-shared";
 
 function initial(m: MiembroEquipo): string {
@@ -15,6 +16,7 @@ function initial(m: MiembroEquipo): string {
 export function TeamRow({ miembro, index }: { miembro: MiembroEquipo; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useSafeReducedMotion();
+  const mask = useMaskReveal<HTMLDivElement>();
   const flip = index % 2 === 1;
   const recorte = /\.png$/i.test(miembro.foto);
 
@@ -72,47 +74,51 @@ export function TeamRow({ miembro, index }: { miembro: MiembroEquipo; index: num
           </motion.div>
 
           <motion.div
-            style={
-              reduce ? undefined : { rotateY, rotateZ, y: imgY, transformPerspective: 1200 }
-            }
-            initial={{ opacity: 0, scale: 0.88 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.9, ease: EASE }}
+            ref={mask.ref}
+            initial={mask.initial}
+            animate={mask.animate}
+            transition={mask.transition}
             className="relative z-10 [transform-style:preserve-3d]"
           >
             <motion.div
-              animate={reduce ? undefined : { y: [0, -12, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className={`relative aspect-[4/5] w-full ${
-                recorte
-                  ? ""
-                  : "overflow-hidden border border-line bg-green-deep shadow-[0_35px_45px_rgba(0,0,0,0.5)]"
-              }`}
+              style={
+                reduce ? undefined : { rotateY, rotateZ, y: imgY, transformPerspective: 1200 }
+              }
+              className="[transform-style:preserve-3d]"
             >
-              {miembro.foto ? (
-                <Image
-                  src={miembro.foto}
-                  alt={miembro.fotoAlt || miembro.nombre}
-                  fill
-                  sizes="(max-width: 768px) 80vw, 340px"
-                  className={
-                    recorte
-                      ? "object-contain object-bottom drop-shadow-[0_30px_45px_rgba(0,0,0,0.55)]"
-                      : "object-cover object-top"
-                  }
-                  priority={index < 2}
-                />
-              ) : (
-                <div className="grain relative flex h-full w-full flex-col items-center justify-center gap-3 border border-line bg-green-deep">
-                  <span className="display-heading relative z-[2] text-6xl text-ink/15">
-                    {initial(miembro)}
-                  </span>
-                  <span className="relative z-[2] text-[10px] uppercase tracking-[0.24em] text-muted/50">
-                    Sin foto
-                  </span>
-                </div>
-              )}
+              <motion.div
+                animate={reduce ? undefined : { y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className={`relative aspect-[4/5] w-full ${
+                  recorte
+                    ? ""
+                    : "overflow-hidden border border-line bg-green-deep shadow-[0_35px_45px_rgba(0,0,0,0.5)]"
+                }`}
+              >
+                {miembro.foto ? (
+                  <Image
+                    src={miembro.foto}
+                    alt={miembro.fotoAlt || miembro.nombre}
+                    fill
+                    sizes="(max-width: 768px) 80vw, 340px"
+                    className={
+                      recorte
+                        ? "object-contain object-bottom drop-shadow-[0_30px_45px_rgba(0,0,0,0.55)]"
+                        : "object-cover object-top"
+                    }
+                    priority={index < 2}
+                  />
+                ) : (
+                  <div className="grain relative flex h-full w-full flex-col items-center justify-center gap-3 border border-line bg-green-deep">
+                    <span className="display-heading relative z-[2] text-6xl text-ink/15">
+                      {initial(miembro)}
+                    </span>
+                    <span className="relative z-[2] text-[10px] uppercase tracking-[0.24em] text-muted/50">
+                      Sin foto
+                    </span>
+                  </div>
+                )}
+              </motion.div>
             </motion.div>
           </motion.div>
 

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { cardTilt, fadeUp } from "@/lib/motion";
+import { cardTilt, fadeUp, maskReveal } from "@/lib/motion";
 import { useCardTilt } from "@/lib/use-card-tilt";
 import { CATEGORIA_LABEL, type MiembroEquipo } from "@/lib/equipo-shared";
 
@@ -33,35 +33,37 @@ export function TeamCard({
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      <Link
-        href={`/equipo/${miembro.perfilSlug}`}
-        className={`relative my-5 block aspect-[4/5] w-full ${
+      <motion.div
+        variants={maskReveal}
+        className={`relative my-5 aspect-[4/5] w-full ${
           recorte ? "" : "overflow-hidden border border-line bg-green-deep"
         }`}
       >
-        {miembro.foto ? (
-          <Image
-            src={miembro.foto}
-            alt={miembro.fotoAlt || miembro.nombre}
-            fill
-            sizes="360px"
-            className={
-              recorte
-                ? "object-contain object-bottom drop-shadow-[0_22px_32px_rgba(0,0,0,0.55)]"
-                : "object-cover object-top"
-            }
-          />
-        ) : (
-          <div className="grain flex h-full w-full flex-col items-center justify-center gap-2 border border-line bg-green-deep">
-            <span className="display-heading relative z-[2] text-5xl text-ink/15">
-              {initial(miembro)}
-            </span>
-            <span className="relative z-[2] text-[9px] uppercase tracking-[0.22em] text-muted/50">
-              Sin foto
-            </span>
-          </div>
-        )}
-      </Link>
+        <Link href={`/equipo/${miembro.perfilSlug}`} className="absolute inset-0 block">
+          {miembro.foto ? (
+            <Image
+              src={miembro.foto}
+              alt={miembro.fotoAlt || miembro.nombre}
+              fill
+              sizes="360px"
+              className={
+                recorte
+                  ? "object-contain object-bottom drop-shadow-[0_22px_32px_rgba(0,0,0,0.55)]"
+                  : "object-cover object-top"
+              }
+            />
+          ) : (
+            <div className="grain flex h-full w-full flex-col items-center justify-center gap-2 border border-line bg-green-deep">
+              <span className="display-heading relative z-[2] text-5xl text-ink/15">
+                {initial(miembro)}
+              </span>
+              <span className="relative z-[2] text-[9px] uppercase tracking-[0.22em] text-muted/50">
+                Sin foto
+              </span>
+            </div>
+          )}
+        </Link>
+      </motion.div>
 
       <p className="flex flex-wrap gap-x-2 text-[10px] font-semibold uppercase tracking-[0.16em]">
         <span className="text-gold">{CATEGORIA_LABEL[miembro.categoria]}</span>

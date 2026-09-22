@@ -37,6 +37,21 @@ export const lineReveal: Variants = {
 export const viewportOnce = { once: true, amount: 0.35 } as const;
 
 /**
+ * Reveal de fotos "por máscara": la imagen no se desplaza ni se desvanece,
+ * aparece detrás de un clip-path que se abre de abajo hacia arriba (como una
+ * cortina que sube). Se usa como `variants` en tarjetas ya escalonadas por un
+ * padre, o directo en `initial`/`whileInView` para efectos independientes
+ * (ver MASK_HIDDEN/MASK_VISIBLE).
+ */
+export const MASK_HIDDEN = "inset(100% 0% 0% 0%)";
+export const MASK_VISIBLE = "inset(0% 0% 0% 0%)";
+
+export const maskReveal: Variants = {
+  hidden: { clipPath: MASK_HIDDEN },
+  show: { clipPath: MASK_VISIBLE, transition: { duration: 1, ease: EASE } },
+};
+
+/**
  * Realce de tarjetas al pasar el mouse o tocar: solo escala (se levanta un
  * poco). El tilt 3D en sí lo maneja `useCardTilt` (lib/use-card-tilt.ts),
  * ligado al scroll — mezclar rotación por hover Y por scroll en el mismo eje
