@@ -65,6 +65,39 @@ collections:
                   como "0 químicos" que se ve mejor bajando, pon aquí "100" y
                   contará de 100 a 0.
 
+      - name: quienes_somos_seccion
+        label: Quiénes somos
+        file: content/secciones/quienes-somos.md
+        format: yaml-frontmatter
+        fields:
+          - { name: eyebrow, label: 'Eyebrow (línea chica de arriba)', widget: string, required: false }
+          - { name: titulo, label: 'Título grande', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo_intro, label: 'Párrafo de introducción', widget: text, required: false }
+          - { name: parrafo_mision, label: 'Párrafo — misión', widget: text, required: false }
+          - { name: parrafo_formula, label: 'Párrafo — fórmula/ingredientes', widget: text, required: false }
+          - name: stats
+            label: 'Datos (números)'
+            widget: list
+            required: false
+            summary: '{{fields.valor}} — {{fields.etiqueta}}'
+            fields:
+              - { name: valor, label: Número, widget: string }
+              - { name: etiqueta, label: Etiqueta, widget: string }
+          - { name: eyebrow_mexicanos, label: 'Eyebrow — 100% mexicanos', widget: string, required: false }
+          - { name: titulo_mexicanos, label: 'Título — 100% mexicanos', widget: text, hint: 'Una línea por renglón.' }
+          - { name: parrafo_mexicanos, label: 'Párrafo — 100% mexicanos', widget: text, required: false }
+          - { name: eyebrow_ingredientes, label: 'Eyebrow — ingredientes', widget: string, required: false }
+          - { name: titulo_ingredientes, label: 'Título — ingredientes', widget: text, hint: 'Una línea por renglón.' }
+          - name: ingredientes
+            label: 'Lista de ingredientes'
+            widget: list
+            required: false
+            hint: 'Uno por renglón.'
+          - { name: cta_texto, label: 'Botón — texto', widget: string, required: false }
+          - { name: cta_enlace, label: 'Botón — enlace', widget: string, required: false, hint: 'Ej.: /productos' }
+          - *campo_fondo
+          - *campo_fondo_pos
+
       - name: problema
         label: El problema
         file: content/secciones/problema.md
