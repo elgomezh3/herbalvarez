@@ -25,7 +25,7 @@ export function Reveal({
   );
 }
 
-/** Contenedor que escalona a sus hijos <Reveal> / motion. */
+/** Contenedor que escalona a sus hijos <RevealItem> / motion con variants={fadeUp}. */
 export function RevealGroup({
   children,
   className,
@@ -43,6 +43,36 @@ export function RevealGroup({
     >
       {children}
     </motion.div>
+  );
+}
+
+const revealTags = {
+  div: motion.div,
+  p: motion.p,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  ul: motion.ul,
+} as const;
+
+/**
+ * Un paso dentro de un <RevealGroup>: no dispara su propia entrada (a
+ * diferencia de <Reveal>), hereda el "show"/"hidden" del grupo padre para
+ * que todos los pasos aparezcan en cascada en vez de todos a la vez.
+ */
+export function RevealItem({
+  as = "div",
+  children,
+  className,
+  ...props
+}: HTMLMotionProps<"div"> & { as?: keyof typeof revealTags }) {
+  const Component = revealTags[as];
+  return (
+    // @ts-expect-error -- las props varían por etiqueta (ul vs p vs h1), pero
+    // todas aceptan variants/className/children.
+    <Component variants={fadeUp} className={className} {...props}>
+      {children}
+    </Component>
   );
 }
 

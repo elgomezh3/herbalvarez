@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Reveal } from "@/components/primitives";
+import { Reveal, RevealGroup, RevealItem } from "@/components/primitives";
 import { getEquipo, getMiembroEquipo } from "@/lib/equipo";
 import { CATEGORIA_LABEL } from "@/lib/equipo-shared";
 
@@ -60,8 +60,11 @@ export default async function PerfilEquipoPage({
           </Link>
         </Reveal>
 
-        <div className="mt-10 grid gap-10 md:grid-cols-12 md:gap-14">
-          <Reveal className="md:col-span-5">
+        <RevealGroup
+          stagger={0.12}
+          className="mt-10 grid gap-10 md:grid-cols-12 md:gap-14"
+        >
+          <RevealItem className="md:col-span-5">
             <div
               className={`relative aspect-[4/5] w-full max-w-sm ${
                 recorte ? "" : "overflow-hidden border border-line bg-green-deep"
@@ -91,38 +94,50 @@ export default async function PerfilEquipoPage({
                 </div>
               )}
             </div>
-          </Reveal>
+          </RevealItem>
 
-          <Reveal delay={0.1} className="md:col-span-7">
-            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+          <div className="md:col-span-7">
+            <RevealItem
+              as="p"
+              className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-gold"
+            >
               <span className="h-px w-10 bg-gold" />
               {CATEGORIA_LABEL[miembro.categoria]}
-            </p>
+            </RevealItem>
 
-            <h1 className="display-heading mt-5 text-[12vw] leading-[0.92] text-ink sm:text-6xl lg:text-7xl">
+            <RevealItem
+              as="h1"
+              className="display-heading mt-5 text-[12vw] leading-[0.92] text-ink sm:text-6xl lg:text-7xl"
+            >
               {miembro.nombre}
-            </h1>
+            </RevealItem>
 
             {miembro.puesto && (
-              <p className="mt-4 text-xl font-semibold text-ink">
+              <RevealItem as="p" className="mt-4 text-xl font-semibold text-ink">
                 {miembro.puesto}
-              </p>
+              </RevealItem>
             )}
 
             {(miembro.bioLarga || miembro.bioCorta) && (
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
+              <RevealItem
+                as="p"
+                className="mt-6 max-w-xl text-base leading-relaxed text-muted"
+              >
                 {miembro.bioLarga || miembro.bioCorta}
-              </p>
+              </RevealItem>
             )}
 
             {miembro.cita && (
-              <p className="mt-6 max-w-xl border-l-2 border-gold pl-5 text-lg italic leading-relaxed text-ink">
+              <RevealItem
+                as="p"
+                className="mt-6 max-w-xl border-l-2 border-gold pl-5 text-lg italic leading-relaxed text-ink"
+              >
                 &ldquo;{miembro.cita}&rdquo;
-              </p>
+              </RevealItem>
             )}
 
             {miembro.especialidades.length > 0 && (
-              <ul className="mt-7 flex flex-wrap gap-2">
+              <RevealItem as="ul" className="mt-7 flex flex-wrap gap-2">
                 {miembro.especialidades.map((e) => (
                   <li
                     key={e}
@@ -131,11 +146,14 @@ export default async function PerfilEquipoPage({
                     {e}
                   </li>
                 ))}
-              </ul>
+              </RevealItem>
             )}
 
             {contactos.length > 0 && (
-              <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-7">
+              <RevealItem
+                as="div"
+                className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-7"
+              >
                 {contactos.map((c) => (
                   <a
                     key={c.label + c.href}
@@ -150,10 +168,10 @@ export default async function PerfilEquipoPage({
                     </span>
                   </a>
                 ))}
-              </div>
+              </RevealItem>
             )}
-          </Reveal>
-        </div>
+          </div>
+        </RevealGroup>
       </div>
     </section>
   );
