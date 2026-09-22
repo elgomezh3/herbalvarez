@@ -6,12 +6,12 @@ titulo: |-
 parrafo: >-
   Pedidos, mayoreo y patrocinio de atletas. Enviamos a todo México.
 correo: 'hola@herbalvarez.mx'
-whatsapp_numero: '520000000000'
-whatsapp_texto: '+52 000 000 0000'
+whatsapp_numero: '5215580978657'
+whatsapp_texto: '+52 55 8097 8657'
 redes:
-  - { plataforma: 'Instagram', url: 'https://instagram.com/herbalvarez' }
-  - { plataforma: 'Facebook', url: 'https://facebook.com/herbalvarez' }
-  - { plataforma: 'TikTok', url: 'https://tiktok.com/@herbalvarez' }
+  - { plataforma: 'Instagram', url: 'https://instagram.com/herbalvarez.mx' }
+  - { plataforma: 'Facebook', url: 'https://facebook.com/herbalvarez.mx' }
+  - { plataforma: 'TikTok', url: 'https://tiktok.com/@herbalvarezmx' }
 marca_hermana_texto: 'Hialuroniz'
 marca_hermana_url: 'https://hialuroniz.com'
 creditos: >-
