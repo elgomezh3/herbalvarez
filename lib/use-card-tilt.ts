@@ -37,10 +37,15 @@ export function useCardTilt<T extends HTMLElement>() {
     layoutEffect: false,
   });
 
+  // Solo se inclina al entrar y al salir del viewport; se mantiene plana
+  // mientras está a la vista (progress 0.2-0.8). Antes se inclinaba de forma
+  // continua durante todo el tiempo que la tarjeta estaba en pantalla, lo
+  // que con `transformPerspective` se sentía como que el contenido "se movía
+  // dentro de su marco" mientras se leía, en vez de solo al entrar/salir.
   const rotateX = useTransform(
     scrollYProgress,
-    [0, 0.5, 1],
-    reduce ? [0, 0, 0] : [9, 0, -9],
+    [0, 0.2, 0.8, 1],
+    reduce ? [0, 0, 0, 0] : [6, 0, 0, -6],
   );
   const rotateY = useTransform(
     scrollXProgress,
