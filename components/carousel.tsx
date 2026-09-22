@@ -1,6 +1,8 @@
 "use client";
 
 import { Children, useCallback, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { stagger, viewportOnce } from "@/lib/motion";
 
 /**
  * Carrusel horizontal con scroll-snap. En móvil se desliza; hay flechas y
@@ -81,15 +83,19 @@ export function Carousel({
 
   return (
     <div className="relative">
-      <div
+      <motion.div
         ref={ref}
         role="region"
         aria-label={label}
         data-lenis-prevent
+        variants={stagger(0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
         className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
       >
         {children}
-      </div>
+      </motion.div>
 
       {overflow && count > 1 && (
         <div className="mt-6 flex items-center justify-between gap-4">

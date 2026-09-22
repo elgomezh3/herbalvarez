@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { EASE, viewportOnce } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
 
 /**
  * Última tarjeta de un carrusel de resumen (home): en vez de una ficha más,
@@ -12,10 +12,7 @@ import { EASE, viewportOnce } from "@/lib/motion";
 export function CarouselCtaCard({ href, label }: { href: string; label: string }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={viewportOnce}
-      transition={{ duration: 0.6, ease: EASE }}
+      variants={fadeUp}
       className="w-[80vw] shrink-0 snap-start sm:w-[340px] md:w-[360px]"
     >
       <Link

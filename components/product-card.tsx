@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { EASE, viewportOnce } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
 import { ACENTO_TEXTO, type Producto } from "@/lib/productos-shared";
 
 export function ProductCard({
@@ -14,10 +14,7 @@ export function ProductCard({
 }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={viewportOnce}
-      transition={{ duration: 0.6, ease: EASE }}
+      variants={fadeUp}
       className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 sm:w-[340px] md:w-[360px] md:p-8"
     >
       <span className="display-heading text-2xl text-gold/50">
