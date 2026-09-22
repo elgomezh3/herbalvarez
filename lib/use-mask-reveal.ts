@@ -45,6 +45,6 @@ export function useMaskReveal<T extends HTMLElement>() {
     ref,
     initial: { clipPath: MASK_HIDDEN } as const,
     animate: { clipPath: inView ? MASK_VISIBLE : MASK_HIDDEN },
-    transition: { duration: 1, ease: EASE },
+    transition: { duration: 1.8, ease: EASE },
   };
 }

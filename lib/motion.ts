@@ -48,7 +48,7 @@ export const MASK_VISIBLE = "inset(0% 0% 0% 0%)";
 
 export const maskReveal: Variants = {
   hidden: { clipPath: MASK_HIDDEN },
-  show: { clipPath: MASK_VISIBLE, transition: { duration: 1, ease: EASE } },
+  show: { clipPath: MASK_VISIBLE, transition: { duration: 1.8, ease: EASE } },
 };
 
 /**
