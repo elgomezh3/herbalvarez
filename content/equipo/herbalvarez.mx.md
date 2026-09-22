@@ -1,7 +1,7 @@
 ---
 nombre: Frida Bustamante
 puesto: Médico Cirujano
-foto: /uploads/80176.png
+foto: /uploads/80089.png
 foto_alt: Frida Bustamante — equipo Herbalvarez
 bio_corta: ''
 bio_larga: ''
