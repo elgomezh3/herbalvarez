@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { MaskedHeading, Reveal } from "@/components/primitives";
 import { Carousel } from "@/components/carousel";
 import { TeamCard } from "@/components/team-card";
+import { CarouselCtaCard } from "@/components/carousel-cta-card";
 import { SectionBg } from "@/components/section-bg";
 import { getEquipo } from "@/lib/equipo";
 import { getSeccion, txt, lineas } from "@/lib/secciones";
@@ -14,9 +14,9 @@ const DEFAULTS = {
 };
 
 /**
- * Sección de Equipo. `modo="home"` muestra solo los destacados (con
- * "Ver todos" hacia /equipo); `modo="pagina"` muestra la lista completa,
- * pensado para usarse dentro de /equipo.
+ * Sección de Equipo. `modo="home"` muestra solo los destacados + una
+ * tarjeta final "Ver todo el equipo" hacia /equipo; `modo="pagina"` muestra
+ * la lista completa, pensado para usarse dentro de /equipo.
  */
 export function TeamSection({
   modo = "pagina",
@@ -79,25 +79,11 @@ export function TeamSection({
             {equipo.map((m, i) => (
               <TeamCard key={m.slug} miembro={m} index={i} />
             ))}
+            {modo === "home" && (
+              <CarouselCtaCard href="/equipo" label="Ver todo el equipo" />
+            )}
           </Carousel>
         </div>
-
-        {modo === "home" && (
-          <Reveal delay={0.15}>
-            <Link
-              href="/equipo"
-              className="group mt-12 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-gold"
-            >
-              Ver todo el equipo
-              <span
-                className="transition-transform group-hover:translate-x-1"
-                aria-hidden
-              >
-                &rarr;
-              </span>
-            </Link>
-          </Reveal>
-        )}
       </div>
     </section>
   );

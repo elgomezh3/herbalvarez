@@ -16,6 +16,6 @@ categoria: otra
 orden: 3
 visible: true
 estado: publicado
-destacado: false
+destacado: true
 slug: rigoberto-alvarez
 ---

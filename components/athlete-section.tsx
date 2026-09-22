@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { MaskedHeading, Reveal } from "@/components/primitives";
 import { Carousel } from "@/components/carousel";
 import { AthleteCard } from "@/components/athlete-card";
+import { CarouselCtaCard } from "@/components/carousel-cta-card";
 import { SectionBg } from "@/components/section-bg";
 import { getAtletas } from "@/lib/atletas";
 import { getSeccion, txt, lineas } from "@/lib/secciones";
@@ -14,9 +14,9 @@ const DEFAULTS = {
 };
 
 /**
- * Sección de Atletas. `modo="home"` muestra solo los destacados (con
- * "Ver todos" hacia /atletas); `modo="pagina"` muestra la lista completa,
- * pensado para usarse dentro de /atletas.
+ * Sección de Atletas. `modo="home"` muestra solo los destacados + una
+ * tarjeta final "Ver todos los atletas" hacia /atletas; `modo="pagina"`
+ * muestra la lista completa, pensado para usarse dentro de /atletas.
  */
 export function AthleteSection({
   modo = "pagina",
@@ -79,25 +79,11 @@ export function AthleteSection({
             {atletas.map((a, i) => (
               <AthleteCard key={a.slug} atleta={a} index={i} />
             ))}
+            {modo === "home" && (
+              <CarouselCtaCard href="/atletas" label="Ver todos los atletas" />
+            )}
           </Carousel>
         </div>
-
-        {modo === "home" && (
-          <Reveal delay={0.15}>
-            <Link
-              href="/atletas"
-              className="group mt-12 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-ink transition-colors hover:text-gold"
-            >
-              Ver todos los atletas
-              <span
-                className="transition-transform group-hover:translate-x-1"
-                aria-hidden
-              >
-                &rarr;
-              </span>
-            </Link>
-          </Reveal>
-        )}
       </div>
     </section>
   );
