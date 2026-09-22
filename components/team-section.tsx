@@ -1,6 +1,7 @@
 import { MaskedHeading, Reveal } from "@/components/primitives";
 import { Carousel } from "@/components/carousel";
 import { TeamCard } from "@/components/team-card";
+import { TeamRow } from "@/components/team-row";
 import { CarouselCtaCard } from "@/components/carousel-cta-card";
 import { SectionBg } from "@/components/section-bg";
 import { getEquipo } from "@/lib/equipo";
@@ -14,9 +15,10 @@ const DEFAULTS = {
 };
 
 /**
- * Sección de Equipo. `modo="home"` muestra solo los destacados + una
- * tarjeta final "Ver todo el equipo" hacia /equipo; `modo="pagina"` muestra
- * la lista completa, pensado para usarse dentro de /equipo.
+ * Sección de Equipo. `modo="home"` muestra un carrusel con los destacados +
+ * una tarjeta final "Ver todo el equipo" hacia /equipo; `modo="pagina"`
+ * muestra la lista completa en filas apiladas con scroll parallax, pensado
+ * para usarse dentro de /equipo.
  */
 export function TeamSection({
   modo = "pagina",
@@ -74,16 +76,22 @@ export function TeamSection({
           </p>
         </Reveal>
 
-        <div className="mt-12">
-          <Carousel label={eyebrow}>
-            {equipo.map((m, i) => (
-              <TeamCard key={m.slug} miembro={m} index={i} />
-            ))}
-            {modo === "home" && (
+        {modo === "home" ? (
+          <div className="mt-12">
+            <Carousel label={eyebrow}>
+              {equipo.map((m, i) => (
+                <TeamCard key={m.slug} miembro={m} index={i} />
+              ))}
               <CarouselCtaCard href="/equipo" label="Ver todo el equipo" />
-            )}
-          </Carousel>
-        </div>
+            </Carousel>
+          </div>
+        ) : (
+          <div className="mt-8">
+            {equipo.map((m, i) => (
+              <TeamRow key={m.slug} miembro={m} index={i} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

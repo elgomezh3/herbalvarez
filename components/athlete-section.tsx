@@ -1,6 +1,7 @@
 import { MaskedHeading, Reveal } from "@/components/primitives";
 import { Carousel } from "@/components/carousel";
 import { AthleteCard } from "@/components/athlete-card";
+import { AthleteRow } from "@/components/athlete-row";
 import { CarouselCtaCard } from "@/components/carousel-cta-card";
 import { SectionBg } from "@/components/section-bg";
 import { getAtletas } from "@/lib/atletas";
@@ -14,9 +15,10 @@ const DEFAULTS = {
 };
 
 /**
- * Sección de Atletas. `modo="home"` muestra solo los destacados + una
- * tarjeta final "Ver todos los atletas" hacia /atletas; `modo="pagina"`
- * muestra la lista completa, pensado para usarse dentro de /atletas.
+ * Sección de Atletas. `modo="home"` muestra un carrusel con los destacados +
+ * una tarjeta final "Ver todos los atletas" hacia /atletas; `modo="pagina"`
+ * muestra la lista completa en filas apiladas con scroll parallax, pensado
+ * para usarse dentro de /atletas.
  */
 export function AthleteSection({
   modo = "pagina",
@@ -74,16 +76,22 @@ export function AthleteSection({
           </p>
         </Reveal>
 
-        <div className="mt-12">
-          <Carousel label={eyebrow}>
-            {atletas.map((a, i) => (
-              <AthleteCard key={a.slug} atleta={a} index={i} />
-            ))}
-            {modo === "home" && (
+        {modo === "home" ? (
+          <div className="mt-12">
+            <Carousel label={eyebrow}>
+              {atletas.map((a, i) => (
+                <AthleteCard key={a.slug} atleta={a} index={i} />
+              ))}
               <CarouselCtaCard href="/atletas" label="Ver todos los atletas" />
-            )}
-          </Carousel>
-        </div>
+            </Carousel>
+          </div>
+        ) : (
+          <div className="mt-8">
+            {atletas.map((a, i) => (
+              <AthleteRow key={a.slug} atleta={a} index={i} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

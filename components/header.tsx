@@ -13,7 +13,7 @@ import { EASE } from "@/lib/motion";
 
 const NAV = [
   { label: "Solución", href: "#problema" },
-  { label: "Productos", href: "#productos" },
+  { label: "Productos", href: "/productos" },
   { label: "Diferencia", href: "#diferencia" },
   { label: "Atletas", href: "/atletas" },
   { label: "Equipo", href: "/equipo" },

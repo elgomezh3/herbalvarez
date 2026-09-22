@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { animate, useInView, useReducedMotion } from "framer-motion";
+import { animate, useInView } from "framer-motion";
 import { EASE } from "@/lib/motion";
+import { useSafeReducedMotion } from "@/lib/use-safe-reduced-motion";
 
 const NUMERO = /^(\D*)(\d+(?:[.,]\d+)?)(\D*)$/;
 
@@ -26,10 +27,21 @@ export function StatValue({ valor, desde }: { valor: string; desde?: string }) {
   const inicio = useMemo(() => (desde ? numeroDe(desde) : null) ?? 0, [desde]);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
-  const reduce = useReducedMotion();
+  // Empieza en `false` (igual que el servidor) y solo se sabe la real después
+  // de montar, para no romper la hidratación en un sistema con esta opción
+  // activada. Por eso el estado inicial siempre arranca "animable" y se
+  // corrige al valor final apenas se confirma `reduce`, más abajo.
+  const reduce = useSafeReducedMotion();
   const [display, setDisplay] = useState(() =>
-    !match || reduce ? valor : `${match[1]}${inicio}${match[3]}`,
+    !match ? valor : `${match[1]}${inicio}${match[3]}`,
   );
+
+  // Corrige al valor final en cuanto se confirma que el usuario prefiere
+  // menos movimiento (puede ser justo después de montar, no en el primer
+  // render, para no desajustar la hidratación).
+  useEffect(() => {
+    if (reduce) setDisplay(valor);
+  }, [reduce, valor]);
 
   useEffect(() => {
     if (!inView || !match || reduce) return;
