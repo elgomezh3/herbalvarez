@@ -24,6 +24,5 @@ categoria: marketing
 orden: 5
 visible: true
 estado: publicado
-destacado: true
 slug: alfonso-gomez
 ---

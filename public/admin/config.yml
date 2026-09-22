@@ -361,15 +361,6 @@ collections:
           Para transparencia con quien lee: declara si la persona recibe
           producto gratis o algún tipo de patrocinio.
 
-      - name: destacado
-        label: Destacado
-        widget: boolean
-        default: false
-        required: false
-        hint: >-
-          Actívalo para que salga en el resumen corto de la portada (home),
-          con enlace a "Ver todos los atletas". Recomendado: 2-3 fichas.
-
       - name: orden
         label: Orden
         widget: number
@@ -378,7 +369,9 @@ collections:
         min: 1
         step: 1
         required: true
-        hint: 'Número menor = aparece primero en el sitio.'
+        hint: >-
+          Número menor = aparece primero en /atletas. Los 3 con el número más
+          bajo son también los que salen en el resumen de la portada (home).
 
       - name: publicado
         label: 'Visible en el sitio'
@@ -466,7 +459,9 @@ collections:
         min: 1
         step: 1
         required: true
-        hint: 'Número menor = aparece primero en el sitio.'
+        hint: >-
+          Número menor = aparece primero en /equipo. Los 3 con el número más
+          bajo son también los que salen en el resumen de la portada (home).
 
       - name: visible
         label: 'Visible en el sitio'
@@ -486,15 +481,6 @@ collections:
         hint: >-
           Solo las fichas "Publicado" Y "Visible" salen en el sitio. Usa
           "Borrador" para armar una ficha con calma antes de que se vea.
-
-      - name: destacado
-        label: Destacado
-        widget: boolean
-        default: false
-        required: false
-        hint: >-
-          Actívalo para que salga en el resumen corto de la portada (home),
-          con enlace a "Ver todo el equipo". Recomendado: 2-3 fichas.
 
       - name: slug
         label: 'Slug del perfil (URL)'

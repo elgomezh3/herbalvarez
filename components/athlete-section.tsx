@@ -15,8 +15,9 @@ const DEFAULTS = {
 };
 
 /**
- * Sección de Atletas. `modo="home"` muestra un carrusel con los destacados +
- * una tarjeta final "Ver todos los atletas" hacia /atletas; `modo="pagina"`
+ * Sección de Atletas. `modo="home"` muestra un carrusel con los primeros N
+ * por "orden" (mismo orden que /atletas, nunca un subconjunto aparte) + una
+ * tarjeta final "Ver todos los atletas" hacia /atletas; `modo="pagina"`
  * muestra la lista completa en filas apiladas con scroll parallax, pensado
  * para usarse dentro de /atletas.
  */
@@ -27,9 +28,7 @@ export function AthleteSection({
   modo?: "home" | "pagina";
   limite?: number;
 }) {
-  const atletas = getAtletas(
-    modo === "home" ? { soloDestacados: true, limite: limite ?? 3 } : {},
-  );
+  const atletas = getAtletas(modo === "home" ? { limite: limite ?? 3 } : {});
   if (atletas.length === 0) return null;
 
   const c = getSeccion("atletas");

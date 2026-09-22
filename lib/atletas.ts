@@ -83,7 +83,6 @@ function leerAtletas(): Atleta[] {
       redes: parseRedes(data.redes),
       orden: Number.isFinite(rawOrden) ? rawOrden : 999,
       publicado: toBool(data.publicado),
-      destacado: toBool(data.destacado),
       relacion: RELACIONES.includes(rawRelacion) ? rawRelacion : "ninguna",
     };
   });
@@ -91,18 +90,16 @@ function leerAtletas(): Atleta[] {
 
 /**
  * Lee content/atletas/*.md en tiempo de build. Devuelve solo los publicados,
- * ordenados por el campo "orden" (menor primero) y luego por slug.
- * `soloDestacados` + `limite` son para el resumen corto de la home.
+ * ordenados por el campo "orden" (menor primero) y luego por slug. `limite`
+ * corta ese mismo orden a los primeros N (para el resumen corto de la home):
+ * así el home siempre muestra un prefijo exacto del orden real, nunca un
+ * subconjunto aparte que pueda numerarse distinto entre home y la página
+ * completa.
  */
-export function getAtletas(
-  opts: { soloDestacados?: boolean; limite?: number } = {},
-): Atleta[] {
-  let atletas = leerAtletas()
+export function getAtletas(opts: { limite?: number } = {}): Atleta[] {
+  const atletas = leerAtletas()
     .filter((a) => a.publicado)
     .sort((a, b) => a.orden - b.orden || a.slug.localeCompare(b.slug));
 
-  if (opts.soloDestacados) atletas = atletas.filter((a) => a.destacado);
-  if (opts.limite) atletas = atletas.slice(0, opts.limite);
-
-  return atletas;
+  return opts.limite ? atletas.slice(0, opts.limite) : atletas;
 }

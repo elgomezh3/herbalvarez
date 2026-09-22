@@ -15,6 +15,5 @@ categoria: direccion
 orden: 1
 visible: true
 estado: publicado
-destacado: true
 slug: roberto-rostro
 ---

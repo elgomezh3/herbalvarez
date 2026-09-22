@@ -33,8 +33,6 @@ export type Atleta = {
   redes: RedSocial[];
   orden: number;
   publicado: boolean;
-  /** Aparece en el resumen corto de la home (con "Ver todos"). */
-  destacado: boolean;
   relacion: RelacionKey;
 };
 

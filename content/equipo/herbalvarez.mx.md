@@ -15,6 +15,5 @@ categoria: salud
 orden: 3
 visible: true
 estado: publicado
-destacado: false
 slug: frida-bustamante
 ---

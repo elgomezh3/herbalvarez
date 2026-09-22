@@ -92,26 +92,23 @@ function leerEquipo(): MiembroEquipo[] {
       orden: Number.isFinite(rawOrden) ? rawOrden : 999,
       visible: toBool(data.visible),
       estado: ESTADOS.includes(rawEstado) ? rawEstado : "borrador",
-      destacado: toBool(data.destacado),
     };
   });
 }
 
-type Opts = { soloDestacados?: boolean; limite?: number };
-
 /**
  * Lee content/equipo/*.md en tiempo de build. Devuelve solo los visibles y
- * publicados, ordenados por "orden". `soloDestacados` + `limite` son para el
- * resumen corto de la home.
+ * publicados, ordenados por "orden". `limite` corta ese mismo orden a los
+ * primeros N (para el resumen corto de la home): así el home siempre
+ * muestra un prefijo exacto del orden real, nunca un subconjunto aparte que
+ * pueda numerarse distinto entre home y la página completa.
  */
-export function getEquipo(opts: Opts = {}) {
-  let equipo = leerEquipo().filter((m) => m.visible && m.estado === "publicado");
-  equipo.sort((a, b) => a.orden - b.orden || a.slug.localeCompare(b.slug));
+export function getEquipo(opts: { limite?: number } = {}) {
+  const equipo = leerEquipo()
+    .filter((m) => m.visible && m.estado === "publicado")
+    .sort((a, b) => a.orden - b.orden || a.slug.localeCompare(b.slug));
 
-  if (opts.soloDestacados) equipo = equipo.filter((m) => m.destacado);
-  if (opts.limite) equipo = equipo.slice(0, opts.limite);
-
-  return equipo;
+  return opts.limite ? equipo.slice(0, opts.limite) : equipo;
 }
 
 /** Un integrante por su slug de perfil (`/equipo/[slug]`), o null si no existe/no es visible. */

@@ -11,7 +11,6 @@ beneficios:
   - recuperacion mas rapida
 redes: []
 relacion: ninguna
-destacado: false
 orden: 6
 publicado: true
 ---

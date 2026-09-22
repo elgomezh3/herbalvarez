@@ -44,5 +44,4 @@ export type MiembroEquipo = {
   orden: number;
   visible: boolean;
   estado: "borrador" | "publicado";
-  destacado: boolean;
 };

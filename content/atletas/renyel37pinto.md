@@ -9,7 +9,6 @@ testimonio: ''
 beneficios: []
 redes: []
 relacion: ninguna
-destacado: true
 orden: 4
 publicado: true
 ---

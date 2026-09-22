@@ -15,10 +15,11 @@ const DEFAULTS = {
 };
 
 /**
- * Sección de Equipo. `modo="home"` muestra un carrusel con los destacados +
- * una tarjeta final "Ver todo el equipo" hacia /equipo; `modo="pagina"`
- * muestra la lista completa en filas apiladas con scroll parallax, pensado
- * para usarse dentro de /equipo.
+ * Sección de Equipo. `modo="home"` muestra un carrusel con los primeros N
+ * por "orden" (mismo orden que /equipo, nunca un subconjunto aparte) + una
+ * tarjeta final "Ver todo el equipo" hacia /equipo; `modo="pagina"` muestra
+ * la lista completa en filas apiladas con scroll parallax, pensado para
+ * usarse dentro de /equipo.
  */
 export function TeamSection({
   modo = "pagina",
@@ -27,9 +28,7 @@ export function TeamSection({
   modo?: "home" | "pagina";
   limite?: number;
 }) {
-  const equipo = getEquipo(
-    modo === "home" ? { soloDestacados: true, limite: limite ?? 3 } : {},
-  );
+  const equipo = getEquipo(modo === "home" ? { limite: limite ?? 3 } : {});
   if (equipo.length === 0) return null;
 
   const c = getSeccion("equipo");

@@ -15,6 +15,5 @@ categoria: salud
 orden: 4
 visible: true
 estado: publicado
-destacado: false
 slug: roberto-pineiro
 ---
