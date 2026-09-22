@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fadeUp } from "@/lib/motion";
+import { cardTilt, fadeUp } from "@/lib/motion";
 import { CATEGORIA_LABEL, type MiembroEquipo } from "@/lib/equipo-shared";
 
 function initial(m: MiembroEquipo): string {
@@ -22,7 +22,8 @@ export function TeamCard({
   return (
     <motion.article
       variants={fadeUp}
-      className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 sm:w-[340px] md:w-[360px] md:p-8"
+      {...cardTilt}
+      className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 [transform-style:preserve-3d] sm:w-[340px] md:w-[360px] md:p-8"
     >
       <span className="display-heading text-2xl text-gold/50">
         {String(index + 1).padStart(2, "0")}

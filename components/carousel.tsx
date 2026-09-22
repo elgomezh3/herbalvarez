@@ -92,7 +92,7 @@ export function Carousel({
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 py-2 [-ms-overflow-style:none] [perspective:1200px] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
       >
         {children}
       </motion.div>

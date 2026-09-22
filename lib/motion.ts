@@ -35,3 +35,22 @@ export const lineReveal: Variants = {
 };
 
 export const viewportOnce = { once: true, amount: 0.35 } as const;
+
+/**
+ * Tilt 3D sutil para tarjetas: al pasar el mouse, se inclina unos grados y
+ * se levanta un poco. Se usa con spread (`{...cardTilt}`) junto a `variants`.
+ * El padre directo necesita `perspective` (ver Carousel) para que el giro
+ * se vea con profundidad y no como un simple sesgo plano.
+ */
+export const cardTilt = {
+  whileHover: {
+    rotateY: 5,
+    rotateX: -3,
+    scale: 1.015,
+    transition: { type: "spring", stiffness: 300, damping: 20 },
+  },
+  whileTap: {
+    scale: 0.98,
+    transition: { duration: 0.15 },
+  },
+} as const;

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { fadeUp } from "@/lib/motion";
+import { cardTilt, fadeUp } from "@/lib/motion";
 import { ACENTO_TEXTO, type Producto } from "@/lib/productos-shared";
 
 export function ProductCard({
@@ -15,7 +15,8 @@ export function ProductCard({
   return (
     <motion.article
       variants={fadeUp}
-      className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 sm:w-[340px] md:w-[360px] md:p-8"
+      {...cardTilt}
+      className="relative flex w-[80vw] shrink-0 snap-start flex-col border border-line bg-surface p-6 [transform-style:preserve-3d] sm:w-[340px] md:w-[360px] md:p-8"
     >
       <span className="display-heading text-2xl text-gold/50">
         {String(index + 1).padStart(2, "0")}

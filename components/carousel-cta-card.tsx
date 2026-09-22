@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fadeUp } from "@/lib/motion";
+import { cardTilt, fadeUp } from "@/lib/motion";
 
 /**
  * Última tarjeta de un carrusel de resumen (home): en vez de una ficha más,
@@ -13,7 +13,8 @@ export function CarouselCtaCard({ href, label }: { href: string; label: string }
   return (
     <motion.article
       variants={fadeUp}
-      className="w-[80vw] shrink-0 snap-start sm:w-[340px] md:w-[360px]"
+      {...cardTilt}
+      className="w-[80vw] shrink-0 snap-start [transform-style:preserve-3d] sm:w-[340px] md:w-[360px]"
     >
       <Link
         href={href}
