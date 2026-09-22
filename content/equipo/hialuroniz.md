@@ -12,7 +12,7 @@ redes: []
 email: ''
 whatsapp: ''
 categoria: direccion
-orden: 2
+orden: 1
 visible: true
 estado: publicado
 destacado: true
