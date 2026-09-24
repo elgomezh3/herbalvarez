@@ -1,7 +1,7 @@
 ---
 nombre: Roberto Piñeiro
 puesto: Médico Neurópata
-foto: /uploads/80174.png
+foto: /uploads/80094.png
 foto_alt: Roberto Piñeiro — equipo Herbalvarez
 bio_corta: ''
 bio_larga: ''
