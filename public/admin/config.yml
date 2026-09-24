@@ -93,6 +93,16 @@ collections:
             widget: list
             required: false
             hint: 'Uno por renglón.'
+          - { name: titulo_beneficios, label: 'Título — beneficios de rendimiento', widget: text, required: false, hint: 'Una línea por renglón.' }
+          - name: lista_beneficios
+            label: 'Lista de beneficios de rendimiento'
+            widget: list
+            required: false
+            hint: 'Uno por renglón. Ej.: Desinflama y quita dolores'
+          - { name: titulo_apigenina, label: 'Título — bloque apigenina', widget: string, required: false }
+          - { name: parrafo_apigenina, label: 'Párrafo — bloque apigenina', widget: text, required: false }
+          - { name: titulo_sinergia, label: 'Título — bloque sinergia', widget: string, required: false }
+          - { name: parrafo_sinergia, label: 'Párrafo — bloque sinergia', widget: text, required: false }
           - { name: cta_texto, label: 'Botón — texto', widget: string, required: false }
           - { name: cta_enlace, label: 'Botón — enlace', widget: string, required: false, hint: 'Ej.: /productos' }
           - *campo_fondo

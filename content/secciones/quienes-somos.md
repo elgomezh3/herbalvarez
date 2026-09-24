@@ -46,7 +46,31 @@ ingredientes:
   - 'Carotenos'
   - 'Omegas 3, 6 y 9'
   - 'Vitaminas'
+  - 'Apigenina'
+  - 'Piperina'
+  - 'Eugenol'
   - 'Glicerina (jabón)'
+titulo_beneficios: |-
+  Lo que hace cada gota
+  por tu rendimiento.
+lista_beneficios:
+  - 'Desinflama y quita dolores'
+  - 'Mejora la oxigenación de la sangre para que el músculo trabaje más y se fatigue menos'
+  - 'Ayuda a bajar la inflamación post-entreno'
+  - 'Fortalece el músculo cardíaco para aguantar más rounds'
+  - 'Apoya la memoria y el enfoque bajo presión'
+  - 'Acelera la recuperación entre sesiones'
+titulo_apigenina: 'Apigenina: protección para quien recibe impacto'
+parrafo_apigenina: >-
+  Materia prima para las células de Schwann, productoras de mielina — el
+  recubrimiento que protege tus neuronas y evita los daños por los golpes
+  continuos del entrenamiento y el ring. Entrena fuerte, protege lo que
+  importa.
+titulo_sinergia: 'Por qué funciona mejor junto'
+parrafo_sinergia: >-
+  La piperina actúa como bio-potenciador: hace que tu cuerpo aproveche mejor
+  el eugenol y la apigenina, con dosis pequeñas rindiendo más. Más
+  eficiencia, menos producto.
 cta_texto: 'Ver productos'
 cta_enlace: '/productos'
 fondo: ''

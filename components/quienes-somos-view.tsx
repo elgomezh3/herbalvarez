@@ -23,6 +23,12 @@ export function QuienesSomosView({
   eyebrowIngredientes,
   tituloIngredientes,
   ingredientes,
+  tituloBeneficios,
+  listaBeneficios,
+  tituloApigenina,
+  parrafoApigenina,
+  tituloSinergia,
+  parrafoSinergia,
   ctaTexto,
   ctaEnlace,
   fondo,
@@ -40,6 +46,12 @@ export function QuienesSomosView({
   eyebrowIngredientes: string;
   tituloIngredientes: string[];
   ingredientes: string[];
+  tituloBeneficios: string[];
+  listaBeneficios: string[];
+  tituloApigenina: string;
+  parrafoApigenina: string;
+  tituloSinergia: string;
+  parrafoSinergia: string;
   ctaTexto: string;
   ctaEnlace: string;
   fondo: string;
@@ -188,6 +200,58 @@ export function QuienesSomosView({
                 </motion.li>
               ))}
             </motion.ul>
+
+            {listaBeneficios.length > 0 && (
+              <div className="mt-16 max-w-3xl">
+                <MaskedHeading
+                  lines={tituloBeneficios}
+                  className="max-w-[18ch] text-[8vw] text-ink sm:text-4xl lg:text-5xl"
+                />
+                <motion.ul
+                  variants={stagger(0.06)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={viewportOnce}
+                  className="mt-8 grid gap-3 sm:grid-cols-2"
+                >
+                  {listaBeneficios.map((b) => (
+                    <motion.li
+                      key={b}
+                      variants={fadeUp}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-muted"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" aria-hidden />
+                      {b}
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
+            )}
+
+            {(parrafoApigenina || parrafoSinergia) && (
+              <div className="mt-16 grid max-w-4xl gap-8 md:grid-cols-2">
+                {parrafoApigenina && (
+                  <Reveal>
+                    <div className="border-l-2 border-gold pl-5">
+                      {tituloApigenina && (
+                        <h3 className="text-base font-bold text-ink">{tituloApigenina}</h3>
+                      )}
+                      <p className="mt-2 text-sm leading-relaxed text-ink/85">{parrafoApigenina}</p>
+                    </div>
+                  </Reveal>
+                )}
+                {parrafoSinergia && (
+                  <Reveal delay={0.1}>
+                    <div className="border-l-2 border-gold pl-5">
+                      {tituloSinergia && (
+                        <h3 className="text-base font-bold text-ink">{tituloSinergia}</h3>
+                      )}
+                      <p className="mt-2 text-sm leading-relaxed text-ink/85">{parrafoSinergia}</p>
+                    </div>
+                  </Reveal>
+                )}
+              </div>
+            )}
 
             {ctaTexto && (
               <Reveal delay={0.1}>

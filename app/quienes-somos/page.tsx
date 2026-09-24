@@ -57,6 +57,28 @@ export default function QuienesSomosPage() {
         "Vitaminas",
         "Glicerina (jabón)",
       ])}
+      tituloBeneficios={lineas(c.titulo_beneficios, [
+        "Lo que hace cada gota",
+        "por tu rendimiento.",
+      ])}
+      listaBeneficios={listaTexto(c.lista_beneficios, [
+        "Desinflama y quita dolores",
+        "Mejora la oxigenación de la sangre para que el músculo trabaje más y se fatigue menos",
+        "Ayuda a bajar la inflamación post-entreno",
+        "Fortalece el músculo cardíaco para aguantar más rounds",
+        "Apoya la memoria y el enfoque bajo presión",
+        "Acelera la recuperación entre sesiones",
+      ])}
+      tituloApigenina={txt(c.titulo_apigenina, "Apigenina: protección para quien recibe impacto")}
+      parrafoApigenina={txt(
+        c.parrafo_apigenina,
+        "Materia prima para las células de Schwann, productoras de mielina — el recubrimiento que protege tus neuronas y evita los daños por los golpes continuos del entrenamiento y el ring. Entrena fuerte, protege lo que importa.",
+      )}
+      tituloSinergia={txt(c.titulo_sinergia, "Por qué funciona mejor junto")}
+      parrafoSinergia={txt(
+        c.parrafo_sinergia,
+        "La piperina actúa como bio-potenciador: hace que tu cuerpo aproveche mejor el eugenol y la apigenina, con dosis pequeñas rindiendo más. Más eficiencia, menos producto.",
+      )}
       ctaTexto={txt(c.cta_texto, "Ver productos")}
       ctaEnlace={txt(c.cta_enlace, "/productos")}
       fondo={txt(c.fondo, "")}
