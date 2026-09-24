@@ -18,8 +18,8 @@ parrafo_formula: >-
   aceite de linaza, macerados con hierbas de propiedades medicinales. El
   resultado es un oleato cargado de antioxidantes que ayuda a combatir el
   exceso de radicales libres y el estrés oxidativo que el cuerpo acumula con
-  el entrenamiento — fortaleciendo el sistema inmunológico y apoyando la
-  recuperación entre sesiones.
+  el entrenamiento — acelerando la recuperación entre sesiones y sosteniendo
+  tu rendimiento entreno tras entreno.
 stats:
   - { valor: '10', etiqueta: 'años de experiencia' }
   - { valor: '37', etiqueta: 'presentaciones de productos' }
